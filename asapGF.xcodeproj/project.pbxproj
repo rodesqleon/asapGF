@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A473DCB91CB0295D00F28B92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCB81CB0295D00F28B92 /* main.m */; };
 		A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCBB1CB0295D00F28B92 /* AppDelegate.m */; };
-		A473DCBF1CB0295D00F28B92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCBE1CB0295D00F28B92 /* ViewController.m */; };
-		A473DCC21CB0295D00F28B92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A473DCC01CB0295D00F28B92 /* Main.storyboard */; };
 		A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A473DCC31CB0295D00F28B92 /* Assets.xcassets */; };
-		A473DCC71CB0295D00F28B92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A473DCC51CB0295D00F28B92 /* LaunchScreen.storyboard */; };
 		A473DCD21CB0295D00F28B92 /* asapGFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCD11CB0295D00F28B92 /* asapGFTests.m */; };
 		A473DCDD1CB0295D00F28B92 /* asapGFUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCDC1CB0295D00F28B92 /* asapGFUITests.m */; };
+		A473DCF01CB05F7800F28B92 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCEF1CB05F7800F28B92 /* LoginViewController.m */; };
+		A4D1FEBA1CB148E500BC15FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1FEB91CB148E500BC15FF /* main.m */; };
+		A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A473DCEC1CB02C2E00F28B92 /* loginView_style_1.xib */; };
+		A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1FEBE1CB1584300BC15FF /* AppUser.m */; };
+		A4D1FEC31CB160F400BC15FF /* dashboard_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1FEC21CB160F400BC15FF /* dashboard_style_1.xib */; };
+		A4D1FEC61CB1637200BC15FF /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1FEC51CB1637200BC15FF /* HomeViewController.m */; };
+		A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4D1FEC71CB17D5000BC15FF /* signInView_style_1.xib */; };
+		A4D1FECB1CB182C000BC15FF /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4D1FECA1CB182C000BC15FF /* SignInViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,14 +40,9 @@
 
 /* Begin PBXFileReference section */
 		A473DCB41CB0295D00F28B92 /* asapGF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asapGF.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A473DCB81CB0295D00F28B92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A473DCBA1CB0295D00F28B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A473DCBB1CB0295D00F28B92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A473DCBD1CB0295D00F28B92 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		A473DCBE1CB0295D00F28B92 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		A473DCC11CB0295D00F28B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A473DCC31CB0295D00F28B92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A473DCC61CB0295D00F28B92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A473DCC81CB0295D00F28B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A473DCCD1CB0295D00F28B92 /* asapGFTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asapGFTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A473DCD11CB0295D00F28B92 /* asapGFTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = asapGFTests.m; sourceTree = "<group>"; };
@@ -51,6 +50,18 @@
 		A473DCD81CB0295D00F28B92 /* asapGFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = asapGFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A473DCDC1CB0295D00F28B92 /* asapGFUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = asapGFUITests.m; sourceTree = "<group>"; };
 		A473DCDE1CB0295D00F28B92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A473DCEC1CB02C2E00F28B92 /* loginView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = loginView_style_1.xib; sourceTree = "<group>"; };
+		A473DCEE1CB05F7700F28B92 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		A473DCEF1CB05F7800F28B92 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		A4D1FEB91CB148E500BC15FF /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A4D1FEBD1CB1584300BC15FF /* AppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppUser.h; sourceTree = "<group>"; };
+		A4D1FEBE1CB1584300BC15FF /* AppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppUser.m; sourceTree = "<group>"; };
+		A4D1FEC21CB160F400BC15FF /* dashboard_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = dashboard_style_1.xib; sourceTree = "<group>"; };
+		A4D1FEC41CB1637200BC15FF /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		A4D1FEC51CB1637200BC15FF /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		A4D1FEC71CB17D5000BC15FF /* signInView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = signInView_style_1.xib; sourceTree = "<group>"; };
+		A4D1FEC91CB182C000BC15FF /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		A4D1FECA1CB182C000BC15FF /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +114,12 @@
 			children = (
 				A473DCBA1CB0295D00F28B92 /* AppDelegate.h */,
 				A473DCBB1CB0295D00F28B92 /* AppDelegate.m */,
-				A473DCBD1CB0295D00F28B92 /* ViewController.h */,
-				A473DCBE1CB0295D00F28B92 /* ViewController.m */,
-				A473DCC01CB0295D00F28B92 /* Main.storyboard */,
+				A4D1FEBD1CB1584300BC15FF /* AppUser.h */,
+				A4D1FEBE1CB1584300BC15FF /* AppUser.m */,
 				A473DCC31CB0295D00F28B92 /* Assets.xcassets */,
-				A473DCC51CB0295D00F28B92 /* LaunchScreen.storyboard */,
+				A4D1FEC01CB160D800BC15FF /* home */,
 				A473DCC81CB0295D00F28B92 /* Info.plist */,
+				A473DCEA1CB02BEA00F28B92 /* login */,
 				A473DCB71CB0295D00F28B92 /* Supporting Files */,
 			);
 			path = asapGF;
@@ -117,7 +128,7 @@
 		A473DCB71CB0295D00F28B92 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A473DCB81CB0295D00F28B92 /* main.m */,
+				A4D1FEB91CB148E500BC15FF /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -138,6 +149,45 @@
 				A473DCDE1CB0295D00F28B92 /* Info.plist */,
 			);
 			path = asapGFUITests;
+			sourceTree = "<group>";
+		};
+		A473DCEA1CB02BEA00F28B92 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				A473DCEB1CB02BFB00F28B92 /* view */,
+				A473DCEE1CB05F7700F28B92 /* LoginViewController.h */,
+				A473DCEF1CB05F7800F28B92 /* LoginViewController.m */,
+				A4D1FEC91CB182C000BC15FF /* SignInViewController.h */,
+				A4D1FECA1CB182C000BC15FF /* SignInViewController.m */,
+			);
+			path = login;
+			sourceTree = "<group>";
+		};
+		A473DCEB1CB02BFB00F28B92 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A473DCEC1CB02C2E00F28B92 /* loginView_style_1.xib */,
+				A4D1FEC71CB17D5000BC15FF /* signInView_style_1.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		A4D1FEC01CB160D800BC15FF /* home */ = {
+			isa = PBXGroup;
+			children = (
+				A4D1FEC11CB160D800BC15FF /* view */,
+				A4D1FEC41CB1637200BC15FF /* HomeViewController.h */,
+				A4D1FEC51CB1637200BC15FF /* HomeViewController.m */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		A4D1FEC11CB160D800BC15FF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A4D1FEC21CB160F400BC15FF /* dashboard_style_1.xib */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,9 +293,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A473DCC71CB0295D00F28B92 /* LaunchScreen.storyboard in Resources */,
+				A4D1FEC31CB160F400BC15FF /* dashboard_style_1.xib in Resources */,
+				A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */,
+				A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */,
 				A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */,
-				A473DCC21CB0295D00F28B92 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,9 +321,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A473DCBF1CB0295D00F28B92 /* ViewController.m in Sources */,
+				A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */,
 				A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */,
-				A473DCB91CB0295D00F28B92 /* main.m in Sources */,
+				A4D1FEBA1CB148E500BC15FF /* main.m in Sources */,
+				A4D1FEC61CB1637200BC15FF /* HomeViewController.m in Sources */,
+				A4D1FECB1CB182C000BC15FF /* SignInViewController.m in Sources */,
+				A473DCF01CB05F7800F28B92 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,25 +360,6 @@
 			targetProxy = A473DCD91CB0295D00F28B92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A473DCC01CB0295D00F28B92 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A473DCC11CB0295D00F28B92 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A473DCC51CB0295D00F28B92 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A473DCC61CB0295D00F28B92 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A473DCDF1CB0295D00F28B92 /* Debug */ = {
@@ -412,6 +447,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = asapGF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodev.asapGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,6 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = asapGF/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodev.asapGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -496,6 +533,7 @@
 				A473DCE31CB0295D00F28B92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A473DCE41CB0295D00F28B92 /* Build configuration list for PBXNativeTarget "asapGFTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +542,7 @@
 				A473DCE61CB0295D00F28B92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A473DCE71CB0295D00F28B92 /* Build configuration list for PBXNativeTarget "asapGFUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +551,7 @@
 				A473DCE91CB0295D00F28B92 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
