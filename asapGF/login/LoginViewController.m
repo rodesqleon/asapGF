@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInViewController.h"
-#import "AppUser.h";
+#import "AppUser.h"
 @interface LoginViewController ()
 
 @end
@@ -33,16 +33,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSURL *url = [NSURL URLWithString:@"http://localhost/wsLogIn.php?pwd=testUser1"];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",jsonResponse);
+    self.userName_textField.delegate = self;
+    self.password_textField.delegate = self;
     
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSMutableDictionary *response = [[[dict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
-    //NSLog(@"%@", response);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -64,7 +57,8 @@
     
     NSURL *url = [NSURL URLWithString:call];
     NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",jsonResponse);
+    NSLog(@"%@",self.password_textField.text);
+    NSLog(@"%@",jsonResponse);
     
     NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -116,6 +110,19 @@
 -(IBAction)signin:(id)sender{
     SignInViewController *signView = [[SignInViewController alloc] initWithNibName:@"signInView_style_1" bundle:nil];
     [self presentViewController:signView animated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.userName_textField) {
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 /*

@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "LoginViewController.h"
+#import "NewScanViewController.h"
 #import "AppUser.h"
 
 
@@ -53,6 +54,12 @@
 - (IBAction)logout:(id)sender{
     LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
     [self presentViewController:loginView animated:YES completion:nil];
+
+}
+
+-(IBAction)searchBtn:(id)sender{
+    NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
+    [self presentViewController:newScan animated:YES completion:nil];
 
 }
 

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4468E6A1CBB159F00E768CF /* newScanView_style_1.xib */; };
+		A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4468E6D1CBB16BD00E768CF /* NewScanViewController.m */; };
+		A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4468E6F1CBB174C00E768CF /* scannerView_style_1.xib */; };
+		A4468E761CBB199A00E768CF /* ScanController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4468E751CBB199A00E768CF /* ScanController.m */; };
 		A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCBB1CB0295D00F28B92 /* AppDelegate.m */; };
 		A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A473DCC31CB0295D00F28B92 /* Assets.xcassets */; };
 		A473DCD21CB0295D00F28B92 /* asapGFTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A473DCD11CB0295D00F28B92 /* asapGFTests.m */; };
@@ -39,6 +43,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4468E6A1CBB159F00E768CF /* newScanView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newScanView_style_1.xib; sourceTree = "<group>"; };
+		A4468E6C1CBB16BD00E768CF /* NewScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewScanViewController.h; sourceTree = "<group>"; };
+		A4468E6D1CBB16BD00E768CF /* NewScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewScanViewController.m; sourceTree = "<group>"; };
+		A4468E6F1CBB174C00E768CF /* scannerView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = scannerView_style_1.xib; sourceTree = "<group>"; };
+		A4468E741CBB199A00E768CF /* ScanController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanController.h; sourceTree = "<group>"; };
+		A4468E751CBB199A00E768CF /* ScanController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanController.m; sourceTree = "<group>"; };
 		A473DCB41CB0295D00F28B92 /* asapGF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = asapGF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A473DCBA1CB0295D00F28B92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A473DCBB1CB0295D00F28B92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +99,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A4468E671CBB155500E768CF /* search */ = {
+			isa = PBXGroup;
+			children = (
+				A4468E741CBB199A00E768CF /* ScanController.h */,
+				A4468E751CBB199A00E768CF /* ScanController.m */,
+				A4468E681CBB155500E768CF /* model */,
+				A4468E691CBB155500E768CF /* view */,
+				A4468E6C1CBB16BD00E768CF /* NewScanViewController.h */,
+				A4468E6D1CBB16BD00E768CF /* NewScanViewController.m */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		A4468E681CBB155500E768CF /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		A4468E691CBB155500E768CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				A4468E6A1CBB159F00E768CF /* newScanView_style_1.xib */,
+				A4468E6F1CBB174C00E768CF /* scannerView_style_1.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		A473DCAB1CB0295D00F28B92 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +151,7 @@
 		A473DCB61CB0295D00F28B92 /* asapGF */ = {
 			isa = PBXGroup;
 			children = (
+				A4468E671CBB155500E768CF /* search */,
 				A473DCBA1CB0295D00F28B92 /* AppDelegate.h */,
 				A473DCBB1CB0295D00F28B92 /* AppDelegate.m */,
 				A4D1FEBD1CB1584300BC15FF /* AppUser.h */,
@@ -294,9 +334,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4D1FEC31CB160F400BC15FF /* dashboard_style_1.xib in Resources */,
+				A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */,
 				A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */,
 				A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */,
 				A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */,
+				A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,9 +363,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */,
 				A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */,
 				A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */,
 				A4D1FEBA1CB148E500BC15FF /* main.m in Sources */,
+				A4468E761CBB199A00E768CF /* ScanController.m in Sources */,
 				A4D1FEC61CB1637200BC15FF /* HomeViewController.m in Sources */,
 				A4D1FECB1CB182C000BC15FF /* SignInViewController.m in Sources */,
 				A473DCF01CB05F7800F28B92 /* LoginViewController.m in Sources */,

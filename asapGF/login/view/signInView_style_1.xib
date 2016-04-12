@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignInViewController">
@@ -23,7 +23,7 @@
                     <rect key="frame" x="0.0" y="418" width="320" height="62"/>
                     <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="62" id="QNn-Gm-vlh"/>
+                        <constraint firstAttribute="height" constant="62" id="GNW-1p-6Dj"/>
                     </constraints>
                     <state key="normal" title="SIGN IN"/>
                     <connections>
@@ -33,12 +33,16 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tpa-x3-IqA">
                     <rect key="frame" x="0.0" y="298" width="320" height="118"/>
                     <subviews>
-                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhz-0g-m9B">
+                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uhz-0g-m9B">
                             <rect key="frame" x="17" y="43" width="51" height="31"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="31" id="TEf-TK-42x"/>
+                                <constraint firstAttribute="width" constant="49" id="TXb-6o-OO0"/>
+                            </constraints>
                             <color key="onTintColor" red="0.90827679547105256" green="0.66227405019999996" blue="0.26316948444473687" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="thumbTintColor" red="1" green="1" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
                         </switch>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2v-1x-Wsz">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2v-1x-Wsz">
                             <rect key="frame" x="79" y="8" width="233" height="102"/>
                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et velit id arcu hendrerit cursus. Nam accumsan congue interdum. Nam nec purus et sem sollicitudin lacinia in sed lectus. Phasellus pharetra diam sed tincidunt feugiat. Nam scelerisque lobortis mauris, in lobortis velit vehicula in.</string>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -48,7 +52,14 @@
                     </subviews>
                     <color key="backgroundColor" red="0.93333333330000001" green="0.79215686269999996" blue="0.54901960780000003" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="118" id="rXQ-Wj-Iyr"/>
+                        <constraint firstItem="E2v-1x-Wsz" firstAttribute="top" secondItem="Tpa-x3-IqA" secondAttribute="top" constant="8" id="Pw7-c6-Q4B"/>
+                        <constraint firstAttribute="bottom" secondItem="E2v-1x-Wsz" secondAttribute="bottom" constant="8" id="Y2M-6Q-TlP"/>
+                        <constraint firstAttribute="bottom" secondItem="uhz-0g-m9B" secondAttribute="bottom" constant="44" id="ZoN-vF-7m5"/>
+                        <constraint firstItem="E2v-1x-Wsz" firstAttribute="leading" secondItem="uhz-0g-m9B" secondAttribute="trailing" constant="13" id="puf-R6-Wzc"/>
+                        <constraint firstItem="uhz-0g-m9B" firstAttribute="leading" secondItem="Tpa-x3-IqA" secondAttribute="leading" constant="17" id="q3D-O1-9og"/>
+                        <constraint firstAttribute="trailing" secondItem="E2v-1x-Wsz" secondAttribute="trailing" constant="8" id="uMc-uY-04X"/>
+                        <constraint firstItem="uhz-0g-m9B" firstAttribute="top" secondItem="Tpa-x3-IqA" secondAttribute="top" constant="43" id="vgd-sI-OPB"/>
+                        <constraint firstAttribute="height" constant="118" id="wWD-x4-iFg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-nM-zie">
@@ -76,7 +87,7 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="59" id="PLw-Hw-2Qv"/>
+                        <constraint firstAttribute="height" constant="59" id="ngi-OV-OMX"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVN-PC-bG9">
@@ -90,41 +101,34 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="59" id="lhO-mA-nte"/>
+                        <constraint firstAttribute="height" constant="59" id="rif-x4-Dsm"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signin_logo" translatesAutoresizingMaskIntoConstraints="NO" id="r0w-ph-pFT">
-                    <rect key="frame" x="113" y="20" width="94" height="85"/>
-                </imageView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.7482971128" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="86X-Y5-LK8" firstAttribute="top" secondItem="Tpa-x3-IqA" secondAttribute="bottom" constant="2" id="5Pw-eR-Ig5"/>
-                <constraint firstItem="Tpa-x3-IqA" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="Adf-P1-UKO"/>
-                <constraint firstAttribute="trailing" secondItem="r0w-ph-pFT" secondAttribute="trailing" constant="113" id="Cbu-mB-AEx"/>
+                <constraint firstItem="86X-Y5-LK8" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="1xo-AF-n2s"/>
+                <constraint firstAttribute="bottom" secondItem="86X-Y5-LK8" secondAttribute="bottom" id="2nx-8M-sH4"/>
+                <constraint firstItem="BYI-nM-zie" firstAttribute="top" secondItem="tZl-x3-oRT" secondAttribute="top" constant="115" id="4K8-u5-E56"/>
+                <constraint firstAttribute="trailing" secondItem="Tpa-x3-IqA" secondAttribute="trailing" id="Fhu-Kh-RLS"/>
                 <constraint firstAttribute="trailing" secondItem="BYI-nM-zie" secondAttribute="trailing" id="H0e-mS-4Me"/>
-                <constraint firstAttribute="trailing" secondItem="86X-Y5-LK8" secondAttribute="trailing" id="O84-WZ-XEH"/>
-                <constraint firstItem="eF4-bo-b1H" firstAttribute="top" secondItem="BYI-nM-zie" secondAttribute="bottom" constant="2" id="Wlq-Xc-Z6x"/>
-                <constraint firstAttribute="trailing" secondItem="eF4-bo-b1H" secondAttribute="trailing" id="aud-YX-zkn"/>
-                <constraint firstItem="r0w-ph-pFT" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" constant="113" id="cu8-7D-1tS"/>
-                <constraint firstAttribute="trailing" secondItem="JVN-PC-bG9" secondAttribute="trailing" id="d3O-ic-MS3"/>
-                <constraint firstItem="r0w-ph-pFT" firstAttribute="top" secondItem="tZl-x3-oRT" secondAttribute="top" constant="20" id="gKv-wn-3lB"/>
-                <constraint firstItem="86X-Y5-LK8" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="l9H-Ek-A8T"/>
-                <constraint firstItem="eF4-bo-b1H" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="n6D-VW-4YI"/>
-                <constraint firstItem="BYI-nM-zie" firstAttribute="top" secondItem="r0w-ph-pFT" secondAttribute="bottom" constant="10" id="nh4-Iz-2mv"/>
-                <constraint firstAttribute="bottom" secondItem="86X-Y5-LK8" secondAttribute="bottom" id="qSH-ct-VKF"/>
-                <constraint firstItem="JVN-PC-bG9" firstAttribute="top" secondItem="eF4-bo-b1H" secondAttribute="bottom" constant="2" id="qUV-76-XGX"/>
-                <constraint firstItem="JVN-PC-bG9" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="wVA-gT-oRE"/>
-                <constraint firstItem="Tpa-x3-IqA" firstAttribute="top" secondItem="JVN-PC-bG9" secondAttribute="bottom" constant="2" id="wtu-LJ-hGp"/>
+                <constraint firstItem="eF4-bo-b1H" firstAttribute="top" secondItem="BYI-nM-zie" secondAttribute="bottom" constant="2" id="Lt5-hZ-zJv"/>
+                <constraint firstItem="JVN-PC-bG9" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="OYW-sj-pnl"/>
+                <constraint firstItem="JVN-PC-bG9" firstAttribute="top" secondItem="eF4-bo-b1H" secondAttribute="bottom" constant="2" id="R2v-Sz-xuE"/>
+                <constraint firstAttribute="trailing" secondItem="eF4-bo-b1H" secondAttribute="trailing" id="SJe-zl-SMj"/>
+                <constraint firstItem="eF4-bo-b1H" firstAttribute="leading" secondItem="BYI-nM-zie" secondAttribute="leading" id="THJ-9U-ukO"/>
+                <constraint firstItem="JVN-PC-bG9" firstAttribute="leading" secondItem="eF4-bo-b1H" secondAttribute="leading" id="XN8-1y-oTs"/>
+                <constraint firstItem="eF4-bo-b1H" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="aHB-9o-mlY"/>
+                <constraint firstItem="Tpa-x3-IqA" firstAttribute="top" secondItem="JVN-PC-bG9" secondAttribute="bottom" constant="2" id="b4W-N5-oNh"/>
+                <constraint firstItem="Tpa-x3-IqA" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="gIL-HW-T9Z"/>
+                <constraint firstAttribute="trailing" secondItem="86X-Y5-LK8" secondAttribute="trailing" id="jHM-HA-dvg"/>
+                <constraint firstAttribute="trailing" secondItem="JVN-PC-bG9" secondAttribute="trailing" id="tes-28-bfC"/>
+                <constraint firstItem="Tpa-x3-IqA" firstAttribute="leading" secondItem="JVN-PC-bG9" secondAttribute="leading" id="wnq-ki-lb9"/>
                 <constraint firstItem="BYI-nM-zie" firstAttribute="leading" secondItem="tZl-x3-oRT" secondAttribute="leading" id="yl6-Tf-TaM"/>
-                <constraint firstAttribute="trailing" secondItem="Tpa-x3-IqA" secondAttribute="trailing" id="zp4-IX-U3R"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="228" y="359"/>
         </view>
     </objects>
-    <resources>
-        <image name="signin_logo" width="128" height="128"/>
-    </resources>
 </document>
