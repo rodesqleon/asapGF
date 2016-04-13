@@ -17,12 +17,12 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"newScanView_style1" bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"newScanView_style_1" bundle:nil];
     
     if (self) {
         // Custom initialization
     }
-    //[self loadView];
+    [self loadView];
     return self;
 }
 

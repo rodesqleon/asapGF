@@ -7,6 +7,7 @@
 //
 
 #import "ScanController.h"
+#import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
 @interface ScanController () <AVCaptureMetadataOutputObjectsDelegate>
@@ -22,7 +23,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"scannerView_style1" bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"scannerView_style_1" bundle:nibBundleOrNil];
     
     if (self) {
         // Custom initialization
@@ -98,9 +99,10 @@
     [self.captureLayer setFrame:self.camPreviewView.layer.bounds];
     // Adding the camera AVCaptureVideoPreviewLayer to our view's layer.
     [self.camPreviewView.layer addSublayer:self.captureLayer];
+    
 }
 
-// AVCaptureMetadataOutputObjectsDelegate method
+// AVCaptureMetadataOutputObjectsDe legate method
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     // Do your action on barcode capture here:
     NSString *capturedBarcode = nil;

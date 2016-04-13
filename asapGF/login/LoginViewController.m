@@ -52,7 +52,7 @@
 
 -(IBAction)login:(id)sender{
     
-    NSString *ws = @"http://localhost/wsLogIn.php?pwd=";
+    NSString *ws = @"http://192.168.0.100/wsLogIn.php?pwd=";
     NSString *call = [ws stringByAppendingString:self.password_textField.text];
     
     NSURL *url = [NSURL URLWithString:call];
