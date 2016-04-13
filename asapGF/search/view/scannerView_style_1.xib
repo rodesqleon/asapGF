@@ -55,6 +55,10 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzy-Ku-Pbc" userLabel="Camera Preview View">
                     <rect key="frame" x="0.0" y="91" width="320" height="211"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="ABI-20-akm"/>
+                        <constraint firstAttribute="height" constant="211" id="kcN-s0-mlw"/>
+                    </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -73,10 +77,8 @@
                 <constraint firstAttribute="trailing" secondItem="Cx2-Jj-l0o" secondAttribute="trailing" id="YYv-6m-Byj"/>
                 <constraint firstItem="9vk-O9-UeT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="ack-qP-29M"/>
                 <constraint firstItem="eUX-UX-qNC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="bLD-25-hkQ"/>
-                <constraint firstItem="Bzy-Ku-Pbc" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="fTe-xq-7FM"/>
                 <constraint firstItem="IEA-M1-UW0" firstAttribute="top" secondItem="Bzy-Ku-Pbc" secondAttribute="bottom" constant="-1" id="heM-1e-msV"/>
                 <constraint firstAttribute="trailing" secondItem="9vk-O9-UeT" secondAttribute="trailing" constant="38" id="toi-60-aCE"/>
-                <constraint firstItem="Bzy-Ku-Pbc" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-87.5" id="xU5-k7-6X8"/>
             </constraints>
             <point key="canvasLocation" x="225" y="330"/>
         </view>

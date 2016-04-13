@@ -96,7 +96,7 @@
     // Layer that will display what the camera is capturing.
     self.captureLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
     [self.captureLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [self.captureLayer setFrame:self.camPreviewView.layer.bounds];
+    [self.captureLayer setFrame:self.camPreviewView.bounds];
     // Adding the camera AVCaptureVideoPreviewLayer to our view's layer.
     [self.camPreviewView.layer addSublayer:self.captureLayer];
     
