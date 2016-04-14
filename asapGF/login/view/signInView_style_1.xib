@@ -65,7 +65,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BYI-nM-zie">
                     <rect key="frame" x="0.0" y="115" width="320" height="59"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oue-zN-lmI">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oue-zN-lmI">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
@@ -73,13 +73,17 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="oue-zN-lmI" firstAttribute="top" secondItem="BYI-nM-zie" secondAttribute="top" id="FQz-fR-D3p"/>
+                        <constraint firstItem="oue-zN-lmI" firstAttribute="leading" secondItem="BYI-nM-zie" secondAttribute="leading" id="YsL-89-Q4s"/>
+                        <constraint firstAttribute="trailing" secondItem="oue-zN-lmI" secondAttribute="trailing" id="gl6-3R-jla"/>
+                        <constraint firstAttribute="bottom" secondItem="oue-zN-lmI" secondAttribute="bottom" id="tBR-Bo-8fr"/>
                         <constraint firstAttribute="height" constant="59" id="vFY-Wo-drS"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eF4-bo-b1H">
                     <rect key="frame" x="0.0" y="176" width="320" height="59"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-c7-fra">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IVz-c7-fra">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits"/>
@@ -87,13 +91,17 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstAttribute="bottom" secondItem="IVz-c7-fra" secondAttribute="bottom" id="EVp-rg-ra1"/>
+                        <constraint firstItem="IVz-c7-fra" firstAttribute="top" secondItem="eF4-bo-b1H" secondAttribute="top" id="P5z-hp-T1i"/>
+                        <constraint firstAttribute="trailing" secondItem="IVz-c7-fra" secondAttribute="trailing" id="Xca-wt-41A"/>
                         <constraint firstAttribute="height" constant="59" id="ngi-OV-OMX"/>
+                        <constraint firstItem="IVz-c7-fra" firstAttribute="leading" secondItem="eF4-bo-b1H" secondAttribute="leading" id="sFV-uA-iPb"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JVN-PC-bG9">
                     <rect key="frame" x="0.0" y="237" width="320" height="59"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xML-lO-qCS">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xML-lO-qCS">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -101,6 +109,10 @@
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="xML-lO-qCS" firstAttribute="top" secondItem="JVN-PC-bG9" secondAttribute="top" id="KX0-yC-ShM"/>
+                        <constraint firstAttribute="trailing" secondItem="xML-lO-qCS" secondAttribute="trailing" id="XMj-K5-cVa"/>
+                        <constraint firstAttribute="bottom" secondItem="xML-lO-qCS" secondAttribute="bottom" id="esm-kU-2bV"/>
+                        <constraint firstItem="xML-lO-qCS" firstAttribute="leading" secondItem="JVN-PC-bG9" secondAttribute="leading" id="pvR-NL-NNq"/>
                         <constraint firstAttribute="height" constant="59" id="rif-x4-Dsm"/>
                     </constraints>
                 </view>

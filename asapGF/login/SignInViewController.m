@@ -31,12 +31,6 @@
 }
 
 - (void)viewDidLoad {
-    
-    [self.navigationItem setTitle:@"View"];
-    UIButton *btnBack = [[UIButton alloc] initWithFrame:CGRectMake(-120, 30, 320, 0)];
-    [btnBack setTitle:@"Go back" forState:UIControlStateNormal];
-    [btnBack addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btnBack];
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.
@@ -44,7 +38,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
 
@@ -53,11 +47,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)goBack{
-    LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-    [self presentViewController:loginView animated:YES completion:nil];
-
-}
 
 #pragma signin_btn_action
 
@@ -76,7 +65,7 @@
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://localhost/wsSignIn.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.43.248/wsSignIn.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

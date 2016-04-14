@@ -6,6 +6,7 @@
 	$connection->selectDatabase();
 
 	$password = isset($_GET['pwd']) ? mysql_real_escape_string($_GET['pwd']) :  "";
+	
 	if(!empty($password)){
 	 $qur = mysql_query("select id, name, email from `users` where password='$password'");
 	 $result =array();

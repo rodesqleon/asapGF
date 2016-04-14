@@ -32,6 +32,11 @@
     // Do any additional setup after loading the view.
 }
 
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -40,7 +45,7 @@
 - (IBAction)newScanCode:(id)sender{
     
     ScanController *scanBarcode = [[ScanController alloc] initWithNibName:@"scannerView_style_1" bundle:nil];
-    [self presentViewController:scanBarcode animated:YES completion:nil];
+    [[self navigationController] pushViewController:scanBarcode animated:YES];
 
 }
 

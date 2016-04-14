@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.userName_textField.delegate = self;
     self.password_textField.delegate = self;
     
@@ -40,7 +41,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -51,10 +52,15 @@
 #pragma login_btn_action
 
 -(IBAction)login:(id)sender{
+    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
-    NSString *ws = @"http://192.168.0.100/wsLogIn.php?pwd=";
+    activityView.center=self.view.center;
+    [activityView startAnimating];
+    [self.view addSubview:activityView];
+    
+    NSString *ws = @"http://192.168.43.248/wsLogIn.php?pwd=";
     NSString *call = [ws stringByAppendingString:self.password_textField.text];
-    
     NSURL *url = [NSURL URLWithString:call];
     NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSLog(@"%@",self.password_textField.text);
@@ -72,7 +78,8 @@
             
             if([appUser.userNAME isEqualToString:self.userName_textField.text]){
                 HomeViewController *homeView = [[HomeViewController alloc] initWithNibName:@"dashboard_style_1" bundle:nil];
-                [self presentViewController:homeView animated:YES completion:nil];
+                [activityView stopAnimating];
+                [[self navigationController] pushViewController:homeView animated:YES];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
                                                                 message:@"Incorrect username, please try again."
@@ -109,7 +116,7 @@
 
 -(IBAction)signin:(id)sender{
     SignInViewController *signView = [[SignInViewController alloc] initWithNibName:@"signInView_style_1" bundle:nil];
-    [self presentViewController:signView animated:YES completion:nil];
+    [[self navigationController] pushViewController:signView animated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

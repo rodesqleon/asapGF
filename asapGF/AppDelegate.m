@@ -21,7 +21,10 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.loginViewController = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
     
-    self.window.rootViewController = self.loginViewController;
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.loginViewController];
+    [navigation prefersStatusBarHidden];
+    self.window.rootViewController = navigation;
+
     [self.window makeKeyAndVisible];
     return YES;
 }

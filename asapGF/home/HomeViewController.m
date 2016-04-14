@@ -39,7 +39,7 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     AppUser *appUser = [AppUser getInstance];
     self.usernameLabel.text = appUser.userNAME;
 }
@@ -53,13 +53,13 @@
 
 - (IBAction)logout:(id)sender{
     LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-    [self presentViewController:loginView animated:YES completion:nil];
+    [[self navigationController] pushViewController:loginView animated:YES];
 
 }
 
 -(IBAction)searchBtn:(id)sender{
     NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
-    [self presentViewController:newScan animated:YES completion:nil];
+    [[self navigationController] pushViewController:newScan animated:YES];
 
 }
 
