@@ -56,11 +56,12 @@
                                              initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     
     activityView.center=self.view.center;
-    [activityView startAnimating];
+    
     [self.view addSubview:activityView];
     
     NSString *ws = @"http://192.168.43.248/wsLogIn.php?pwd=";
     NSString *call = [ws stringByAppendingString:self.password_textField.text];
+    [activityView startAnimating];
     NSURL *url = [NSURL URLWithString:call];
     NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
     NSLog(@"%@",self.password_textField.text);

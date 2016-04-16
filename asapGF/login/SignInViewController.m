@@ -97,6 +97,18 @@
     }
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.userName_textField) {
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
 
 /*
 #pragma mark - Navigation
