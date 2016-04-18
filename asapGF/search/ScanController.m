@@ -136,6 +136,19 @@
                     [self.captureSession stopRunning];
                     self.scanBarcode.text = capturedBarcode;
                 });
+                
+                NSString *ws = @"http://192.168.0.108/wsValidateCode.php?codebar=";
+                NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
+                NSURL *url = [NSURL URLWithString:call];
+                NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+                NSLog(@"%@",jsonResponse);
+                
+                NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+                if([dict[@"status"] isEqualToString:@"OK"]){
+                    NSLog(@"Status: %@", dict[@"status"]);
+                }
+
                 return;
             }
         }

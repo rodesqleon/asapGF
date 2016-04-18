@@ -65,7 +65,7 @@
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://192.168.43.248/wsSignIn.php"]];
+    [request setURL:[NSURL URLWithString:@"http://192.168.0.108/wsSignIn.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

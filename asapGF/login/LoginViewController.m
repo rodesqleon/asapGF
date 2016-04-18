@@ -59,7 +59,7 @@
     
     [self.view addSubview:activityView];
     
-    NSString *ws = @"http://192.168.43.248/wsLogIn.php?pwd=";
+    NSString *ws = @"http://192.168.0.108/wsLogIn.php?pwd=";
     NSString *call = [ws stringByAppendingString:self.password_textField.text];
     [activityView startAnimating];
     NSURL *url = [NSURL URLWithString:call];
