@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanController">
             <connections>
                 <outlet property="camPreviewView" destination="Bzy-Ku-Pbc" id="7H2-eB-N9c"/>
+                <outlet property="indicator" destination="buX-FO-9e1" id="FnM-7m-VRv"/>
                 <outlet property="scanBarcode" destination="9vk-O9-UeT" id="01z-Zu-P7g"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FcP-je-jJl"/>
             </connections>
@@ -54,17 +55,21 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzy-Ku-Pbc" userLabel="Camera Preview View">
                     <rect key="frame" x="0.0" y="91" width="320" height="211"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="lessThanOrEqual" constant="320" id="ABI-20-akm"/>
                         <constraint firstAttribute="height" constant="211" id="kcN-s0-mlw"/>
                     </constraints>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="buX-FO-9e1">
+                    <rect key="frame" x="142" y="265" width="37" height="37"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="IEA-M1-UW0" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="209" id="0DW-X3-REZ"/>
                 <constraint firstItem="eUX-UX-qNC" firstAttribute="top" secondItem="Bzy-Ku-Pbc" secondAttribute="bottom" constant="36" id="1Gy-Yf-0tg"/>
+                <constraint firstItem="buX-FO-9e1" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="3c4-ug-v1B"/>
                 <constraint firstAttribute="bottom" secondItem="Cx2-Jj-l0o" secondAttribute="bottom" id="8fP-pG-Rm3"/>
                 <constraint firstItem="9vk-O9-UeT" firstAttribute="top" secondItem="Bzy-Ku-Pbc" secondAttribute="bottom" constant="65" id="95Q-Vo-I1m"/>
                 <constraint firstItem="Cx2-Jj-l0o" firstAttribute="top" secondItem="9vk-O9-UeT" secondAttribute="bottom" constant="8" id="Ccn-3C-9eO"/>
@@ -78,6 +83,7 @@
                 <constraint firstItem="9vk-O9-UeT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="ack-qP-29M"/>
                 <constraint firstItem="eUX-UX-qNC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="bLD-25-hkQ"/>
                 <constraint firstItem="IEA-M1-UW0" firstAttribute="top" secondItem="Bzy-Ku-Pbc" secondAttribute="bottom" constant="-1" id="heM-1e-msV"/>
+                <constraint firstItem="buX-FO-9e1" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="nIq-m9-Xyr"/>
                 <constraint firstAttribute="trailing" secondItem="9vk-O9-UeT" secondAttribute="trailing" constant="38" id="toi-60-aCE"/>
             </constraints>
             <point key="canvasLocation" x="225" y="330"/>

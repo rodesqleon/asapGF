@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *camPreviewView;
 @property (nonatomic, strong) AVCaptureSession *captureSession;
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureLayer;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
+@property (nonatomic) NSDictionary *wsResponse;
 
 @end
 
@@ -133,22 +135,32 @@
                 // Got the barcode. Set the text in the UI and break out of the loop.
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
+                    
                     [self.captureSession stopRunning];
                     self.scanBarcode.text = capturedBarcode;
+                    
                 });
-                
+                    //Load the json on another thread
                 NSString *ws = @"http://192.168.0.108/wsValidateCode.php?codebar=";
                 NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
                 NSURL *url = [NSURL URLWithString:call];
                 NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-                NSLog(@"%@",jsonResponse);
+            
                 
                 NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-                if([dict[@"status"] isEqualToString:@"OK"]){
-                    NSLog(@"Status: %@", dict[@"status"]);
+                
+                self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+                
+                if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+                    
+                    NSLog(@"Gluten free");
+                    
+                }else{
+                    
+                    NSLog(@"Contains gluten");
                 }
-
+                
+                
                 return;
             }
         }

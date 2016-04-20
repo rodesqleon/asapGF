@@ -13,8 +13,15 @@
 		while($r = mysql_fetch_array($qur)){
 		 extract($r);
 		 $result[] = array("id" => $id,"name" => $name, "description" => $description); 
+
 		}
-	 $json = array("status" => "OK", "info" => $result);
+	$validateArray = array();
+
+		 if($result == $validateArray){
+		 	$json = array("status" => "NOK");
+		 }else{
+		 	$json = array("status" => "OK", "info" => $result);
+		 }
 	}else{
 	 $json = array("status" => "NOK", "msg" => "Product doesn' exist");
 	}
