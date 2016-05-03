@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B6543DB1CCD684C00CC112B /* welcomeView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */; };
+		7B7A044C1CD19412002DCEAC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */; };
+		7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */; };
+		7B8E44971CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44921CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib */; };
+		7B8E44981CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44941CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings */; };
+		7BBAB2F21CD6CB11006FC1A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */; };
+		7BBAB2F41CD6CB1F006FC1A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */; };
+		7BBAB2F61CD6CB2D006FC1A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */; };
+		7BBAB3011CD6CBDC006FC1A5 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBAB2FA1CD6CBDC006FC1A5 /* ScannerViewController.m */; };
+		7BBAB3021CD6CBDC006FC1A5 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBAB2FC1CD6CBDC006FC1A5 /* SettingsViewController.m */; };
+		7BBAB3031CD6CBDC006FC1A5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7BBAB2FD1CD6CBDC006FC1A5 /* Main_iPhone.storyboard */; };
+		7BBAB3041CD6CBDC006FC1A5 /* Barcode.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBAB3001CD6CBDC006FC1A5 /* Barcode.m */; };
 		A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4468E6A1CBB159F00E768CF /* newScanView_style_1.xib */; };
 		A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A4468E6D1CBB16BD00E768CF /* NewScanViewController.m */; };
 		A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4468E6F1CBB174C00E768CF /* scannerView_style_1.xib */; };
@@ -43,6 +55,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = welcomeView_style_1.xib; sourceTree = "<group>"; };
+		7B7A044A1CD19412002DCEAC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
+		7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		7B8E448F1CC858ED003B6022 /* ModalSpinnerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalSpinnerViewController.h; sourceTree = "<group>"; };
+		7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalSpinnerViewController.m; sourceTree = "<group>"; };
+		7B8E44931CC858ED003B6022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BlockerPopupView_Normal_P_Style1.xib; sourceTree = "<group>"; };
+		7B8E44951CC858ED003B6022 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/BlockerPopupView_Normal_P_Style1.strings; sourceTree = "<group>"; };
+		7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		7BBAB2F91CD6CBDC006FC1A5 /* ScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
+		7BBAB2FA1CD6CBDC006FC1A5 /* ScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScannerViewController.m; sourceTree = "<group>"; };
+		7BBAB2FB1CD6CBDC006FC1A5 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		7BBAB2FC1CD6CBDC006FC1A5 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		7BBAB2FD1CD6CBDC006FC1A5 /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
+		7BBAB2FF1CD6CBDC006FC1A5 /* Barcode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Barcode.h; sourceTree = "<group>"; };
+		7BBAB3001CD6CBDC006FC1A5 /* Barcode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Barcode.m; sourceTree = "<group>"; };
 		A4468E6A1CBB159F00E768CF /* newScanView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = newScanView_style_1.xib; sourceTree = "<group>"; };
 		A4468E6C1CBB16BD00E768CF /* NewScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewScanViewController.h; sourceTree = "<group>"; };
 		A4468E6D1CBB16BD00E768CF /* NewScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewScanViewController.m; sourceTree = "<group>"; };
@@ -79,6 +108,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BBAB2F61CD6CB2D006FC1A5 /* Foundation.framework in Frameworks */,
+				7BBAB2F41CD6CB1F006FC1A5 /* UIKit.framework in Frameworks */,
+				7BBAB2F21CD6CB11006FC1A5 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +131,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B8E448E1CC858ED003B6022 /* ModalSpinner */ = {
+			isa = PBXGroup;
+			children = (
+				7B8E448F1CC858ED003B6022 /* ModalSpinnerViewController.h */,
+				7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */,
+				7B8E44911CC858ED003B6022 /* view */,
+			);
+			name = ModalSpinner;
+			path = libs/ModalSpinner;
+			sourceTree = "<group>";
+		};
+		7B8E44911CC858ED003B6022 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7B8E44921CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib */,
+				7B8E44941CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		7BBAB2F71CD6CBDC006FC1A5 /* barcode */ = {
+			isa = PBXGroup;
+			children = (
+				7BBAB2F81CD6CBDC006FC1A5 /* Controllers */,
+				7BBAB2FD1CD6CBDC006FC1A5 /* Main_iPhone.storyboard */,
+				7BBAB2FE1CD6CBDC006FC1A5 /* Model */,
+			);
+			path = barcode;
+			sourceTree = "<group>";
+		};
+		7BBAB2F81CD6CBDC006FC1A5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7BBAB2F91CD6CBDC006FC1A5 /* ScannerViewController.h */,
+				7BBAB2FA1CD6CBDC006FC1A5 /* ScannerViewController.m */,
+				7BBAB2FB1CD6CBDC006FC1A5 /* SettingsViewController.h */,
+				7BBAB2FC1CD6CBDC006FC1A5 /* SettingsViewController.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7BBAB2FE1CD6CBDC006FC1A5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BBAB2FF1CD6CBDC006FC1A5 /* Barcode.h */,
+				7BBAB3001CD6CBDC006FC1A5 /* Barcode.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A4468E671CBB155500E768CF /* search */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +213,9 @@
 		A473DCAB1CB0295D00F28B92 = {
 			isa = PBXGroup;
 			children = (
+				7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */,
+				7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */,
+				7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */,
 				A473DCB61CB0295D00F28B92 /* asapGF */,
 				A473DCD01CB0295D00F28B92 /* asapGFTests */,
 				A473DCDB1CB0295D00F28B92 /* asapGFUITests */,
@@ -151,6 +236,8 @@
 		A473DCB61CB0295D00F28B92 /* asapGF */ = {
 			isa = PBXGroup;
 			children = (
+				7BBAB2F71CD6CBDC006FC1A5 /* barcode */,
+				7B8E448E1CC858ED003B6022 /* ModalSpinner */,
 				A4468E671CBB155500E768CF /* search */,
 				A473DCBA1CB0295D00F28B92 /* AppDelegate.h */,
 				A473DCBB1CB0295D00F28B92 /* AppDelegate.m */,
@@ -194,11 +281,13 @@
 		A473DCEA1CB02BEA00F28B92 /* login */ = {
 			isa = PBXGroup;
 			children = (
-				A473DCEB1CB02BFB00F28B92 /* view */,
 				A473DCEE1CB05F7700F28B92 /* LoginViewController.h */,
 				A473DCEF1CB05F7800F28B92 /* LoginViewController.m */,
 				A4D1FEC91CB182C000BC15FF /* SignInViewController.h */,
 				A4D1FECA1CB182C000BC15FF /* SignInViewController.m */,
+				A473DCEB1CB02BFB00F28B92 /* view */,
+				7B7A044A1CD19412002DCEAC /* WelcomeViewController.h */,
+				7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -208,6 +297,7 @@
 			children = (
 				A473DCEC1CB02C2E00F28B92 /* loginView_style_1.xib */,
 				A4D1FEC71CB17D5000BC15FF /* signInView_style_1.xib */,
+				7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -316,6 +406,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = A473DCAB1CB0295D00F28B92;
 			productRefGroup = A473DCB51CB0295D00F28B92 /* Products */;
@@ -334,10 +425,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8E44971CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib in Resources */,
+				7B8E44981CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings in Resources */,
+				7BBAB3031CD6CBDC006FC1A5 /* Main_iPhone.storyboard in Resources */,
 				A4D1FEC31CB160F400BC15FF /* dashboard_style_1.xib in Resources */,
 				A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */,
 				A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */,
 				A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */,
+				7B6543DB1CCD684C00CC112B /* welcomeView_style_1.xib in Resources */,
 				A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */,
 				A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */,
 			);
@@ -364,13 +459,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */,
 				A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */,
 				A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */,
+				7BBAB3021CD6CBDC006FC1A5 /* SettingsViewController.m in Sources */,
 				A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */,
 				A4D1FEBA1CB148E500BC15FF /* main.m in Sources */,
+				7B7A044C1CD19412002DCEAC /* WelcomeViewController.m in Sources */,
 				A4468E761CBB199A00E768CF /* ScanController.m in Sources */,
 				A4D1FEC61CB1637200BC15FF /* HomeViewController.m in Sources */,
+				7BBAB3041CD6CBDC006FC1A5 /* Barcode.m in Sources */,
 				A4D1FECB1CB182C000BC15FF /* SignInViewController.m in Sources */,
+				7BBAB3011CD6CBDC006FC1A5 /* ScannerViewController.m in Sources */,
 				A473DCF01CB05F7800F28B92 /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +505,25 @@
 			targetProxy = A473DCD91CB0295D00F28B92 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7B8E44921CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B8E44931CC858ED003B6022 /* Base */,
+			);
+			name = BlockerPopupView_Normal_P_Style1.xib;
+			sourceTree = "<group>";
+		};
+		7B8E44941CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7B8E44951CC858ED003B6022 /* es */,
+			);
+			name = BlockerPopupView_Normal_P_Style1.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A473DCDF1CB0295D00F28B92 /* Debug */ = {
@@ -502,7 +621,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodev.asapGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57b6ec4b-7b6e-4e19-a03c-e681874f6ad5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -517,7 +636,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.rodev.asapGF;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57b6ec4b-7b6e-4e19-a03c-e681874f6ad5";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

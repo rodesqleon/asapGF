@@ -5,13 +5,13 @@
 //  Created by Rodrigo Esquivel on 02-04-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
-
+#import "ModalSpinnerViewController.h"
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInViewController.h"
 #import "AppUser.h"
 @interface LoginViewController ()
-
+@property (nonatomic) NSDictionary *loginDict;
 @end
 
 @implementation LoginViewController
@@ -52,34 +52,56 @@
 #pragma login_btn_action
 
 -(IBAction)login:(id)sender{
-    UIActivityIndicatorView *activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [ModalSpinnerViewController showModalSpinner];
+    /*VALIDATION PASSWORD TEXT FIELD*/
+    if([self.password_textField.text isEqualToString:@""] || [self.userName_textField.text isEqualToString:@""]){
+        [ModalSpinnerViewController dismissModalSpinner];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
+                                                        message:@"Incorrect username, please try again."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
+        [ModalSpinnerViewController dismissModalSpinner];
+        NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
+        
+        if ([self.userName_textField.text rangeOfCharacterFromSet:set].location != NSNotFound) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
+                                                           message:@"Enter valid character, please try again."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+            [alert show];
+        }else{
+            NSString *ws = @"http://10.50.16.32/wsLogIn.php?pwd=";
+            NSString *call = [ws stringByAppendingString:self.password_textField.text];
+            NSURL *url = [NSURL URLWithString:call];
+            NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+            NSLog(@"%@",self.password_textField.text);
+            NSLog(@"%@",jsonResponse);
+        
+            NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        
+            self.loginDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            [self didLogin];
+        }
+    }
     
-    activityView.center=self.view.center;
     
-    [self.view addSubview:activityView];
-    
-    NSString *ws = @"http://192.168.0.108/wsLogIn.php?pwd=";
-    NSString *call = [ws stringByAppendingString:self.password_textField.text];
-    [activityView startAnimating];
-    NSURL *url = [NSURL URLWithString:call];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    NSLog(@"%@",self.password_textField.text);
-    NSLog(@"%@",jsonResponse);
-    
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    if([dict[@"status"] isEqualToString:@"OK"]){
-            NSLog(@"Status: %@", dict[@"status"]);
-        if([[dict valueForKey:@"info"] count] > 0){
-            NSMutableDictionary *response = [[[dict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
+}
+
+-(void)didLogin{
+    [ModalSpinnerViewController dismissModalSpinner];
+    if([self.loginDict[@"status"] isEqualToString:@"OK"]){
+        NSLog(@"Status: %@", self.loginDict[@"status"]);
+        if([[self.loginDict valueForKey:@"info"] count] > 0){
+            NSMutableDictionary *response = [[[self.loginDict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
             
             AppUser *appUser = [[AppUser getInstance] initWithDict:response];
             
             if([appUser.userNAME isEqualToString:self.userName_textField.text]){
                 HomeViewController *homeView = [[HomeViewController alloc] initWithNibName:@"dashboard_style_1" bundle:nil];
-                [activityView stopAnimating];
                 [[self navigationController] pushViewController:homeView animated:YES];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
@@ -97,22 +119,15 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
-
+            
             NSLog(@"Username doesn't exist, please sign in.");
         }
         
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                        message:@"User doesn't exist, please sign in."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-
-        NSLog(@"Status: %@", dict[@"status"]);
+        HomeViewController *homeView = [[HomeViewController alloc]
+                                        initWithNibName:@"dashboard_style_1" bundle:nil];
+        [[self navigationController] pushViewController:homeView animated:YES];
     }
-    
-
 }
 
 -(IBAction)signin:(id)sender{

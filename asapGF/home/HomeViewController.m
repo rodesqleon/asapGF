@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "LoginViewController.h"
 #import "NewScanViewController.h"
+#import "ScannerViewController.h"
 #import "AppUser.h"
 
 
@@ -58,9 +59,21 @@
 }
 
 -(IBAction)searchBtn:(id)sender{
-    NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
+    //NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
+    ScannerViewController *newScan = [ScannerViewController new];
+    
     [[self navigationController] pushViewController:newScan animated:YES];
+    
+    
 
+}
+
+-(IBAction)locationBtn:(id)sender{
+    
+}
+
+- (IBAction)foodBtn:(id)sender{
+    
 }
 
 /*

@@ -9,6 +9,7 @@
 #import "ScanController.h"
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ModalSpinnerViewController.h"
 
 @interface ScanController () <AVCaptureMetadataOutputObjectsDelegate>
 
@@ -138,32 +139,49 @@
                     
                     [self.captureSession stopRunning];
                     self.scanBarcode.text = capturedBarcode;
-                    
-                });
+                    [ModalSpinnerViewController showModalSpinner];
                     //Load the json on another thread
-                NSString *ws = @"http://192.168.0.108/wsValidateCode.php?codebar=";
-                NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
-                NSURL *url = [NSURL URLWithString:call];
-                NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-            
-                
-                NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-                
-                self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-                
-                if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+                    NSString *ws = @"http://10.50.16.32/wsValidateCode.php?codebar=";
+                    NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
+                    NSURL *url = [NSURL URLWithString:call];
+                    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
                     
-                    NSLog(@"Gluten free");
                     
-                }else{
+                    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
                     
-                    NSLog(@"Contains gluten");
-                }
+                    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+                    
+                    [self didScanCode];
+                });
                 
-                
+
                 return;
             }
         }
+    }
+}
+
+-(void)didScanCode{
+    [ModalSpinnerViewController dismissModalSpinner];
+    if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
+                                                        message:@"Gluten free"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+        NSLog(@"Gluten free");
+        
+    }else{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
+                                                        message:@"Product not registered gluten free"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+        NSLog(@"Contains gluten");
     }
 }
 

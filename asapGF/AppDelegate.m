@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "WelcomeViewController.h"
 
 @interface AppDelegate ()
 
@@ -19,9 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.loginViewController = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
+    self.welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"welcomeView_style_1" bundle:nil];
     
-    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.loginViewController];
+    UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.welcomeViewController];
     [navigation prefersStatusBarHidden];
     self.window.rootViewController = navigation;
 
