@@ -141,7 +141,7 @@
                     self.scanBarcode.text = capturedBarcode;
                     [ModalSpinnerViewController showModalSpinner];
                     //Load the json on another thread
-                    NSString *ws = @"http://10.50.16.32/wsValidateCode.php?codebar=";
+                    NSString *ws = @"http://192.168.43.239/wsValidateCode.php?codebar=";
                     NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
                     NSURL *url = [NSURL URLWithString:call];
                     NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];

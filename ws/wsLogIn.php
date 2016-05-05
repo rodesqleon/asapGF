@@ -5,10 +5,11 @@
 	$connection->connectToDatabase();
 	$connection->selectDatabase();
 
+	$username = isset($_GET['usr']) ? mysql_real_escape_string($_GET['usr']) :  "";
 	$password = isset($_GET['pwd']) ? mysql_real_escape_string($_GET['pwd']) :  "";
 	
-	if(!empty($password)){
-	 $qur = mysql_query("select id, name, email from `users` where password='$password'");
+	if(!empty($username) && !empty($password)){
+	 $qur = mysql_query("select id, name, email from `users` where password='$password' and name='$username'");
 	 $result =array();
 		while($r = mysql_fetch_array($qur)){
 		 extract($r);

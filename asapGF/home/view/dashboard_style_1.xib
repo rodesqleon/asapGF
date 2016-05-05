@@ -91,6 +91,9 @@
                             <state key="normal" title="Locations" image="dash_maps">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="locationBtn:" destination="-1" eventType="touchUpInside" id="7Yq-Za-GGy"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -156,6 +159,9 @@
                             <state key="normal" title="Cook" image="dash_food">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="calibratedRGB"/>
                             </state>
+                            <connections>
+                                <action selector="foodBtn:" destination="-1" eventType="touchUpInside" id="rdh-Sy-wr7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>

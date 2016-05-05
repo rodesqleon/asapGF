@@ -12,6 +12,8 @@
 		7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */; };
 		7B8E44971CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44921CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib */; };
 		7B8E44981CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44941CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings */; };
+		7B9B18F21CDAD79E006149CF /* settings_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B9B18F11CDAD79E006149CF /* settings_style_1.xib */; };
+		7B9B18F51CDAD905006149CF /* AdjustamentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9B18F41CDAD905006149CF /* AdjustamentViewController.m */; };
 		7BBAB2F21CD6CB11006FC1A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */; };
 		7BBAB2F41CD6CB1F006FC1A5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */; };
 		7BBAB2F61CD6CB2D006FC1A5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */; };
@@ -62,6 +64,9 @@
 		7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalSpinnerViewController.m; sourceTree = "<group>"; };
 		7B8E44931CC858ED003B6022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BlockerPopupView_Normal_P_Style1.xib; sourceTree = "<group>"; };
 		7B8E44951CC858ED003B6022 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/BlockerPopupView_Normal_P_Style1.strings; sourceTree = "<group>"; };
+		7B9B18F11CDAD79E006149CF /* settings_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = settings_style_1.xib; path = settings/view/settings_style_1.xib; sourceTree = "<group>"; };
+		7B9B18F31CDAD905006149CF /* AdjustamentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdjustamentViewController.h; path = settings/view/AdjustamentViewController.h; sourceTree = "<group>"; };
+		7B9B18F41CDAD905006149CF /* AdjustamentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdjustamentViewController.m; path = settings/view/AdjustamentViewController.m; sourceTree = "<group>"; };
 		7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -151,6 +156,34 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		7B9B18EB1CDAD720006149CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */,
+				7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */,
+				7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7B9B18EC1CDAD727006149CF /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				7B9B18ED1CDAD73B006149CF /* view */,
+				7B9B18F31CDAD905006149CF /* AdjustamentViewController.h */,
+				7B9B18F41CDAD905006149CF /* AdjustamentViewController.m */,
+			);
+			name = settings;
+			sourceTree = "<group>";
+		};
+		7B9B18ED1CDAD73B006149CF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				7B9B18F11CDAD79E006149CF /* settings_style_1.xib */,
+			);
+			name = view;
+			sourceTree = "<group>";
+		};
 		7BBAB2F71CD6CBDC006FC1A5 /* barcode */ = {
 			isa = PBXGroup;
 			children = (
@@ -213,9 +246,7 @@
 		A473DCAB1CB0295D00F28B92 = {
 			isa = PBXGroup;
 			children = (
-				7BBAB2F51CD6CB2D006FC1A5 /* Foundation.framework */,
-				7BBAB2F31CD6CB1F006FC1A5 /* UIKit.framework */,
-				7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */,
+				7B9B18EB1CDAD720006149CF /* Frameworks */,
 				A473DCB61CB0295D00F28B92 /* asapGF */,
 				A473DCD01CB0295D00F28B92 /* asapGFTests */,
 				A473DCDB1CB0295D00F28B92 /* asapGFUITests */,
@@ -236,6 +267,7 @@
 		A473DCB61CB0295D00F28B92 /* asapGF */ = {
 			isa = PBXGroup;
 			children = (
+				7B9B18EC1CDAD727006149CF /* settings */,
 				7BBAB2F71CD6CBDC006FC1A5 /* barcode */,
 				7B8E448E1CC858ED003B6022 /* ModalSpinner */,
 				A4468E671CBB155500E768CF /* search */,
@@ -432,6 +464,7 @@
 				A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */,
 				A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */,
 				A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */,
+				7B9B18F21CDAD79E006149CF /* settings_style_1.xib in Resources */,
 				7B6543DB1CCD684C00CC112B /* welcomeView_style_1.xib in Resources */,
 				A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */,
 				A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */,
@@ -462,6 +495,7 @@
 				7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */,
 				A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */,
 				A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */,
+				7B9B18F51CDAD905006149CF /* AdjustamentViewController.m in Sources */,
 				7BBAB3021CD6CBDC006FC1A5 /* SettingsViewController.m in Sources */,
 				A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */,
 				A4D1FEBA1CB148E500BC15FF /* main.m in Sources */,

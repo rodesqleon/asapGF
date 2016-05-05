@@ -59,8 +59,8 @@
 }
 
 -(IBAction)searchBtn:(id)sender{
-    //NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
-    ScannerViewController *newScan = [ScannerViewController new];
+    NewScanViewController *newScan = [[NewScanViewController alloc] initWithNibName:@"newScanView_style_1" bundle:nil];
+    //ScannerViewController *newScan = [ScannerViewController new];
     
     [[self navigationController] pushViewController:newScan animated:YES];
     
@@ -69,11 +69,22 @@
 }
 
 -(IBAction)locationBtn:(id)sender{
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
+                                                    message:@"Coming soon"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+
 }
 
 - (IBAction)foodBtn:(id)sender{
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
+                                                    message:@"Coming soon"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 /*

@@ -74,16 +74,17 @@
                                                  otherButtonTitles:nil];
             [alert show];
         }else{
-            NSString *ws = @"http://10.50.16.32/wsLogIn.php?pwd=";
-            NSString *call = [ws stringByAppendingString:self.password_textField.text];
-            NSURL *url = [NSURL URLWithString:call];
+            NSString *ws = @"http://192.168.43.239/wsLogIn.php?usr=";
+            NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
+            NSString *callB = [callA stringByAppendingString:@"&pwd="];
+            NSString *callC = [callB stringByAppendingString:self.password_textField.text];
+            NSURL *url = [NSURL URLWithString:callC];
             NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-            NSLog(@"%@",self.password_textField.text);
             NSLog(@"%@",jsonResponse);
         
             NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-        
             self.loginDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        
             [self didLogin];
         }
     }
@@ -93,11 +94,10 @@
 
 -(void)didLogin{
     [ModalSpinnerViewController dismissModalSpinner];
+    NSLog(@"Status: %@", self.loginDict[@"status"]);
     if([self.loginDict[@"status"] isEqualToString:@"OK"]){
-        NSLog(@"Status: %@", self.loginDict[@"status"]);
         if([[self.loginDict valueForKey:@"info"] count] > 0){
             NSMutableDictionary *response = [[[self.loginDict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
-            
             AppUser *appUser = [[AppUser getInstance] initWithDict:response];
             
             if([appUser.userNAME isEqualToString:self.userName_textField.text]){

@@ -27,7 +27,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.84657866379310343" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-AL-XSc">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1o-AL-XSc">
                             <rect key="frame" x="252" y="10" width="60" height="60"/>
                             <state key="normal" image="asap_logo"/>
                             <connections>
@@ -45,6 +45,7 @@
                         <constraint firstAttribute="bottom" secondItem="TAG-4T-WYh" secondAttribute="bottom" constant="10" id="eZq-On-gpw"/>
                         <constraint firstAttribute="height" constant="80" id="lCF-X3-3gi"/>
                         <constraint firstItem="TAG-4T-WYh" firstAttribute="top" secondItem="yOi-FS-cSe" secondAttribute="top" constant="10" id="mUS-Nl-pC5"/>
+                        <constraint firstItem="W1o-AL-XSc" firstAttribute="leading" secondItem="TAG-4T-WYh" secondAttribute="trailing" constant="8" id="z5X-t4-nFE"/>
                     </constraints>
                 </view>
             </subviews>
