@@ -7,15 +7,17 @@
 //
 
 #import "HomeViewController.h"
+#import "MenuViewController.h"
+#import "SettingsTableViewController.h"
 #import "LoginViewController.h"
 #import "NewScanViewController.h"
-#import "ScannerViewController.h"
 #import "AppUser.h"
 
 
 @interface HomeViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logout_btn;
+@property (weak, nonatomic) IBOutlet UIButton *product_btn;
 
 @end
 
@@ -43,6 +45,10 @@
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     AppUser *appUser = [AppUser getInstance];
     self.usernameLabel.text = appUser.userNAME;
+    self.product_btn.hidden = YES;
+    if([appUser.userROLE isEqualToString:@"admin"]){
+        self.product_btn.hidden = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,8 +59,9 @@
 #pragma signin_btn_action
 
 - (IBAction)logout:(id)sender{
-    LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-    [[self navigationController] pushViewController:loginView animated:YES];
+    SettingsTableViewController *settingView = [[SettingsTableViewController alloc] initWithNibName:@"settings_style_1" bundle:nil];
+    //LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
+    [[self navigationController] pushViewController:settingView animated:YES];
 
 }
 
@@ -85,6 +92,11 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+- (IBAction)productManager:(id)sender{
+    MenuViewController *productM = [[MenuViewController alloc] initWithNibName:@"menu_style_1" bundle:nil];
+    [[self navigationController] pushViewController:productM animated:YES];
 }
 
 /*

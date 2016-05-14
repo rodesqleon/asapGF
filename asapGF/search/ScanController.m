@@ -10,7 +10,9 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "ModalSpinnerViewController.h"
-
+NSString *const kAddOption = @"ADD_PRODUCT";
+NSString *const kUpdateOption = @"UPDATE_PRODUCT";
+NSString *const kDeleteOption = @"DELETE_PRODUCT";
 @interface ScanController () <AVCaptureMetadataOutputObjectsDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *scanBarcode;
@@ -19,6 +21,9 @@
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureLayer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic) NSDictionary *wsResponse;
+@property (weak, nonatomic) IBOutlet UITextField *productName;
+@property (weak, nonatomic) IBOutlet UITextField *productDescription;
+@property (weak, nonatomic) IBOutlet UILabel *productBarCode;
 
 @end
 
@@ -37,14 +42,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    [self setupScanningSession];
+    if([self.selectedOption isEqualToString:@"ADD_PRODUCT"] || [self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
+        self.productName.delegate = self;
+        self.productDescription.delegate = self;
+    }    [self setupScanningSession];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     // Start the camera capture session as soon as the view appears completely.
     [self.captureSession startRunning];
+}
+
+- (void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.productName.hidden = YES;
+    self.productDescription.hidden = YES;
+    if([self.selectedOption isEqualToString:@"ADD_PRODUCT"] || [self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
+        self.productName.hidden = NO;
+        self.productDescription.hidden = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -107,7 +125,7 @@
 
 // AVCaptureMetadataOutputObjectsDe legate method
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-    // Do your action on barcode capture here:
+        // Do your action on barcode capture here:
     NSString *capturedBarcode = nil;
     
     // Specify the barcodes you want to read here:
@@ -135,24 +153,23 @@
                 capturedBarcode = [barcodeObject stringValue];
                 // Got the barcode. Set the text in the UI and break out of the loop.
                 
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    
+                
+                
+                //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                    self.productBarCode.text = capturedBarcode;
+                    if([self.selectedOption isEqualToString:@"SEARCH_PRODUCT"]){
+                        [self doSearchCode:capturedBarcode];
+                    }else if([self.selectedOption isEqualToString:@"ADD_PRODUCT"]){
+                        [self doAddProduct:capturedBarcode];
+                    }else if([self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
+                        [self doUpdateProduct:capturedBarcode];
+                    }else if([self.selectedOption isEqualToString:@"DELETE_PRODUCT"]){
+                        [self doDeleteProduct:capturedBarcode];
+                    }
                     [self.captureSession stopRunning];
-                    self.scanBarcode.text = capturedBarcode;
-                    [ModalSpinnerViewController showModalSpinner];
-                    //Load the json on another thread
-                    NSString *ws = @"http://192.168.43.239/wsValidateCode.php?codebar=";
-                    NSString *call = [ws stringByAppendingString:self.scanBarcode.text];
-                    NSURL *url = [NSURL URLWithString:call];
-                    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-                    
-                    
-                    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-                    
-                    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-                    
-                    [self didScanCode];
-                });
+                //});
+                
+                
                 
 
                 return;
@@ -161,9 +178,27 @@
     }
 }
 
+-(void)doSearchCode:(NSString *)barcode{
+    
+    //Load the json on another thread
+    NSString *ws = @"http://10.50.16.32/wsValidateCode.php?codebar=";
+    NSString *call = [ws stringByAppendingString:barcode];
+    NSURL *url = [NSURL URLWithString:call];
+    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    
+    
+    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    
+    [self didScanCode];
+
+}
+
 -(void)didScanCode{
     [ModalSpinnerViewController dismissModalSpinner];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
                                                         message:@"Gluten free"
                                                        delegate:nil
@@ -172,8 +207,9 @@
         [alert show];
 
         NSLog(@"Gluten free");
-        
+    }];
     }else{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
                                                         message:@"Product not registered gluten free"
                                                        delegate:nil
@@ -182,7 +218,180 @@
         [alert show];
 
         NSLog(@"Contains gluten");
+    }];
     }
+}
+
+- (void)doAddProduct:(NSString *)barcode{
+    
+    NSString *var0 = @"name=";
+    NSString *var1 = [var0 stringByAppendingString:self.productName.text];
+    NSString *var2 = [var1 stringByAppendingString:@"&codebar="];
+    NSString *var3 = [var2 stringByAppendingString:barcode];
+    NSString *var4 = [var3 stringByAppendingString:@"&description="];
+    NSString *post = [var4 stringByAppendingString:self.productDescription.text];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsAddProduct.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:nil error:nil];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    [self didAddProduct];
+
+}
+
+- (void)didAddProduct{
+    [ModalSpinnerViewController dismissModalSpinner];
+    if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Producto añadido satisfactoriamente"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Product Added");
+    }];
+    }else{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Ups! El producto no se ha añadido"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Error try to adding a product");
+    }];
+    }
+}
+
+- (void)doUpdateProduct:(NSString *)barcode{
+    NSString *var0 = @"name=";
+    NSString *var1 = [var0 stringByAppendingString:self.productName.text];
+    NSString *var2 = [var1 stringByAppendingString:@"&codebar="];
+    NSString *var3 = [var2 stringByAppendingString:barcode];
+    NSString *var4 = [var3 stringByAppendingString:@"&description="];
+    NSString *post = [var4 stringByAppendingString:self.productDescription.text];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsUpdateProduct.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:nil error:nil];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    [self didUpdateProduct];
+
+}
+
+- (void)didUpdateProduct{
+    [ModalSpinnerViewController dismissModalSpinner];
+    if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Producto actualizado satisfactoriamente"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Product updated");
+    }];
+    }else{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Ups! El producto no se ha actualizado"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Error try to updating a product");
+    }];
+    }
+}
+
+- (void)doDeleteProduct:(NSString *)barcode{
+    NSString *var0 = @"codebar=";
+    NSString *post = [var0 stringByAppendingString:barcode];
+    
+    //NSString *post = @"name=test4&email=test4&pwd=test4";
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsDeleteProduct.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:nil error:nil];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    [self didDeleteProduct];
+}
+
+- (void)didDeleteProduct{
+    [ModalSpinnerViewController dismissModalSpinner];
+    if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Producto eliminado satisfactoriamente"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Product Deleted");
+    }];
+    }else{
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
+                                                        message:@"Ups! El producto no se ha eliminado"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        NSLog(@"Error try to delete a product");
+    }];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.productName) {
+        [theTextField resignFirstResponder];
+    }
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 @end

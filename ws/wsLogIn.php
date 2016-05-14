@@ -9,11 +9,11 @@
 	$password = isset($_GET['pwd']) ? mysql_real_escape_string($_GET['pwd']) :  "";
 	
 	if(!empty($username) && !empty($password)){
-	 $qur = mysql_query("select id, name, email from `users` where password='$password' and name='$username'");
+	 $qur = mysql_query("select id, name, email, role from `users` where password='$password' and name='$username'");
 	 $result =array();
 		while($r = mysql_fetch_array($qur)){
 		 extract($r);
-		 $result[] = array("id" => $id,"name" => $name, "email" => $email); 
+		 $result[] = array("id" => $id,"name" => $name, "email" => $email, "role" => $role); 
 		}
 	 $json = array("status" => "OK", "info" => $result);
 	}else{

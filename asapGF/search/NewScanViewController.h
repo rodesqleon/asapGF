@@ -10,4 +10,5 @@
 
 @interface NewScanViewController : UIViewController
 
+
 @end

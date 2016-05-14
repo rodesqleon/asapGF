@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
             <connections>
                 <outlet property="logout_btn" destination="NpN-C9-3zW" id="PLc-am-kgh"/>
+                <outlet property="product_btn" destination="xna-ch-sAh" id="uyN-SA-vUd"/>
                 <outlet property="usernameLabel" destination="OlJ-HS-hrY" id="EnC-If-1xd"/>
                 <outlet property="view" destination="oaD-SG-PRK" id="tNs-9U-Hav"/>
             </connections>
@@ -43,12 +44,24 @@
                                 <constraint firstAttribute="height" constant="92" id="SKj-Tq-bbI"/>
                             </constraints>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xna-ch-sAh">
+                            <rect key="frame" x="0.0" y="0.0" width="120" height="116"/>
+                            <connections>
+                                <action selector="productManager:" destination="-1" eventType="touchUpInside" id="dQJ-OI-Lyv"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="xna-ch-sAh" firstAttribute="centerX" secondItem="jUK-Hf-Eaw" secondAttribute="centerX" id="2aV-kE-ZBI"/>
                         <constraint firstItem="PCg-et-C8W" firstAttribute="centerX" secondItem="jUK-Hf-Eaw" secondAttribute="centerX" id="3tg-aB-2It"/>
+                        <constraint firstAttribute="trailing" secondItem="xna-ch-sAh" secondAttribute="trailing" id="ChB-2b-FHS"/>
                         <constraint firstAttribute="width" constant="120" id="LA6-JB-kZH"/>
+                        <constraint firstItem="xna-ch-sAh" firstAttribute="leading" secondItem="jUK-Hf-Eaw" secondAttribute="leading" id="UHg-UZ-tfo"/>
                         <constraint firstAttribute="height" constant="116" id="WSx-8h-Mqu"/>
                         <constraint firstItem="PCg-et-C8W" firstAttribute="centerY" secondItem="jUK-Hf-Eaw" secondAttribute="centerY" id="bAc-Wx-6us"/>
+                        <constraint firstItem="xna-ch-sAh" firstAttribute="top" secondItem="jUK-Hf-Eaw" secondAttribute="top" id="bl3-HJ-wXB"/>
+                        <constraint firstAttribute="bottom" secondItem="xna-ch-sAh" secondAttribute="bottom" id="iy3-5q-j5U"/>
+                        <constraint firstItem="xna-ch-sAh" firstAttribute="centerY" secondItem="jUK-Hf-Eaw" secondAttribute="centerY" id="kLn-p5-Oes"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qjI-TF-yTj">

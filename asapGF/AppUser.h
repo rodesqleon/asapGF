@@ -13,6 +13,7 @@
 @property (nonatomic) NSString *userNAME;
 @property (nonatomic) NSString *userPWD;
 @property (nonatomic) NSString *userMAIL;
+@property (nonatomic) NSString *userROLE;
 + (AppUser*)getInstance;
 -(instancetype) initWithDict:(NSMutableDictionary *)dict;
 @end

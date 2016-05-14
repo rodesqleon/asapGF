@@ -45,7 +45,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2v-1x-Wsz">
                             <rect key="frame" x="79" y="8" width="233" height="102"/>
                             <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et velit id arcu hendrerit cursus. Nam accumsan congue interdum. Nam nec purus et sem sollicitudin lacinia in sed lectus. Phasellus pharetra diam sed tincidunt feugiat. Nam scelerisque lobortis mauris, in lobortis velit vehicula in.</string>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
                             <color key="textColor" red="0.0" green="0.070588235289999995" blue="0.22352941179999999" alpha="0.78106524489999996" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>

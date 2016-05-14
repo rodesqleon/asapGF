@@ -1,18 +1,31 @@
 //
-//  AdjustamentViewController.m
+//  PrivacyViewController.m
 //  asapGF
 //
-//  Created by rodrigoe on 04-05-16.
+//  Created by rodrigoe on 14-05-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
 
-#import "AdjustamentViewController.h"
+#import "PrivacyViewController.h"
 
-@interface AdjustamentViewController ()
+@interface PrivacyViewController ()
 
 @end
 
-@implementation AdjustamentViewController
+@implementation PrivacyViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:@"privacy_style_1" bundle:nibBundleOrNil];
+    //self = [super initWithNibName:@"LoginView_Normal_P" bundle:nibBundleOrNil];
+    
+    if (self) {
+        // Custom initialization
+        self.title = NSLocalizedString(@"POLITICA DE PRIVACIDAD",@"settings header");
+    }
+    return self;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

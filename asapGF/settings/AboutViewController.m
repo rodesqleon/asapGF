@@ -1,28 +1,28 @@
 //
-//  NewScanViewController.m
+//  AboutViewController.m
 //  asapGF
 //
-//  Created by Rodrigo Esquivel on 10-04-16.
+//  Created by rodrigoe on 14-05-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
 
-#import "NewScanViewController.h"
-#import "ScanController.h"
+#import "AboutViewController.h"
 
-@interface NewScanViewController ()
+@interface AboutViewController ()
 
 @end
 
-@implementation NewScanViewController
+@implementation AboutViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:@"newScanView_style_1" bundle:nil];
+    self = [super initWithNibName:@"about_style_1" bundle:nibBundleOrNil];
+    //self = [super initWithNibName:@"LoginView_Normal_P" bundle:nibBundleOrNil];
     
     if (self) {
         // Custom initialization
+        self.title = NSLocalizedString(@"ACERCA DE",@"settings header");
     }
-    [self loadView];
     return self;
 }
 
@@ -32,22 +32,9 @@
     // Do any additional setup after loading the view.
 }
 
-- (void) viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:YES];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)newScanCode:(id)sender{
-    
-    ScanController *scanBarcode = [[ScanController alloc] initWithNibName:@"scannerView_style_1" bundle:nil];
-    scanBarcode.selectedOption = @"SEARCH_PRODUCT";
-    [[self navigationController] pushViewController:scanBarcode animated:YES];
-
 }
 
 /*

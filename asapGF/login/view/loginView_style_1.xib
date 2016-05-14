@@ -106,11 +106,11 @@
                     <rect key="frame" x="0.0" y="377" width="320" height="56"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus nulla est, id ultricies eros volutpat sed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vmd-b4-VEY">
-                            <rect key="frame" x="8" y="8" width="222" height="40"/>
+                            <rect key="frame" x="8" y="2" width="222" height="46"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="222" id="6kL-zY-2vn"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
                             <color key="textColor" red="0.0" green="0.070588235289999995" blue="0.22352941179999999" alpha="0.78106524493243246" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -127,11 +127,10 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="jfu-gb-UD7" secondAttribute="trailing" id="Fpg-PE-n0B"/>
                         <constraint firstItem="vmd-b4-VEY" firstAttribute="leading" secondItem="Vt2-Aw-kWy" secondAttribute="leading" constant="8" id="JyT-AA-4kv"/>
-                        <constraint firstItem="vmd-b4-VEY" firstAttribute="top" secondItem="Vt2-Aw-kWy" secondAttribute="top" constant="8" id="MA7-Xn-Hph"/>
+                        <constraint firstItem="vmd-b4-VEY" firstAttribute="top" secondItem="Vt2-Aw-kWy" secondAttribute="top" constant="2" id="MA7-Xn-Hph"/>
                         <constraint firstAttribute="height" constant="56" id="Nfa-XZ-bvN"/>
                         <constraint firstAttribute="bottom" secondItem="jfu-gb-UD7" secondAttribute="bottom" id="Pzr-MC-0V4"/>
                         <constraint firstItem="jfu-gb-UD7" firstAttribute="top" secondItem="Vt2-Aw-kWy" secondAttribute="top" id="WcK-GN-lBI"/>
-                        <constraint firstAttribute="bottom" secondItem="vmd-b4-VEY" secondAttribute="bottom" constant="8" id="dNK-H0-1v7"/>
                         <constraint firstItem="jfu-gb-UD7" firstAttribute="leading" secondItem="vmd-b4-VEY" secondAttribute="trailing" constant="15" id="vcj-D4-1hy"/>
                     </constraints>
                 </view>

@@ -35,6 +35,7 @@
         _userID = dict[@"id"];
         _userNAME = dict[@"name"];
         _userMAIL = dict[@"email"];
+        _userROLE = dict[@"role"];
     }
     
     return self;
