@@ -26,6 +26,8 @@
     
     if (self) {
         // Custom initialization
+        self.title = NSLocalizedString(@"Sign In",@"settings header");
+        
     }
     //[self loadView];
     return self;
@@ -41,6 +43,8 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     self.signInBtn.layer.cornerRadius = 40.0;
     self.userName_textField.layer.borderWidth = 1;
     self.userName_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];

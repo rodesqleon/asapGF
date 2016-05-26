@@ -25,7 +25,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sze-sO-lQu">
                             <rect key="frame" x="40" y="0.0" width="240" height="50"/>
                             <color key="backgroundColor" red="1" green="0.98039215686274506" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="done"/>
                         </textField>
@@ -47,7 +47,7 @@
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1cJ-Ek-A8d">
                             <rect key="frame" x="40" y="0.0" width="240" height="50"/>
                             <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="textColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                         </textField>
@@ -79,22 +79,22 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anD-eL-6tW">
                     <rect key="frame" x="265" y="530" width="47" height="30"/>
                     <state key="normal" title="Sign in">
-                        <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" white="0.0" alpha="0.59999999999999998" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="signin:" destination="-1" eventType="touchUpInside" id="rGn-iQ-RCT"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xW-ck-Ccz">
-                    <rect key="frame" x="125" y="427" width="70" height="70"/>
+                    <rect key="frame" x="120" y="427" width="80" height="80"/>
                     <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="70" id="BKX-nQ-qFp"/>
-                        <constraint firstAttribute="height" constant="70" id="fF3-xZ-lv3"/>
+                        <constraint firstAttribute="width" constant="80" id="BKX-nQ-qFp"/>
+                        <constraint firstAttribute="height" constant="80" id="fF3-xZ-lv3"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <state key="normal" title="LOG IN">
-                        <color key="titleColor" red="0.63529411759999999" green="0.63529411759999999" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.60398706896551724" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="Anj-CJ-gaY"/>
