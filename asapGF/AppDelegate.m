@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "LoginViewController.h"
-#import "WelcomeViewController.h"
+#import "WelcomeWizardViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,13 +20,18 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.welcomeViewController = [[WelcomeViewController alloc] initWithNibName:@"welcomeView_style_1" bundle:nil];
+    self.welcomeViewController = [WelcomeWizardViewController new];
     
     UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.welcomeViewController];
     [navigation prefersStatusBarHidden];
     self.window.rootViewController = navigation;
-
     [self.window makeKeyAndVisible];
+    
+   // Set color to page view controller dots
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
+    
     return YES;
 }
 

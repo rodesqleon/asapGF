@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInViewController.h"
+#import "WelcomeWizardViewController.h"
 #import "AppUser.h"
 @interface LoginViewController ()
 @property (nonatomic) NSDictionary *loginDict;
@@ -42,6 +43,13 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.logIn_btn.layer.cornerRadius = 40.0;
+    self.userName_textField.layer.borderWidth = 1;
+    self.userName_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.password_textField.layer.borderWidth = 1;
+    self.password_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.userName_textField.layer.cornerRadius = 10.0;
+    self.password_textField.layer.cornerRadius = 10.0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,7 +82,7 @@
                                                  otherButtonTitles:nil];
             [alert show];
         }else{
-            NSString *ws = @"http://10.50.16.32/wsLogIn.php?usr=";
+            NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
             NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
             NSString *callB = [callA stringByAppendingString:@"&pwd="];
             NSString *callC = [callB stringByAppendingString:self.password_textField.text];
@@ -134,6 +142,12 @@
 -(IBAction)signin:(id)sender{
     SignInViewController *signView = [[SignInViewController alloc] initWithNibName:@"signInView_style_1" bundle:nil];
     [[self navigationController] pushViewController:signView animated:YES];
+}
+
+-(IBAction)backToWelcomeScreen:(id)sender{
+    WelcomeWizardViewController *welcome = [WelcomeWizardViewController new];
+    [[self navigationController] pushViewController:welcome animated:NO];
+
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

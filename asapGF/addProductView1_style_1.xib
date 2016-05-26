@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="NSZ-bC-6Bi">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Para agregar un producto libre de gluten, debes especificar su nombre y descripción. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kmg-bK-tos">
+                    <rect key="frame" x="20" y="249" width="280" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="280" id="uDv-2e-Ao5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GEE-Jp-w0m">
+                    <rect key="frame" x="0.0" y="528" width="320" height="40"/>
+                    <color key="backgroundColor" red="0.93333333330000001" green="0.79215686269999996" blue="0.54901960780000003" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="SEC-2F-Y94"/>
+                    </constraints>
+                    <state key="normal" title="Siguiente"/>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.7482971128" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Kmg-bK-tos" firstAttribute="centerY" secondItem="NSZ-bC-6Bi" secondAttribute="centerY" id="936-uQ-Z2f"/>
+                <constraint firstItem="Kmg-bK-tos" firstAttribute="centerX" secondItem="NSZ-bC-6Bi" secondAttribute="centerX" id="OAx-GM-GtQ"/>
+                <constraint firstAttribute="bottom" secondItem="GEE-Jp-w0m" secondAttribute="bottom" id="iYy-Oe-n8d"/>
+                <constraint firstAttribute="trailing" secondItem="GEE-Jp-w0m" secondAttribute="trailing" id="n39-OR-CqB"/>
+                <constraint firstItem="GEE-Jp-w0m" firstAttribute="leading" secondItem="NSZ-bC-6Bi" secondAttribute="leading" id="zY5-7i-7fE"/>
+            </constraints>
+            <point key="canvasLocation" x="324" y="222"/>
+        </view>
+    </objects>
+</document>

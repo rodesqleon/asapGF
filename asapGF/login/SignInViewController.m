@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *password_textField;
 @property (weak, nonatomic) IBOutlet UIView *condition_btn;
 @property (nonatomic, strong) IBOutlet UINavigationItem *navEng;
+@property (weak, nonatomic) IBOutlet UIButton *signInBtn;
 
 @end
 
@@ -39,6 +40,19 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    self.signInBtn.layer.cornerRadius = 40.0;
+    self.userName_textField.layer.borderWidth = 1;
+    self.userName_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.password_textField.layer.borderWidth = 1;
+    self.password_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.email_textField.layer.borderWidth = 1;
+    self.email_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    
+    self.userName_textField.layer.cornerRadius = 10.0;
+    self.password_textField.layer.cornerRadius = 10.0;
+    self.email_textField.layer.cornerRadius = 10.0;
+
     
 }
 
@@ -65,7 +79,7 @@
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsSignIn.php"]];
+    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsSignIn.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

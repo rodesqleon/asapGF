@@ -181,7 +181,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 -(void)doSearchCode:(NSString *)barcode{
     
     //Load the json on another thread
-    NSString *ws = @"http://10.50.16.32/wsValidateCode.php?codebar=";
+    NSString *ws = @"http://always420.cl/wsValidateCode.php?codebar=";
     NSString *call = [ws stringByAppendingString:barcode];
     NSURL *url = [NSURL URLWithString:call];
     NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
@@ -236,7 +236,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsAddProduct.php"]];
+    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsAddProduct.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -290,7 +290,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsUpdateProduct.php"]];
+    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsUpdateProduct.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
@@ -341,7 +341,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://10.50.16.32/wsDeleteProduct.php"]];
+    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsDeleteProduct.php"]];
     [request setHTTPMethod:@"POST"];
     [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];

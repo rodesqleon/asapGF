@@ -126,11 +126,11 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"About"]){
+    if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Acerca de"]){
         AboutViewController *about = [AboutViewController new];
         [[self navigationController] pushViewController:about animated:YES];
         
-    }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Privacy policy"]){
+    }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Politica de privacidad"]){
         PrivacyViewController *privacy = [PrivacyViewController new];
         [[self navigationController] pushViewController:privacy animated:YES];
     }else{

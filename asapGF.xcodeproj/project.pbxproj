@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B6543DB1CCD684C00CC112B /* welcomeView_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */; };
-		7B7A044C1CD19412002DCEAC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */; };
+		7B6219801CF5226D00333A1B /* WelcomeScreenView_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B62197F1CF5226D00333A1B /* WelcomeScreenView_1.xib */; };
+		7B6219891CF5274200333A1B /* WelcomeWizardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6219881CF5274200333A1B /* WelcomeWizardViewController.m */; };
+		7B62198C1CF527D000333A1B /* WelcomePage1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B62198B1CF527D000333A1B /* WelcomePage1ViewController.m */; };
 		7B82998B1CE75ADC00CAAC55 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B82998A1CE75ADC00CAAC55 /* MenuViewController.m */; };
 		7B82998E1CE75D0700CAAC55 /* menu_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B82998D1CE75D0700CAAC55 /* menu_style_1.xib */; };
 		7B8299901CE7826400CAAC55 /* about_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B82998F1CE7826400CAAC55 /* about_style_1.xib */; };
@@ -20,6 +21,8 @@
 		7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */; };
 		7B8E44971CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44921CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib */; };
 		7B8E44981CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E44941CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings */; };
+		7B9AEEF81CEA98BB00B0220D /* addProductView1_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B9AEEF71CEA98BB00B0220D /* addProductView1_style_1.xib */; };
+		7B9AEEFA1CEA9CB000B0220D /* addProductView2_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B9AEEF91CEA9CB000B0220D /* addProductView2_style_1.xib */; };
 		7BA7286C1CDC103200C2DA48 /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA7286B1CDC103200C2DA48 /* SettingsTableViewController.m */; };
 		7BA7286E1CDC104900C2DA48 /* settings_style_1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA7286D1CDC104900C2DA48 /* settings_style_1.xib */; };
 		7BBAB2F21CD6CB11006FC1A5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBAB2F11CD6CB11006FC1A5 /* CoreGraphics.framework */; };
@@ -61,9 +64,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = welcomeView_style_1.xib; sourceTree = "<group>"; };
-		7B7A044A1CD19412002DCEAC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
-		7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
+		7B62197F1CF5226D00333A1B /* WelcomeScreenView_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeScreenView_1.xib; sourceTree = "<group>"; };
+		7B6219871CF5274200333A1B /* WelcomeWizardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeWizardViewController.h; sourceTree = "<group>"; };
+		7B6219881CF5274200333A1B /* WelcomeWizardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeWizardViewController.m; sourceTree = "<group>"; };
+		7B62198A1CF527D000333A1B /* WelcomePage1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomePage1ViewController.h; sourceTree = "<group>"; };
+		7B62198B1CF527D000333A1B /* WelcomePage1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomePage1ViewController.m; sourceTree = "<group>"; };
 		7B8299891CE75ADC00CAAC55 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuViewController.h; path = productManager/MenuViewController.h; sourceTree = "<group>"; };
 		7B82998A1CE75ADC00CAAC55 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuViewController.m; path = productManager/MenuViewController.m; sourceTree = "<group>"; };
 		7B82998D1CE75D0700CAAC55 /* menu_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = menu_style_1.xib; sourceTree = "<group>"; };
@@ -80,6 +85,8 @@
 		7B8E44901CC858ED003B6022 /* ModalSpinnerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalSpinnerViewController.m; sourceTree = "<group>"; };
 		7B8E44931CC858ED003B6022 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BlockerPopupView_Normal_P_Style1.xib; sourceTree = "<group>"; };
 		7B8E44951CC858ED003B6022 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/BlockerPopupView_Normal_P_Style1.strings; sourceTree = "<group>"; };
+		7B9AEEF71CEA98BB00B0220D /* addProductView1_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = addProductView1_style_1.xib; sourceTree = "<group>"; };
+		7B9AEEF91CEA9CB000B0220D /* addProductView2_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = addProductView2_style_1.xib; path = productManager/view/addProductView2_style_1.xib; sourceTree = "<group>"; };
 		7BA7286A1CDC103200C2DA48 /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsTableViewController.h; path = settings/SettingsTableViewController.h; sourceTree = "<group>"; };
 		7BA7286B1CDC103200C2DA48 /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsTableViewController.m; path = settings/SettingsTableViewController.m; sourceTree = "<group>"; };
 		7BA7286D1CDC104900C2DA48 /* settings_style_1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = settings_style_1.xib; path = settings/view/settings_style_1.xib; sourceTree = "<group>"; };
@@ -159,6 +166,8 @@
 			isa = PBXGroup;
 			children = (
 				7B82998D1CE75D0700CAAC55 /* menu_style_1.xib */,
+				7B9AEEF71CEA98BB00B0220D /* addProductView1_style_1.xib */,
+				7B9AEEF91CEA9CB000B0220D /* addProductView2_style_1.xib */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -324,8 +333,10 @@
 				A4D1FEC91CB182C000BC15FF /* SignInViewController.h */,
 				A4D1FECA1CB182C000BC15FF /* SignInViewController.m */,
 				A473DCEB1CB02BFB00F28B92 /* view */,
-				7B7A044A1CD19412002DCEAC /* WelcomeViewController.h */,
-				7B7A044B1CD19412002DCEAC /* WelcomeViewController.m */,
+				7B6219871CF5274200333A1B /* WelcomeWizardViewController.h */,
+				7B6219881CF5274200333A1B /* WelcomeWizardViewController.m */,
+				7B62198A1CF527D000333A1B /* WelcomePage1ViewController.h */,
+				7B62198B1CF527D000333A1B /* WelcomePage1ViewController.m */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -335,7 +346,7 @@
 			children = (
 				A473DCEC1CB02C2E00F28B92 /* loginView_style_1.xib */,
 				A4D1FEC71CB17D5000BC15FF /* signInView_style_1.xib */,
-				7B6543DA1CCD684C00CC112B /* welcomeView_style_1.xib */,
+				7B62197F1CF5226D00333A1B /* WelcomeScreenView_1.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -466,13 +477,15 @@
 				7B82999D1CE7906F00CAAC55 /* faq_style_1.xib in Resources */,
 				7B8E44971CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.xib in Resources */,
 				7B8E44981CC858ED003B6022 /* BlockerPopupView_Normal_P_Style1.strings in Resources */,
+				7B9AEEFA1CEA9CB000B0220D /* addProductView2_style_1.xib in Resources */,
+				7B9AEEF81CEA98BB00B0220D /* addProductView1_style_1.xib in Resources */,
 				A4D1FEC31CB160F400BC15FF /* dashboard_style_1.xib in Resources */,
 				A4468E6B1CBB159F00E768CF /* newScanView_style_1.xib in Resources */,
 				A4D1FEBC1CB1493200BC15FF /* loginView_style_1.xib in Resources */,
 				7B82998E1CE75D0700CAAC55 /* menu_style_1.xib in Resources */,
 				A4D1FEC81CB17D5000BC15FF /* signInView_style_1.xib in Resources */,
 				7BA7286E1CDC104900C2DA48 /* settings_style_1.xib in Resources */,
-				7B6543DB1CCD684C00CC112B /* welcomeView_style_1.xib in Resources */,
+				7B6219801CF5226D00333A1B /* WelcomeScreenView_1.xib in Resources */,
 				7B8299901CE7826400CAAC55 /* about_style_1.xib in Resources */,
 				A473DCC41CB0295D00F28B92 /* Assets.xcassets in Resources */,
 				A4468E701CBB174C00E768CF /* scannerView_style_1.xib in Resources */,
@@ -502,14 +515,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				7BA7286C1CDC103200C2DA48 /* SettingsTableViewController.m in Sources */,
+				7B62198C1CF527D000333A1B /* WelcomePage1ViewController.m in Sources */,
 				7B8E44961CC858ED003B6022 /* ModalSpinnerViewController.m in Sources */,
 				A4468E6E1CBB16BD00E768CF /* NewScanViewController.m in Sources */,
 				A4D1FEBF1CB1584300BC15FF /* AppUser.m in Sources */,
+				7B6219891CF5274200333A1B /* WelcomeWizardViewController.m in Sources */,
 				7B82998B1CE75ADC00CAAC55 /* MenuViewController.m in Sources */,
 				7B82999B1CE78EF000CAAC55 /* PrivacyViewController.m in Sources */,
 				A473DCBC1CB0295D00F28B92 /* AppDelegate.m in Sources */,
 				A4D1FEBA1CB148E500BC15FF /* main.m in Sources */,
-				7B7A044C1CD19412002DCEAC /* WelcomeViewController.m in Sources */,
 				A4468E761CBB199A00E768CF /* ScanController.m in Sources */,
 				A4D1FEC61CB1637200BC15FF /* HomeViewController.m in Sources */,
 				A4D1FECB1CB182C000BC15FF /* SignInViewController.m in Sources */,
