@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <color key="sectionIndexBackgroundColor" red="1" green="0.95686274509803915" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="dataSource" destination="-1" id="mh6-KP-eJc"/>
                 <outlet property="delegate" destination="-1" id="mAb-4T-AbN"/>

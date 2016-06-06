@@ -10,4 +10,6 @@
 
 @interface ScanController : UIViewController <UITextFieldDelegate>
 @property (nonatomic) NSString *selectedOption;
+@property (nonatomic) NSString *productName;
+@property (nonatomic) NSString *productDescription;
 @end

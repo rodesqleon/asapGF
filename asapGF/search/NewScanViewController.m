@@ -10,6 +10,7 @@
 #import "ScanController.h"
 
 @interface NewScanViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
 
 @end
 
@@ -35,6 +36,13 @@
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    self.nextBtn.layer.cornerRadius = 40.0;
+    self.nextBtn.layer.borderWidth = 1;
+    self.nextBtn.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+
 }
 
 - (void)didReceiveMemoryWarning {

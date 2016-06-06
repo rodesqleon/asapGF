@@ -25,7 +25,7 @@
     
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"CONFIGURACIÓN",@"settings header");
+        self.title = NSLocalizedString(@"Settings",@"settings header");
         UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Logout" style:UIBarButtonItemStylePlain
                                                                          target:self action:@selector(logoutAction:)];
         self.navigationItem.rightBarButtonItem = anotherButton;
@@ -78,7 +78,10 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES] ;
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
 }
 
 #pragma mark tableview delegate
@@ -112,12 +115,12 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    tableView.backgroundColor = [UIColor colorWithRed:255/255.0 green:244/255.0 blue:191/255.0 alpha:1.0];
+    tableView.backgroundColor = [UIColor whiteColor];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         cell.textLabel.font =[UIFont fontWithName:@"Avenir-Black" size:14];
-        cell.backgroundColor = [UIColor colorWithRed:255/255.0 green:244/255.0 blue:191/255.0 alpha:1.0];
+        cell.backgroundColor = [UIColor colorWithRed:255/255.0 green:250/255.0 blue:216/255.0 alpha:1.0];
     }
     // Configure the cell...
     cell.textLabel.text = self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"];

@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuViewController">
             <connections>
+                <outlet property="managerAdd" destination="2in-uk-W5r" id="SBM-xY-j54"/>
+                <outlet property="managerDelete" destination="oVj-pd-gbn" id="yvl-Tb-iUb"/>
+                <outlet property="managerEdit" destination="LOb-o2-6gq" id="9hd-Tc-JFC"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2Cx-yT-Rdh"/>
             </connections>
         </placeholder>
@@ -15,42 +18,68 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVj-pd-gbn">
-                    <rect key="frame" x="88" y="347" width="144" height="36"/>
-                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Eliminar producto"/>
-                    <connections>
-                        <action selector="deleteProduct:" destination="-1" eventType="touchUpInside" id="RpP-Xm-25P"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOb-o2-6gq">
-                    <rect key="frame" x="82" y="266" width="156" height="36"/>
-                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Modificar producto"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOb-o2-6gq">
+                    <rect key="frame" x="120" y="435" width="80" height="80"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="S5y-2L-oyY"/>
+                        <constraint firstAttribute="width" constant="80" id="YYN-LW-tm8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                    <state key="normal" image="admin_edit">
+                        <color key="titleColor" red="0.95686274510000002" green="0.76470588240000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="updateProduct:" destination="-1" eventType="touchUpInside" id="huv-YZ-ABW"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2in-uk-W5r">
-                    <rect key="frame" x="87" y="185" width="146" height="36"/>
-                    <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
-                    <state key="normal" title="Agregar producto"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2in-uk-W5r">
+                    <rect key="frame" x="32" y="435" width="80" height="80"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="admin_add">
+                        <color key="titleColor" red="0.95686274510000002" green="0.76470588240000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="addProduct:" destination="-1" eventType="touchUpInside" id="dXS-zl-eld"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asap_logo" translatesAutoresizingMaskIntoConstraints="NO" id="8Jn-VG-cwX">
+                    <rect key="frame" x="46" y="133" width="229" height="302"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVj-pd-gbn">
+                    <rect key="frame" x="208" y="435" width="80" height="80"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" image="admin_delete">
+                        <color key="titleColor" red="0.95686274510000002" green="0.76470588240000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteProduct:" destination="-1" eventType="touchUpInside" id="RpP-Xm-25P"/>
+                    </connections>
+                </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.7482971128" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="LOb-o2-6gq" firstAttribute="top" secondItem="2in-uk-W5r" secondAttribute="bottom" constant="45" id="8QW-ZR-iaL"/>
-                <constraint firstItem="oVj-pd-gbn" firstAttribute="top" secondItem="LOb-o2-6gq" secondAttribute="bottom" constant="45" id="AYp-Rf-0G1"/>
-                <constraint firstItem="LOb-o2-6gq" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Bkb-Xt-t72"/>
-                <constraint firstItem="2in-uk-W5r" firstAttribute="centerX" secondItem="LOb-o2-6gq" secondAttribute="centerX" id="Iwd-GA-t7Q"/>
-                <constraint firstItem="oVj-pd-gbn" firstAttribute="centerX" secondItem="LOb-o2-6gq" secondAttribute="centerX" id="ekm-SQ-uLL"/>
-                <constraint firstItem="LOb-o2-6gq" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="kcU-RG-Ira"/>
+                <constraint firstItem="2in-uk-W5r" firstAttribute="height" secondItem="LOb-o2-6gq" secondAttribute="height" id="69s-HP-Atu"/>
+                <constraint firstItem="LOb-o2-6gq" firstAttribute="leading" secondItem="2in-uk-W5r" secondAttribute="trailing" constant="8" id="EsT-4y-b2L"/>
+                <constraint firstItem="LOb-o2-6gq" firstAttribute="top" secondItem="8Jn-VG-cwX" secondAttribute="bottom" id="H9a-12-H4j"/>
+                <constraint firstItem="oVj-pd-gbn" firstAttribute="leading" secondItem="LOb-o2-6gq" secondAttribute="trailing" constant="8" id="M9N-Np-6Z4"/>
+                <constraint firstItem="oVj-pd-gbn" firstAttribute="height" secondItem="LOb-o2-6gq" secondAttribute="height" id="MG7-So-1Ae"/>
+                <constraint firstItem="8Jn-VG-cwX" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="OED-GL-her"/>
+                <constraint firstItem="2in-uk-W5r" firstAttribute="centerY" secondItem="LOb-o2-6gq" secondAttribute="centerY" id="V2z-yy-uyV"/>
+                <constraint firstItem="LOb-o2-6gq" firstAttribute="centerX" secondItem="8Jn-VG-cwX" secondAttribute="centerX" id="d6B-mY-wGY"/>
+                <constraint firstItem="2in-uk-W5r" firstAttribute="width" secondItem="LOb-o2-6gq" secondAttribute="width" id="euG-Wd-haz"/>
+                <constraint firstItem="oVj-pd-gbn" firstAttribute="centerY" secondItem="LOb-o2-6gq" secondAttribute="centerY" id="uFH-bl-zkh"/>
+                <constraint firstItem="8Jn-VG-cwX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wjf-S7-LwY"/>
+                <constraint firstItem="oVj-pd-gbn" firstAttribute="width" secondItem="LOb-o2-6gq" secondAttribute="width" id="zxu-qm-Xno"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="269" y="216"/>
         </view>
     </objects>
+    <resources>
+        <image name="admin_add" width="25" height="25"/>
+        <image name="admin_delete" width="25" height="3"/>
+        <image name="admin_edit" width="25" height="25"/>
+        <image name="asap_logo" width="229" height="302"/>
+    </resources>
 </document>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeListTableViewController">
+            <connections>
+                <outlet property="container" destination="aII-ct-CRF" id="KR4-0w-AXO"/>
+                <outlet property="recipeTableView" destination="ADA-Gk-BoN" id="aPg-vZ-BXE"/>
+                <outlet property="view" destination="iN0-l3-epB" id="2oY-kY-CRe"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="96" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ADA-Gk-BoN">
+                    <rect key="frame" x="0.0" y="177" width="320" height="391"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="e38-0f-dts"/>
+                        <outlet property="delegate" destination="-1" id="JP4-Tf-qjb"/>
+                    </connections>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aII-ct-CRF">
+                    <rect key="frame" x="80" y="27" width="160" height="80"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash_food" translatesAutoresizingMaskIntoConstraints="NO" id="03k-lC-yVA">
+                            <rect key="frame" x="58" y="21" width="45" height="39"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.7482971128" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="03k-lC-yVA" firstAttribute="centerX" secondItem="aII-ct-CRF" secondAttribute="centerX" id="Ypj-LN-Llr"/>
+                        <constraint firstItem="03k-lC-yVA" firstAttribute="centerY" secondItem="aII-ct-CRF" secondAttribute="centerY" id="f0Z-cc-Td1"/>
+                        <constraint firstAttribute="height" constant="80" id="xYE-SU-0Gh"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2uo-8V-dzq">
+                    <rect key="frame" x="0.0" y="144" width="320" height="33"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recipes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dae-6G-e8C">
+                            <rect key="frame" x="129" y="7" width="62" height="20"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.49528556034482757" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Dae-6G-e8C" firstAttribute="centerY" secondItem="2uo-8V-dzq" secondAttribute="centerY" id="id2-ad-s5t"/>
+                        <constraint firstItem="Dae-6G-e8C" firstAttribute="centerX" secondItem="2uo-8V-dzq" secondAttribute="centerX" id="qEz-2d-RUL"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aII-ct-CRF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="2Xk-3a-t3v"/>
+                <constraint firstItem="ADA-Gk-BoN" firstAttribute="top" secondItem="2uo-8V-dzq" secondAttribute="bottom" id="N1D-pa-Xwa"/>
+                <constraint firstItem="ADA-Gk-BoN" firstAttribute="top" secondItem="aII-ct-CRF" secondAttribute="bottom" constant="70" id="N7j-E8-PNC"/>
+                <constraint firstAttribute="trailing" secondItem="ADA-Gk-BoN" secondAttribute="trailing" id="Pkf-Aq-Hlk"/>
+                <constraint firstItem="aII-ct-CRF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="Pn8-hC-rVD"/>
+                <constraint firstItem="2uo-8V-dzq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YCj-Ps-VWg"/>
+                <constraint firstAttribute="bottom" secondItem="ADA-Gk-BoN" secondAttribute="bottom" id="ige-Nc-D3g"/>
+                <constraint firstAttribute="trailing" secondItem="aII-ct-CRF" secondAttribute="trailing" constant="80" id="iyv-A4-a3d"/>
+                <constraint firstItem="ADA-Gk-BoN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ubO-DV-JpH"/>
+                <constraint firstItem="2uo-8V-dzq" firstAttribute="top" secondItem="aII-ct-CRF" secondAttribute="bottom" constant="37" id="uvV-xJ-fCo"/>
+                <constraint firstAttribute="trailing" secondItem="2uo-8V-dzq" secondAttribute="trailing" id="vdR-mK-32u"/>
+            </constraints>
+            <point key="canvasLocation" x="242" y="216"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="dash_food" width="45" height="39"/>
+    </resources>
+</document>

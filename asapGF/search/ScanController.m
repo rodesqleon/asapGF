@@ -21,8 +21,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureLayer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic) NSDictionary *wsResponse;
-@property (weak, nonatomic) IBOutlet UITextField *productName;
-@property (weak, nonatomic) IBOutlet UITextField *productDescription;
 @property (weak, nonatomic) IBOutlet UILabel *productBarCode;
 
 @end
@@ -42,10 +40,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    if([self.selectedOption isEqualToString:@"ADD_PRODUCT"] || [self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
-        self.productName.delegate = self;
-        self.productDescription.delegate = self;
-    }    [self setupScanningSession];
+    [self setupScanningSession];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -57,12 +52,9 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 - (void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.productName.hidden = YES;
-    self.productDescription.hidden = YES;
-    if([self.selectedOption isEqualToString:@"ADD_PRODUCT"] || [self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
-        self.productName.hidden = NO;
-        self.productDescription.hidden = NO;
-    }
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -225,11 +217,11 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 - (void)doAddProduct:(NSString *)barcode{
     
     NSString *var0 = @"name=";
-    NSString *var1 = [var0 stringByAppendingString:self.productName.text];
+    NSString *var1 = [var0 stringByAppendingString:self.productName];
     NSString *var2 = [var1 stringByAppendingString:@"&codebar="];
     NSString *var3 = [var2 stringByAppendingString:barcode];
     NSString *var4 = [var3 stringByAppendingString:@"&description="];
-    NSString *post = [var4 stringByAppendingString:self.productDescription.text];
+    NSString *post = [var4 stringByAppendingString:self.productDescription];
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
@@ -279,11 +271,11 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 
 - (void)doUpdateProduct:(NSString *)barcode{
     NSString *var0 = @"name=";
-    NSString *var1 = [var0 stringByAppendingString:self.productName.text];
+    NSString *var1 = [var0 stringByAppendingString:self.productName];
     NSString *var2 = [var1 stringByAppendingString:@"&codebar="];
     NSString *var3 = [var2 stringByAppendingString:barcode];
     NSString *var4 = [var3 stringByAppendingString:@"&description="];
-    NSString *post = [var4 stringByAppendingString:self.productDescription.text];
+    NSString *post = [var4 stringByAppendingString:self.productDescription];
     
     NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
     
@@ -381,17 +373,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     }
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    if (theTextField == self.productName) {
-        [theTextField resignFirstResponder];
-    }
-    return YES;
-}
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    //hides keyboard when another part of layout was touched
-    [self.view endEditing:YES];
-    [super touchesBegan:touches withEvent:event];
-}
 
 @end

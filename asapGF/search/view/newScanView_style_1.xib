@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewScanViewController">
             <connections>
+                <outlet property="nextBtn" destination="HSO-Xc-V7F" id="Nnw-mW-oYQ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Nv4-SP-yAa"/>
             </connections>
         </placeholder>
@@ -15,33 +16,36 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boJ-kz-XGR">
+                    <rect key="frame" x="4" y="249" width="312" height="70"/>
+                    <string key="text">Para realizar la consulta de su producto, acerque el código de barra al recuadro de la cámara de su teléfono. Vuelve a internarlo presionando consultar.</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSO-Xc-V7F">
-                    <rect key="frame" x="0.0" y="507" width="320" height="61"/>
-                    <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.66274509800000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="120" y="374" width="80" height="80"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="61" id="7Ma-PB-2Lk"/>
+                        <constraint firstAttribute="height" constant="80" id="qhz-eA-ZcT"/>
+                        <constraint firstAttribute="width" constant="80" id="yYQ-ca-9im"/>
                     </constraints>
-                    <state key="normal" title="SCAN BARCODE"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Next">
+                        <color key="titleColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                    </state>
                     <connections>
                         <action selector="newScanCode:" destination="-1" eventType="touchUpInside" id="bCt-bj-fKT"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boJ-kz-XGR">
-                    <rect key="frame" x="4" y="243" width="312" height="82"/>
-                    <string key="text">Para realizar la consulta de su producto, acerque el código de barra al recuadró de la cámara de su teléfono. Vuelve a internarlo presionando consultar.</string>
-                    <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="15"/>
-                    <color key="textColor" red="0.047058823530000002" green="0.36078431370000003" blue="0.68235294120000001" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.7482971128" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="boJ-kz-XGR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="JDt-fM-5jv"/>
-                <constraint firstAttribute="bottom" secondItem="HSO-Xc-V7F" secondAttribute="bottom" id="YSD-ud-zmV"/>
+                <constraint firstItem="HSO-Xc-V7F" firstAttribute="top" secondItem="boJ-kz-XGR" secondAttribute="bottom" constant="55" id="Nqc-L8-TQ1"/>
                 <constraint firstAttribute="trailing" secondItem="boJ-kz-XGR" secondAttribute="trailing" constant="4" id="aXC-16-y0P"/>
                 <constraint firstItem="boJ-kz-XGR" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cp0-os-TOE"/>
-                <constraint firstItem="HSO-Xc-V7F" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ige-CQ-HwY"/>
-                <constraint firstAttribute="trailing" secondItem="HSO-Xc-V7F" secondAttribute="trailing" id="pbb-YN-rlv"/>
+                <constraint firstItem="HSO-Xc-V7F" firstAttribute="centerX" secondItem="boJ-kz-XGR" secondAttribute="centerX" id="pti-PX-Lse"/>
                 <constraint firstItem="boJ-kz-XGR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="4" id="yLj-MI-aJM"/>
             </constraints>
             <point key="canvasLocation" x="355" y="342"/>

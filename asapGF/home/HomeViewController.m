@@ -5,7 +5,8 @@
 //  Created by Rodrigo Esquivel on 03-04-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
-
+#import "LocationsTableViewController.h"
+#import "RecipeListTableViewController.h"
 #import "HomeViewController.h"
 #import "MenuViewController.h"
 #import "SettingsTableViewController.h"
@@ -18,6 +19,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *logout_btn;
 @property (weak, nonatomic) IBOutlet UIButton *product_btn;
+@property (weak, nonatomic) IBOutlet UIView *firstView;
+@property (weak, nonatomic) IBOutlet UIView *secondView;
+@property (weak, nonatomic) IBOutlet UIView *thirdView;
 
 @end
 
@@ -49,6 +53,16 @@
     if([appUser.userROLE isEqualToString:@"admin"]){
         self.product_btn.hidden = NO;
     }
+    self.firstView.layer.cornerRadius = 40.0;
+    self.firstView.layer.borderWidth = 1;
+    self.firstView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.secondView.layer.cornerRadius = 40.0;
+    self.secondView.layer.borderWidth = 1;
+    self.secondView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.thirdView.layer.cornerRadius = 40.0;
+    self.thirdView.layer.borderWidth = 1;
+    self.thirdView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -76,22 +90,30 @@
 }
 
 -(IBAction)locationBtn:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
+    LocationsTableViewController *location = [[LocationsTableViewController alloc] initWithNibName:@"locationsListView_style_1" bundle:nil];
+    
+    [[self navigationController] pushViewController:location animated:YES];
+    /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
                                                     message:@"Coming soon"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
-    [alert show];
+    [alert show];*/
 
 }
 
 - (IBAction)foodBtn:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
+
+    RecipeListTableViewController *recipe = [[RecipeListTableViewController alloc] initWithNibName:@"menu_style_1" bundle:nil];
+
+    [[self navigationController] pushViewController:recipe animated:YES];
+    /*UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Dashboard"
                                                     message:@"Coming soon"
                                                    delegate:nil
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
-    [alert show];
+    [alert show];*/
+    
 }
 
 - (IBAction)productManager:(id)sender{
