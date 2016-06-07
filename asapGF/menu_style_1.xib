@@ -19,7 +19,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOb-o2-6gq">
-                    <rect key="frame" x="120" y="435" width="80" height="80"/>
+                    <rect key="frame" x="120" y="395" width="80" height="80"/>
                     <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="80" id="S5y-2L-oyY"/>
@@ -34,7 +34,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2in-uk-W5r">
-                    <rect key="frame" x="32" y="435" width="80" height="80"/>
+                    <rect key="frame" x="32" y="395" width="80" height="80"/>
                     <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="admin_add">
                         <color key="titleColor" red="0.95686274510000002" green="0.76470588240000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -44,10 +44,10 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asap_logo" translatesAutoresizingMaskIntoConstraints="NO" id="8Jn-VG-cwX">
-                    <rect key="frame" x="46" y="133" width="229" height="302"/>
+                    <rect key="frame" x="46" y="93" width="229" height="302"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oVj-pd-gbn">
-                    <rect key="frame" x="208" y="435" width="80" height="80"/>
+                    <rect key="frame" x="208" y="395" width="80" height="80"/>
                     <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" image="admin_delete">
                         <color key="titleColor" red="0.95686274510000002" green="0.76470588240000004" blue="0.42352941179999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -69,7 +69,7 @@
                 <constraint firstItem="LOb-o2-6gq" firstAttribute="centerX" secondItem="8Jn-VG-cwX" secondAttribute="centerX" id="d6B-mY-wGY"/>
                 <constraint firstItem="2in-uk-W5r" firstAttribute="width" secondItem="LOb-o2-6gq" secondAttribute="width" id="euG-Wd-haz"/>
                 <constraint firstItem="oVj-pd-gbn" firstAttribute="centerY" secondItem="LOb-o2-6gq" secondAttribute="centerY" id="uFH-bl-zkh"/>
-                <constraint firstItem="8Jn-VG-cwX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wjf-S7-LwY"/>
+                <constraint firstItem="8Jn-VG-cwX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-40" id="wjf-S7-LwY"/>
                 <constraint firstItem="oVj-pd-gbn" firstAttribute="width" secondItem="LOb-o2-6gq" secondAttribute="width" id="zxu-qm-Xno"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

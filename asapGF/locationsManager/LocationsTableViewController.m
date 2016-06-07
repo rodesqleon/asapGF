@@ -18,6 +18,10 @@
 
 @implementation LocationsTableViewController
 
++(NSString*) changeVCRequestedEvent {
+    return @"CHANGE_VIEWCONTROLLER_REQUESTED_EVENT";
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:@"locationsListView_style_1" bundle:nibBundleOrNil];
@@ -108,7 +112,8 @@
     }
     NSDictionary *info = [self.locations objectAtIndex:indexPath.row];
     
-    cell.locationTitle.text = info[@"NAME"];
+    cell.locationTitle.text = [info[@"NAME"] stringByReplacingOccurrencesOfString:@"&Nacute;" withString:@"Ñ"];
+    cell.locationDescription.text = info[@"DESCRIPTION"];
     
     
     // Configure the cell...

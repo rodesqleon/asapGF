@@ -10,4 +10,7 @@
 
 @interface LocationsTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic) NSArray *locations;
+
++(NSString*) changeVCRequestedEvent;
+
 @end

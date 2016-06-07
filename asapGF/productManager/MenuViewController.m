@@ -45,6 +45,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     self.managerAdd.layer.cornerRadius = 40.0;
     self.managerAdd.layer.borderWidth = 1;
     self.managerAdd.layer.borderColor = [[UIColor lightGrayColor] CGColor];

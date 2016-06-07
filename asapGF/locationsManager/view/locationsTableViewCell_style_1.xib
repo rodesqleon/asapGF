@@ -16,9 +16,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qe-va-MVM">
-                        <rect key="frame" x="8" y="8" width="304" height="93"/>
+                        <rect key="frame" x="8" y="8" width="304" height="75"/>
                         <string key="text">title recipe // title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //</string>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-zP-dMT">
+                        <rect key="frame" x="8" y="83" width="40" height="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -26,12 +32,15 @@
                 <constraints>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="top" secondItem="C7j-Yd-3Zc" secondAttribute="topMargin" id="424-sZ-jFC"/>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="trailing" secondItem="C7j-Yd-3Zc" secondAttribute="trailingMargin" id="8Q8-8I-w4f"/>
+                    <constraint firstItem="o6D-zP-dMT" firstAttribute="leading" secondItem="C7j-Yd-3Zc" secondAttribute="leadingMargin" id="WCx-zn-bh8"/>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="leading" secondItem="C7j-Yd-3Zc" secondAttribute="leadingMargin" id="Xee-tR-9GP"/>
-                    <constraint firstItem="9Qe-va-MVM" firstAttribute="bottom" secondItem="C7j-Yd-3Zc" secondAttribute="bottomMargin" id="pOt-yj-uxG"/>
+                    <constraint firstItem="o6D-zP-dMT" firstAttribute="top" secondItem="9Qe-va-MVM" secondAttribute="bottom" id="nJP-kd-fps"/>
+                    <constraint firstItem="9Qe-va-MVM" firstAttribute="bottom" secondItem="C7j-Yd-3Zc" secondAttribute="bottomMargin" constant="-18" id="pOt-yj-uxG"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="locationDescription" destination="o6D-zP-dMT" id="6Ld-Xc-1kM"/>
                 <outlet property="locationTitle" destination="9Qe-va-MVM" id="lIs-bs-7dc"/>
             </connections>
             <point key="canvasLocation" x="211" y="249"/>

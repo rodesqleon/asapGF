@@ -10,5 +10,6 @@
 
 @interface LocationsTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *locationTitle;
+@property (weak, nonatomic) IBOutlet UILabel *locationDescription;
 
 @end

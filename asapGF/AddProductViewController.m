@@ -61,12 +61,20 @@
 }
 
 - (IBAction)scannerProduct:(id)sender{
+    if([self.productNameText.text isEqualToString:@""] || [self.productDescriptionText.text isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:self.title
+                                                        message:@"Please set a name and descripton for product."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
     ScanController *newScan = [ScanController new];
      newScan.selectedOption = self.selectedOption;
      newScan.productName = self.productNameText.text;
      newScan.productDescription = self.productDescriptionText.text;
      [[self navigationController] pushViewController:newScan animated:YES];
-    
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

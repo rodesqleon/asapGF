@@ -102,7 +102,7 @@
                                               otherButtonTitles:nil];
         [alert show];
         LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-        [self presentViewController:loginView animated:NO completion:nil];
+        [[self navigationController] pushViewController:loginView animated:YES];
     }else{
         NSLog(@"Status: %@", dict[@"status"]);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
