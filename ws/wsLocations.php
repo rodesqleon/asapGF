@@ -4,7 +4,7 @@
 	$connection = new createConnection(); 
 	$connection->connectToDatabase();
 	$connection->selectDatabase();
-
+    mysql_query('SET CHARACTER SET utf8');
 	if ($_SERVER["REQUEST_METHOD"] == "GET") {
   		$result = mysql_query("SELECT * FROM `locations` ORDER BY name ASC");  
 		$arr_json = array();
