@@ -81,6 +81,8 @@
     if (theTextField == self.productNameText) {
         [theTextField resignFirstResponder];
     }
+    id asd;
+    [self scannerProduct:asd];
     return YES;
 }
 

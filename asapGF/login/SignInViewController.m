@@ -119,6 +119,8 @@
     if (theTextField == self.userName_textField) {
         [theTextField resignFirstResponder];
     }
+    id asd;
+    [self signin:asd];
     return YES;
 }
 
