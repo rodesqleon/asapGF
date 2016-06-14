@@ -69,50 +69,61 @@
 #pragma signin_btn_action
 
 - (IBAction)signin:(id)sender{
-    
-    NSString *var0 = @"name=";
-    NSString *var1 = [var0 stringByAppendingString:self.userName_textField.text];
-    NSString *var2 = [var1 stringByAppendingString:@"&email="];
-    NSString *var3 = [var2 stringByAppendingString:self.email_textField.text];
-    NSString *var4 = [var3 stringByAppendingString:@"&pwd="];
-    NSString *post = [var4 stringByAppendingString:self.password_textField.text];
-    
-    //NSString *post = @"name=test4&email=test4&pwd=test4";
-    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
-    
-    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsSignIn.php"]];
-    [request setHTTPMethod:@"POST"];
-    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
-    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-    [request setHTTPBody:postData];
-    
-    NSData *response = [NSURLConnection sendSynchronousRequest:request
-                                             returningResponse:nil error:nil];
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
-    
-    if([dict[@"status"] isEqualToString:@"OK"]){
-        NSLog(@"Status: %@", dict[@"status"]);
+    if([self.userName_textField.text isEqualToString:@""] || [self.password_textField.text isEqualToString:@""] || [self.email_textField.text isEqualToString:@""]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                        message:dict[@"msg"]
+                                                        message:@"Please set all the fields"
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-        [[self navigationController] pushViewController:loginView animated:YES];
     }else{
-        NSLog(@"Status: %@", dict[@"status"]);
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                        message:@"Error. Please try again."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-
+        
+        NSString *var0 = @"name=";
+        NSString *var1 = [var0 stringByAppendingString:self.userName_textField.text];
+        NSString *var2 = [var1 stringByAppendingString:@"&email="];
+        NSString *var3 = [var2 stringByAppendingString:self.email_textField.text];
+        NSString *var4 = [var3 stringByAppendingString:@"&pwd="];
+        NSString *post = [var4 stringByAppendingString:self.password_textField.text];
+        
+        //NSString *post = @"name=test4&email=test4&pwd=test4";
+        NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+        
+        NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+        
+        NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+        [request setURL:[NSURL URLWithString:@"http://always420.cl/wsSignIn.php"]];
+        [request setHTTPMethod:@"POST"];
+        [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+        [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+        [request setHTTPBody:postData];
+        
+        NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                                 returningResponse:nil error:nil];
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+        
+        if([dict[@"status"] isEqualToString:@"OK"]){
+            NSLog(@"Status: %@", dict[@"status"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
+                                                            message:dict[@"msg"]
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
+            [[self navigationController] pushViewController:loginView animated:YES];
+        }else{
+            NSLog(@"Status: %@", dict[@"status"]);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
+                                                            message:@"Error. Please try again."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            
+        }
+        
     }
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
