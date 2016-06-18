@@ -9,10 +9,12 @@
 #import "LocationDetailViewController.h"
 
 @interface LocationDetailViewController ()
-
+@property (nonatomic) CLLocationCoordinate2D *zoomLocation;
 @end
 
 @implementation LocationDetailViewController
+
+@synthesize coordinate;
 
 #define METERS_PER_MILE 1609.344
 
@@ -58,7 +60,7 @@
 {
     NSMutableArray *annotations = [[NSMutableArray alloc] init];
     
-        NSString *title = self.locations[@"NAME"];
+        NSString *title = [self.locations[@"NAME"] stringByReplacingOccurrencesOfString:@"&Nacute;" withString:@"Ñ"];
         
         //Create coordinates from the latitude and longitude values
         CLLocationCoordinate2D coord;
@@ -67,6 +69,8 @@
         
         MapViewAnnotation *annotation = [[MapViewAnnotation alloc] initWithTitle:title AndCoordinate:coord];
         [annotations addObject:annotation];
+    
+    
     return annotations;
 }
 
@@ -77,10 +81,14 @@
     zoomLocation.longitude= [self.locations[@"LONGITUDE"] doubleValue];
     
     MKCoordinateRegion viewRegion = MKCoordinateRegionMakeWithDistance(zoomLocation, 0.5*METERS_PER_MILE,0.5*METERS_PER_MILE);
+    
     [self.mapView setRegion:viewRegion animated:YES];
     
     [self.mapView regionThatFits:viewRegion];
 }
+
+
+
 
 
 @end

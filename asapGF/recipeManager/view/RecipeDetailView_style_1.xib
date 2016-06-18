@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -9,7 +9,6 @@
             <connections>
                 <outlet property="recipeDescription" destination="UIl-yH-7rn" id="XMH-7z-z4I"/>
                 <outlet property="recipeImage" destination="a5a-8k-vMw" id="lL2-EF-BGi"/>
-                <outlet property="recipeIngredients" destination="9wh-5a-QSP" id="Wwr-by-Z3a"/>
                 <outlet property="view" destination="iN0-l3-epB" id="Ve4-1E-ndj"/>
             </connections>
         </placeholder>
@@ -19,57 +18,36 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a5a-8k-vMw">
-                    <rect key="frame" x="68" y="24" width="185" height="104"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="104" id="DgK-zp-F5H"/>
+                        <constraint firstAttribute="height" constant="120" id="Rvf-oQ-0gO"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredients" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yA-kc-3lk">
-                    <rect key="frame" x="118" y="178" width="85" height="20"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                    <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-5a-QSP">
-                    <rect key="frame" x="8" y="206" width="304" height="65"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UIl-yH-7rn">
+                    <rect key="frame" x="8" y="156" width="304" height="316"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="65" id="VnT-3e-fUu"/>
-                    </constraints>
                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3R-27-cg9">
-                    <rect key="frame" x="117" y="284" width="87" height="20"/>
+                    <rect key="frame" x="117" y="128" width="87" height="20"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                     <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UIl-yH-7rn">
-                    <rect key="frame" x="8" y="312" width="304" height="160"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="a5a-8k-vMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="68" id="2ia-ZJ-qv8"/>
-                <constraint firstAttribute="bottom" secondItem="UIl-yH-7rn" secondAttribute="bottom" constant="8" id="3vn-1M-985"/>
-                <constraint firstItem="9wh-5a-QSP" firstAttribute="centerX" secondItem="6yA-kc-3lk" secondAttribute="centerX" id="AUl-ZX-h7K"/>
-                <constraint firstItem="9wh-5a-QSP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="BFH-ld-Am6"/>
-                <constraint firstItem="s3R-27-cg9" firstAttribute="top" secondItem="9wh-5a-QSP" secondAttribute="bottom" constant="13" id="EM2-W7-vyd"/>
-                <constraint firstAttribute="trailing" secondItem="UIl-yH-7rn" secondAttribute="trailing" constant="8" id="QsA-IO-bMl"/>
-                <constraint firstItem="a5a-8k-vMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="24" id="a1Z-8d-5HM"/>
-                <constraint firstItem="UIl-yH-7rn" firstAttribute="top" secondItem="s3R-27-cg9" secondAttribute="bottom" constant="8" id="c0J-SB-OeS"/>
-                <constraint firstAttribute="trailing" secondItem="9wh-5a-QSP" secondAttribute="trailing" constant="8" id="dqP-SR-EjQ"/>
-                <constraint firstAttribute="trailing" secondItem="a5a-8k-vMw" secondAttribute="trailing" constant="67" id="nax-UB-gBe"/>
-                <constraint firstItem="UIl-yH-7rn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="qQt-Pk-BSe"/>
-                <constraint firstItem="s3R-27-cg9" firstAttribute="centerX" secondItem="9wh-5a-QSP" secondAttribute="centerX" id="qiK-sR-J4q"/>
-                <constraint firstItem="6yA-kc-3lk" firstAttribute="top" secondItem="a5a-8k-vMw" secondAttribute="bottom" constant="50" id="yqW-F9-bLt"/>
-                <constraint firstItem="9wh-5a-QSP" firstAttribute="top" secondItem="6yA-kc-3lk" secondAttribute="bottom" constant="8" id="ziM-es-PnC"/>
+                <constraint firstItem="s3R-27-cg9" firstAttribute="centerX" secondItem="a5a-8k-vMw" secondAttribute="centerX" id="4Oq-hs-tS2"/>
+                <constraint firstItem="UIl-yH-7rn" firstAttribute="top" secondItem="s3R-27-cg9" secondAttribute="bottom" constant="8" id="98T-5l-3Et"/>
+                <constraint firstAttribute="bottom" secondItem="UIl-yH-7rn" secondAttribute="bottom" constant="8" id="EDI-5E-Jdo"/>
+                <constraint firstItem="UIl-yH-7rn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="HH8-1y-5VC"/>
+                <constraint firstItem="a5a-8k-vMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HIy-9e-P0C"/>
+                <constraint firstAttribute="trailing" secondItem="UIl-yH-7rn" secondAttribute="trailing" constant="8" id="TkE-mT-oKQ"/>
+                <constraint firstItem="s3R-27-cg9" firstAttribute="top" secondItem="a5a-8k-vMw" secondAttribute="bottom" constant="8" id="oiR-KY-0Ow"/>
+                <constraint firstItem="a5a-8k-vMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rXD-di-6K7"/>
+                <constraint firstAttribute="trailing" secondItem="a5a-8k-vMw" secondAttribute="trailing" id="vsG-QE-S7t"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="211" y="228"/>

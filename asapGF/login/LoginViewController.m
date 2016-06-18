@@ -11,6 +11,7 @@
 #import "SignInViewController.h"
 #import "WelcomeWizardViewController.h"
 #import "AppUser.h"
+#import "PresentationWizardViewController.h"
 @interface LoginViewController ()
 @property (nonatomic) NSDictionary *loginDict;
 @end
@@ -148,6 +149,11 @@
     WelcomeWizardViewController *welcome = [WelcomeWizardViewController new];
     [[self navigationController] pushViewController:welcome animated:NO];
 
+}
+
+-(IBAction)presentationGF:(id)sender{
+    PresentationWizardViewController *presentation = [PresentationWizardViewController new];
+    [[self navigationController] pushViewController:presentation animated:NO];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

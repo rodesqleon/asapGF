@@ -11,4 +11,6 @@
 @interface LocationDetailViewController : UIViewController <MKMapViewDelegate,MKAnnotation,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (nonatomic) NSDictionary *locations;
+
+-(void)goToAddress;
 @end
