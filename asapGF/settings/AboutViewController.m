@@ -21,7 +21,7 @@
     
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"ACERCA DE",@"settings header");
+        self.title = NSLocalizedString(@"About us",@"settings header");
     }
     return self;
 }
@@ -30,6 +30,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
 }
 
 - (void)didReceiveMemoryWarning {

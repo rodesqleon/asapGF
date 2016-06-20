@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="containerView" destination="2iP-qh-QQx" id="Oeu-Ay-cZM"/>
                 <outlet property="descriptionLbl" destination="yWP-Aa-AeD" id="iTh-Sc-R64"/>
+                <outlet property="goToLoginBtn" destination="sEX-85-DhD" id="Wai-Zm-qcV"/>
+                <outlet property="imageView" destination="f6J-rh-ukX" id="l9x-hy-MI1"/>
                 <outlet property="titleLbl" destination="ZwF-aC-fGB" id="iIk-E8-DH8"/>
                 <outlet property="view" destination="iN0-l3-epB" id="uiI-ro-Bkd"/>
             </connections>
@@ -52,18 +54,23 @@
                         <action selector="goToLogin:" destination="-1" eventType="touchUpInside" id="1qC-Fo-Bw9"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6J-rh-ukX">
-                    <rect key="frame" x="0.0" y="24" width="320" height="265"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="f6J-rh-ukX">
+                    <rect key="frame" x="40" y="91" width="240" height="198"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="f6J-rh-ukX" secondAttribute="trailing" constant="40" id="1sC-j7-Mef"/>
+                <constraint firstItem="2iP-qh-QQx" firstAttribute="top" secondItem="f6J-rh-ukX" secondAttribute="bottom" constant="8" id="FKK-tq-RRT"/>
                 <constraint firstAttribute="trailing" secondItem="2iP-qh-QQx" secondAttribute="trailing" constant="40" id="OBv-kc-D5h"/>
                 <constraint firstItem="2iP-qh-QQx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="SgO-gJ-Zwf"/>
+                <constraint firstItem="f6J-rh-ukX" firstAttribute="centerX" secondItem="2iP-qh-QQx" secondAttribute="centerX" id="VAP-BG-lpH"/>
                 <constraint firstItem="2iP-qh-QQx" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="VWG-g5-mER"/>
+                <constraint firstItem="f6J-rh-ukX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="40" id="WfI-L6-P63"/>
                 <constraint firstItem="sEX-85-DhD" firstAttribute="top" secondItem="2iP-qh-QQx" secondAttribute="bottom" constant="12" id="kIn-0d-bSq"/>
                 <constraint firstItem="sEX-85-DhD" firstAttribute="centerX" secondItem="2iP-qh-QQx" secondAttribute="centerX" constant="98" id="qDf-R7-4DE"/>
                 <constraint firstItem="2iP-qh-QQx" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="121" id="vaL-Dj-OzJ"/>
+                <constraint firstItem="f6J-rh-ukX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="91" id="vwE-7V-iaT"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="269" y="355"/>

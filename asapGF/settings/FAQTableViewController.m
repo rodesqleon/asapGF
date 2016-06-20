@@ -104,20 +104,20 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    return 45;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 1.0;
 }
 
 -(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    header.backgroundColor = [UIColor colorWithRed:238/255.0 green:202/255.0 blue:140/255.0 alpha:1.0];
+    UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 45)];
+    header.backgroundColor = [UIColor grayColor];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, 320, 20)];
     title.text =self.adjustmentsSettingOptions[section][@"name"];
-    title.textColor = [UIColor blackColor];
-    title.font = [UIFont fontWithName:@"Avenir-Black" size:14];
+    title.textColor = [UIColor colorWithRed:244/255.0 green:195/255.0 blue:108/255.0 alpha:1.0];
+    title.font = [UIFont fontWithName:@"Heveltica Neue-Thin" size:14];
     [header addSubview:title];
     
     return header;
@@ -125,14 +125,17 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    tableView.backgroundColor = [UIColor colorWithRed:255/255.0 green:244/255.0 blue:191/255.0 alpha:1.0];
+    tableView.backgroundColor = [UIColor whiteColor];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        cell.textLabel.font =[UIFont fontWithName:@"Avenir-Book" size:10];
-        cell.backgroundColor = [UIColor colorWithRed:255/255.0 green:244/255.0 blue:191/255.0 alpha:1.0];
+        cell.textLabel.numberOfLines = 0;
+        cell.textLabel.textColor = [UIColor grayColor];
+        cell.textLabel.font =[UIFont fontWithName:@"Heveltica Neue-Thin" size:6];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     // Configure the cell...
     cell.textLabel.text = self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"];
+    cell.textLabel.font =[UIFont fontWithName:@"Heveltica Neue-Thin" size:6];
     
     return cell;
 }

@@ -49,20 +49,21 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:YES];
-    if(self.index == 10){
+    if(self.index == 11){
         self.goToLoginBtn.hidden = NO;
     }else{
         self.goToLoginBtn.hidden = YES;
     }
     
+    
     switch (self.index) {
         case 0:
             self.titleLbl.text = @"AS SOON AS POSSIBLE GLUTEN FREE";
-            self.imageView.image = [UIImage imageNamed:@"images.png"];
             self.descriptionLbl.text = @"Welcome to asapGF";
             break;
         case 1:
             self.titleLbl.text = @"INTRODUCTION";
+            self.imageView.image = [UIImage imageNamed:@"question.png"];
             self.descriptionLbl.text = @"What is asapGF? \nWhat is gluten? \nWhat is celiac disease?";
             break;
         case 2:
@@ -72,11 +73,12 @@
             break;
         case 3:
             self.titleLbl.text = @"VALUE PROPOSITION";
-            self.imageView.image = [UIImage imageNamed:@"barcode.png"];
+            self.imageView.image = [UIImage imageNamed:@"scan.png"];
             self.descriptionLbl.text = @"Identify if a product contains gluten through the code bar";
             break;
         case 4:
             self.titleLbl.text = @"CUSTOMER SEGMENT";
+            self.imageView.image = [UIImage imageNamed:@"people.png"];
             self.descriptionLbl.text = @"All people that have a celiac disease";
             break;
         case 5:
@@ -111,6 +113,7 @@
             break;
         case 11:
             self.titleLbl.text = @"COST STRUCTURE";
+            self.imageView.image = [UIImage imageNamed:@"LogoCorfo.png"];
             self.descriptionLbl.text = @"All the finance movement be for non-profit propose. We have all the intentions that CORFO program believe in asapGF";
             break;
         default:
@@ -122,7 +125,7 @@
 }
 
 -(IBAction)goToLogin:(id)sender{
-    if(self.index == 10){
+    if(self.index == 11){
         LoginViewController *loginVC = [LoginViewController new];
         [[self navigationController] pushViewController:loginVC animated:YES];
     }

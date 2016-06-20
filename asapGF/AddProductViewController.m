@@ -42,6 +42,8 @@
     }else{
         self.title = NSLocalizedString(@"Update Product",@"settings header");
     }
+    self.productNameText.text = @"";
+    self.productDescriptionText.text = @"";
     self.productNameText.layer.cornerRadius = 10.0;
     self.productNameText.layer.borderWidth = 1;
     self.productNameText.layer.borderColor = [[UIColor lightGrayColor] CGColor];
@@ -94,7 +96,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView {
     // Enable and disable lblPlaceHolderText
-    if ([textView.text length] > 0) {
+    if ([self.productDescriptionText.text length] > 0) {
         [self.lblPlaceHolderText setHidden:YES];
     } else {
         [self.lblPlaceHolderText setHidden:NO];

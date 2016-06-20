@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,28 +16,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asap_logo" translatesAutoresizingMaskIntoConstraints="NO" id="HaO-up-mey">
-                    <rect key="frame" x="106" y="113" width="109" height="128"/>
+                    <rect key="frame" x="106" y="58" width="109" height="128"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="109" id="XeF-to-jtX"/>
-                        <constraint firstAttribute="height" constant="128" id="s4Y-hd-6sF"/>
+                        <constraint firstAttribute="height" constant="128" id="pg2-Ky-sTY"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5NR-Bq-Qrn">
-                    <rect key="frame" x="38" y="258" width="244" height="218"/>
-                    <mutableString key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam felis augue, aliquam non aliquet eu, ultrices at enim. Fusce blandit sapien ac vehicula tincidunt. Vestibulum semper cursus tincidunt. Ut hendrerit dignissim mauris, et rutrum diam rutrum non. Curabitur sed risus tempor, volutpat enim id, viverra arcu. Donec ut porta mauris, non commodo risus. Vivamus dignissim, ipsum a convallis accumsan, justo ex posuere diam, at venenatis arcu urna sit amet urna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</mutableString>
-                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                    <color key="textColor" red="0.23529411759999999" green="0.51764705879999995" blue="0.78039215689999997" alpha="1" colorSpace="calibratedRGB"/>
+                    <rect key="frame" x="38" y="203" width="244" height="218"/>
+                    <string key="text">ASAP GF was born with the idea to make a solution to the daily life to all the people with celiac desease. We try to help celiac people most that we can.</string>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="0.3411764706" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="0.95686274510000002" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="5NR-Bq-Qrn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="07n-FC-KFj"/>
-                <constraint firstAttribute="bottom" secondItem="5NR-Bq-Qrn" secondAttribute="bottom" constant="4" id="0Y1-kt-qg5"/>
-                <constraint firstItem="HaO-up-mey" firstAttribute="centerX" secondItem="5NR-Bq-Qrn" secondAttribute="centerX" id="ATO-Nn-lcI"/>
-                <constraint firstItem="HaO-up-mey" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="113" id="U1r-Co-sxu"/>
-                <constraint firstItem="5NR-Bq-Qrn" firstAttribute="top" secondItem="HaO-up-mey" secondAttribute="bottom" constant="17" id="b4d-4D-KDs"/>
-                <constraint firstAttribute="trailing" secondItem="5NR-Bq-Qrn" secondAttribute="trailing" constant="38" id="bF9-Ql-8CB"/>
+                <constraint firstItem="5NR-Bq-Qrn" firstAttribute="top" secondItem="HaO-up-mey" secondAttribute="bottom" constant="17" id="0Oq-kv-lFt"/>
+                <constraint firstItem="5NR-Bq-Qrn" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="38" id="3jq-sS-O5m"/>
+                <constraint firstItem="HaO-up-mey" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="106" id="G9T-Q3-e5S"/>
+                <constraint firstAttribute="bottom" secondItem="5NR-Bq-Qrn" secondAttribute="bottom" constant="59" id="VlC-BD-dhr"/>
+                <constraint firstAttribute="trailing" secondItem="HaO-up-mey" secondAttribute="trailing" constant="105" id="VrR-jM-nXP"/>
+                <constraint firstItem="5NR-Bq-Qrn" firstAttribute="centerX" secondItem="HaO-up-mey" secondAttribute="centerX" id="W07-Ui-8tg"/>
+                <constraint firstAttribute="trailing" secondItem="5NR-Bq-Qrn" secondAttribute="trailing" constant="38" id="ahr-69-6jI"/>
+                <constraint firstItem="HaO-up-mey" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="58" id="igU-7e-TRb"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
@@ -46,6 +47,6 @@
         </view>
     </objects>
     <resources>
-        <image name="asap_logo" width="221" height="256"/>
+        <image name="asap_logo" width="229" height="302"/>
     </resources>
 </document>

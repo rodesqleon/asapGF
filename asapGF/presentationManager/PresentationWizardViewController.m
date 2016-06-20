@@ -69,7 +69,7 @@
     
     index++;
     
-    if (index == 11) {
+    if (index == 12) {
         return nil;
     }
     
@@ -88,7 +88,7 @@
 
 - (NSInteger)presentationCountForPageViewController:(UIPageViewController *)pageViewController {
     // The number of items reflected in the page indicator.
-    return 11;
+    return 12;
 }
 
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController {

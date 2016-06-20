@@ -33,6 +33,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     
     if (self) {
         // Custom initialization
+        self.title = @"Scanner";
     }
     //[self loadView];
     return self;

@@ -115,6 +115,8 @@
     cell.locationTitle.text = [info[@"NAME"] stringByReplacingOccurrencesOfString:@"&Nacute;" withString:@"Ñ"];
     cell.locationDescription.text = info[@"DESCRIPTION"];
     
+    cell.addresLbl.text = info[@"ADDRESS"];
+    
     
     // Configure the cell...
     

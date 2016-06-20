@@ -22,6 +22,7 @@
     
     if (self) {
         // Custom initialization
+        self.title = NSLocalizedString(@"New scan",@"settings header");
     }
     [self loadView];
     return self;

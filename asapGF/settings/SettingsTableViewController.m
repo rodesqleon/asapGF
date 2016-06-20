@@ -11,6 +11,7 @@
 #import "AboutViewController.h"
 #import "PrivacyViewController.h"
 #import "FAQTableViewController.h"
+#import "VideoViewController.h"
 
 @interface SettingsTableViewController ()
 @property NSMutableArray* adjustmentsSettingOptions;
@@ -44,11 +45,11 @@
     self.adjustmentsSettingOptions =
     [[NSMutableArray alloc] initWithObjects:
      @{
-       @"name":NSLocalizedString(@"INFORMACIÓN",@"adjustments information section"),
+       @"name":NSLocalizedString(@"INFORMATION",@"adjustments information section"),
        @"options":
            @[
                @{
-                   @"name":NSLocalizedString(@"Acerca de",@"adjustments about item"),
+                   @"name":NSLocalizedString(@"About us",@"adjustments about item"),
                    @"target":@"AboutUs"
                    },
                @{
@@ -56,9 +57,13 @@
                    @"target":@"Help"
                    },
                @{
-                   @"name":NSLocalizedString(@"Politica de privacidad",@"adjustments privacy policy item"),
+                   @"name":NSLocalizedString(@"Privacy",@"adjustments privacy policy item"),
                    @"target":@"Privacy"
-                   }
+                   }/*,
+               @{
+                   @"name":NSLocalizedString(@"Video",@"adjustments privacy policy item"),
+                   @"target":@"Video"
+                   }*/
                ]
        },
      nil
@@ -102,12 +107,12 @@
 
 -(UIView*) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     UIView* header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
-    header.backgroundColor = [UIColor colorWithRed:238/255.0 green:202/255.0 blue:140/255.0 alpha:1.0];
+    header.backgroundColor = [UIColor grayColor];
     
     UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, 320, 20)];
     title.text =self.adjustmentsSettingOptions[section][@"name"];
-    title.textColor = [UIColor blackColor];
-    title.font = [UIFont fontWithName:@"Avenir-Black" size:14];
+    title.textColor = [UIColor colorWithRed:244/255.0 green:195/255.0 blue:108/255.0 alpha:1.0];
+    title.font = [UIFont fontWithName:@"Heveltica Neue-Thin" size:14];
     [header addSubview:title];
     
     return header;
@@ -119,8 +124,8 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.textLabel.font =[UIFont fontWithName:@"Avenir-Black" size:14];
-        cell.backgroundColor = [UIColor colorWithRed:255/255.0 green:250/255.0 blue:216/255.0 alpha:1.0];
+        cell.textLabel.font =[UIFont fontWithName:@"Heveltica Neue-Thin" size:14];
+        cell.backgroundColor = [UIColor whiteColor];
     }
     // Configure the cell...
     cell.textLabel.text = self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"];
@@ -129,16 +134,19 @@
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Acerca de"]){
+    if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"About us"]){
         AboutViewController *about = [AboutViewController new];
         [[self navigationController] pushViewController:about animated:YES];
         
-    }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Politica de privacidad"]){
+    }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Privacy"]){
+        PrivacyViewController *privacy = [PrivacyViewController new];
+        [[self navigationController] pushViewController:privacy animated:YES];
+    }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Help"]){
         PrivacyViewController *privacy = [PrivacyViewController new];
         [[self navigationController] pushViewController:privacy animated:YES];
     }else{
-        FAQTableViewController *faq = [[FAQTableViewController alloc] initWithNibName:@"faq_style_1" bundle:nil];
-        [[self navigationController] pushViewController:faq animated:YES];
+        VideoViewController *video = [VideoViewController new];
+        [[self navigationController] pushViewController:video animated:YES];
 
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

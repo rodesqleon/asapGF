@@ -21,7 +21,7 @@
     
     if (self) {
         // Custom initialization
-        self.title = NSLocalizedString(@"POLITICA DE PRIVACIDAD",@"settings header");
+        self.title = NSLocalizedString(@"Privacy",@"settings header");
     }
     return self;
 }

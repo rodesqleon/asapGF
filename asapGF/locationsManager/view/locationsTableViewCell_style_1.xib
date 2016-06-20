@@ -16,30 +16,43 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Qe-va-MVM">
-                        <rect key="frame" x="8" y="8" width="304" height="75"/>
+                        <rect key="frame" x="8" y="8" width="304" height="57"/>
                         <string key="text">title recipe // title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //title recipe //</string>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-zP-dMT">
-                        <rect key="frame" x="8" y="83" width="40" height="18"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o6D-zP-dMT">
+                        <rect key="frame" x="8" y="79" width="304" height="30"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="10"/>
                         <color key="textColor" red="0.27058823529999998" green="0.27058823529999998" blue="0.27058823529999998" alpha="0.80000000000000004" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-Px-6X4">
+                        <rect key="frame" x="8" y="73" width="304" height="9"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="8"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="top" secondItem="C7j-Yd-3Zc" secondAttribute="topMargin" id="424-sZ-jFC"/>
+                    <constraint firstItem="S3P-Px-6X4" firstAttribute="top" secondItem="9Qe-va-MVM" secondAttribute="bottom" constant="8" id="4Yt-Pq-kz6"/>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="trailing" secondItem="C7j-Yd-3Zc" secondAttribute="trailingMargin" id="8Q8-8I-w4f"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="S3P-Px-6X4" secondAttribute="bottom" constant="19" id="9nG-4R-8vz"/>
+                    <constraint firstItem="S3P-Px-6X4" firstAttribute="trailing" secondItem="C7j-Yd-3Zc" secondAttribute="trailingMargin" id="NcE-ni-0wX"/>
+                    <constraint firstItem="o6D-zP-dMT" firstAttribute="bottom" secondItem="C7j-Yd-3Zc" secondAttribute="bottomMargin" constant="8" id="PKF-dK-FEA"/>
                     <constraint firstItem="o6D-zP-dMT" firstAttribute="leading" secondItem="C7j-Yd-3Zc" secondAttribute="leadingMargin" id="WCx-zn-bh8"/>
                     <constraint firstItem="9Qe-va-MVM" firstAttribute="leading" secondItem="C7j-Yd-3Zc" secondAttribute="leadingMargin" id="Xee-tR-9GP"/>
-                    <constraint firstItem="o6D-zP-dMT" firstAttribute="top" secondItem="9Qe-va-MVM" secondAttribute="bottom" id="nJP-kd-fps"/>
-                    <constraint firstItem="9Qe-va-MVM" firstAttribute="bottom" secondItem="C7j-Yd-3Zc" secondAttribute="bottomMargin" constant="-18" id="pOt-yj-uxG"/>
+                    <constraint firstItem="o6D-zP-dMT" firstAttribute="trailing" secondItem="C7j-Yd-3Zc" secondAttribute="trailingMargin" id="aQi-p1-FnD"/>
+                    <constraint firstItem="o6D-zP-dMT" firstAttribute="top" secondItem="9Qe-va-MVM" secondAttribute="bottom" constant="14" id="nJP-kd-fps"/>
+                    <constraint firstItem="9Qe-va-MVM" firstAttribute="bottom" secondItem="C7j-Yd-3Zc" secondAttribute="bottomMargin" constant="-36" id="pOt-yj-uxG"/>
+                    <constraint firstItem="S3P-Px-6X4" firstAttribute="leading" secondItem="C7j-Yd-3Zc" secondAttribute="leadingMargin" id="sJh-Sv-Dlp"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
             <connections>
+                <outlet property="addresLbl" destination="S3P-Px-6X4" id="8YG-ko-mxZ"/>
                 <outlet property="locationDescription" destination="o6D-zP-dMT" id="6Ld-Xc-1kM"/>
                 <outlet property="locationTitle" destination="9Qe-va-MVM" id="lIs-bs-7dc"/>
             </connections>

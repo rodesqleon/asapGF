@@ -42,7 +42,7 @@
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
     self.title = self.recipes[@"name"];
-    self.recipeDescription = self.recipes[@"description"];
+    self.recipeDescription.text = self.recipes[@"description"];
     [self.recipeImage sd_setImageWithURL:[NSURL URLWithString:self.recipes[@"image"]]
                         placeholderImage:[UIImage imageNamed:@"noImgHolder"]];
 }

@@ -123,7 +123,7 @@
     
     cell.recipeName.text = info[@"name"];
     
-    NSLog(@"%@", info[@"image"]);
+    NSLog(@"%@", info[@"description"]);
     
 
     [cell.recipeImage sd_setImageWithURL:[NSURL URLWithString:info[@"image"]]
