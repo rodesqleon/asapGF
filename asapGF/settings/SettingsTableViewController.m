@@ -142,11 +142,14 @@
         PrivacyViewController *privacy = [PrivacyViewController new];
         [[self navigationController] pushViewController:privacy animated:YES];
     }else if([self.adjustmentsSettingOptions[indexPath.section][@"options"][indexPath.row][@"name"] isEqualToString:@"Help"]){
-        PrivacyViewController *privacy = [PrivacyViewController new];
-        [[self navigationController] pushViewController:privacy animated:YES];
+        FAQTableViewController *faq = [[FAQTableViewController alloc] initWithNibName:@"faq_style_1" bundle:nil];
+        [[self navigationController] pushViewController:faq animated:YES];
     }else{
-        VideoViewController *video = [VideoViewController new];
-        [[self navigationController] pushViewController:video animated:YES];
+        //VideoViewController *video = [VideoViewController new];
+        //[[self navigationController] pushViewController:video animated:YES];
+        FAQTableViewController *faq = [[FAQTableViewController alloc] initWithNibName:@"faq_style_1" bundle:nil];
+        [[self navigationController] pushViewController:faq animated:YES];
+
 
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
