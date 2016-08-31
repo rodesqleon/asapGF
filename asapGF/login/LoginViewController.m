@@ -5,7 +5,7 @@
 //  Created by Rodrigo Esquivel on 02-04-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
-#import "ModalSpinnerViewController.h"
+
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInViewController.h"
@@ -14,6 +14,8 @@
 #import "PresentationWizardViewController.h"
 @interface LoginViewController ()
 @property (nonatomic) NSDictionary *loginDict;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 @end
 
 @implementation LoginViewController
@@ -51,6 +53,7 @@
     self.password_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     self.userName_textField.layer.cornerRadius = 10.0;
     self.password_textField.layer.cornerRadius = 10.0;
+    [self.activityIndicatorView stopAnimating];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,10 +64,9 @@
 #pragma login_btn_action
 
 -(IBAction)login:(id)sender{
-    [ModalSpinnerViewController showModalSpinner];
+    [self.activityIndicatorView startAnimating];
     /*VALIDATION PASSWORD TEXT FIELD*/
     if([self.password_textField.text isEqualToString:@""] || [self.userName_textField.text isEqualToString:@""]){
-        [ModalSpinnerViewController dismissModalSpinner];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
                                                         message:@"Incorrect username, please try again."
                                                        delegate:nil
@@ -72,7 +74,7 @@
                                               otherButtonTitles:nil];
         [alert show];
     }else{
-        [ModalSpinnerViewController dismissModalSpinner];
+        
         NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
         
         if ([self.userName_textField.text rangeOfCharacterFromSet:set].location != NSNotFound) {
@@ -83,6 +85,7 @@
                                                  otherButtonTitles:nil];
             [alert show];
         }else{
+        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
             NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
             NSString *callB = [callA stringByAppendingString:@"&pwd="];
@@ -93,8 +96,9 @@
         
             NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
             self.loginDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-        
-            [self didLogin];
+            
+            [self performSelector:@selector(didLogin) withObject:nil afterDelay:1.0];
+        }];
         }
     }
     
@@ -102,7 +106,7 @@
 }
 
 -(void)didLogin{
-    [ModalSpinnerViewController dismissModalSpinner];
+    
     NSLog(@"Status: %@", self.loginDict[@"status"]);
     if([self.loginDict[@"status"] isEqualToString:@"OK"]){
         if([[self.loginDict valueForKey:@"info"] count] > 0){
@@ -120,6 +124,7 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 [alert show];
+                [self.activityIndicatorView stopAnimating];
                 NSLog(@"Incorrect username, please try again.");
             }
         }else{
@@ -129,17 +134,23 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
-            
+            [self.activityIndicatorView stopAnimating];
             NSLog(@"Username doesn't exist, please sign in.");
         }
         
     }else{
-        HomeViewController *homeView = [[HomeViewController alloc]
-                                        initWithNibName:@"dashboard_style_1" bundle:nil];
-        [[self navigationController] pushViewController:homeView animated:YES];
+        
+        [self performSelector:@selector(goToHome) withObject:nil afterDelay:1.0];
+        
     }
 }
 
+- (void) goToHome{
+    [self.activityIndicatorView stopAnimating];
+    HomeViewController *homeView = [[HomeViewController alloc]
+                                    initWithNibName:@"dashboard_style_1" bundle:nil];
+    [[self navigationController] pushViewController:homeView animated:YES];
+}
 -(IBAction)signin:(id)sender{
     SignInViewController *signView = [[SignInViewController alloc] initWithNibName:@"signInView_style_1" bundle:nil];
     [[self navigationController] pushViewController:signView animated:YES];

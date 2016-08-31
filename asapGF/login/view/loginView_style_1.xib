@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
+                <outlet property="activityIndicatorView" destination="gaC-8P-08a" id="ylP-De-g9i"/>
                 <outlet property="logIn_btn" destination="1xW-ck-Ccz" id="Xbh-DV-kYh"/>
                 <outlet property="password_textField" destination="1cJ-Ek-A8d" id="3pX-MR-yH3"/>
                 <outlet property="signIn_btn" destination="anD-eL-6tW" id="yA9-RU-aOH"/>
@@ -119,6 +120,10 @@
                         <action selector="backToWelcomeScreen:" destination="-1" eventType="touchUpInside" id="gOy-mG-8fQ"/>
                     </connections>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gaC-8P-08a">
+                    <rect key="frame" x="142" y="265" width="37" height="37"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
@@ -128,6 +133,7 @@
                 <constraint firstItem="xwo-Py-6pI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="El7-rH-I0k"/>
                 <constraint firstAttribute="bottom" secondItem="xwo-Py-6pI" secondAttribute="bottom" constant="8" id="FTx-VE-WvQ"/>
                 <constraint firstItem="1xW-ck-Ccz" firstAttribute="centerX" secondItem="8Lb-T9-c9J" secondAttribute="centerX" id="JTx-of-olo"/>
+                <constraint firstItem="gaC-8P-08a" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ki5-4Y-8dt"/>
                 <constraint firstItem="2oj-fp-W4M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="94" id="NVY-q1-27t"/>
                 <constraint firstItem="JGy-5k-8of" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="S17-BH-QF0"/>
                 <constraint firstAttribute="bottom" secondItem="anD-eL-6tW" secondAttribute="bottom" constant="8" id="Sdj-dD-pya"/>
@@ -141,6 +147,7 @@
                 <constraint firstItem="8Lb-T9-c9J" firstAttribute="width" secondItem="JGy-5k-8of" secondAttribute="width" id="lT0-Ge-BHZ"/>
                 <constraint firstItem="2oj-fp-W4M" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-116.5" id="qLw-SS-wwR"/>
                 <constraint firstItem="8Lb-T9-c9J" firstAttribute="height" secondItem="JGy-5k-8of" secondAttribute="height" id="tzk-af-UvX"/>
+                <constraint firstItem="gaC-8P-08a" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="vr3-SB-wzr"/>
             </constraints>
             <point key="canvasLocation" x="157" y="357"/>
         </view>

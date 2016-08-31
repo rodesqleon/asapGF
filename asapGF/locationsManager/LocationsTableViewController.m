@@ -9,10 +9,13 @@
 #import "LocationsTableViewCell.h"
 #import "LocationsTableViewController.h"
 
+
 @interface LocationsTableViewController ()
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (weak, nonatomic) IBOutlet UITableView *locationsTableView;
 @property (nonatomic) NSDictionary *wsResponse;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 
 @end
 
@@ -56,8 +59,24 @@
     self.container.layer.cornerRadius = 40.0;
     self.container.layer.borderWidth = 1;
     self.container.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-
-    [self loadLocations];
+    if(self.wsResponse){
+    
+    }else{
+    [self.activityIndicatorView startAnimating];
+    
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No locations to show";
+        messageLabel.textColor = [UIColor grayColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Avenir-Thin" size:20];
+        [messageLabel sizeToFit];
+        
+        self.locationsTableView.backgroundView = messageLabel;
+        self.locationsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self performSelector:@selector(loadLocations) withObject:nil afterDelay:1.0];
+    }
 }
 
 - (void)loadLocations{
@@ -71,11 +90,11 @@
     NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
     
     self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    
-    [self didReloadData];
+    [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
 }
 
 - (void)didReloadData{
+    [self.activityIndicatorView stopAnimating];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
         self.locations = self.wsResponse[@"info"];
         NSLog(@"%@", self.locations);

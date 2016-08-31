@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocationsTableViewController">
             <connections>
+                <outlet property="activityIndicatorView" destination="TJv-GB-p91" id="jur-Zz-qwN"/>
                 <outlet property="container" destination="4vm-Z8-HBc" id="ZOp-NR-N3u"/>
                 <outlet property="locationsTableView" destination="XeY-xK-yQn" id="EVU-U6-5s2"/>
                 <outlet property="view" destination="iN0-l3-epB" id="HKI-z8-vAm"/>
@@ -20,7 +21,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vm-Z8-HBc">
                     <rect key="frame" x="80" y="27" width="160" height="80"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="dash_maps" translatesAutoresizingMaskIntoConstraints="NO" id="F0t-q3-cF9">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dash_maps" translatesAutoresizingMaskIntoConstraints="NO" id="F0t-q3-cF9">
                             <rect key="frame" x="66" y="20" width="29" height="40"/>
                         </imageView>
                     </subviews>
@@ -56,12 +57,18 @@
                         <constraint firstItem="Ykt-9m-BCH" firstAttribute="centerY" secondItem="aKl-CP-B5k" secondAttribute="centerY" id="sC6-EL-MF2"/>
                     </constraints>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="TJv-GB-p91">
+                    <rect key="frame" x="142" y="265" width="37" height="37"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="XeY-xK-yQn" firstAttribute="top" secondItem="aKl-CP-B5k" secondAttribute="bottom" id="4H5-k0-Vz7"/>
                 <constraint firstItem="aKl-CP-B5k" firstAttribute="top" secondItem="4vm-Z8-HBc" secondAttribute="bottom" constant="37" id="4k0-pr-33X"/>
+                <constraint firstItem="TJv-GB-p91" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="8dj-Cy-5ff"/>
                 <constraint firstAttribute="bottom" secondItem="XeY-xK-yQn" secondAttribute="bottom" id="DJQ-dL-EcB"/>
+                <constraint firstItem="TJv-GB-p91" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EWG-tv-Nor"/>
                 <constraint firstItem="4vm-Z8-HBc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="Pll-J3-EM2"/>
                 <constraint firstItem="aKl-CP-B5k" firstAttribute="centerX" secondItem="4vm-Z8-HBc" secondAttribute="centerX" id="a4x-9a-jwf"/>
                 <constraint firstAttribute="trailing" secondItem="4vm-Z8-HBc" secondAttribute="trailing" constant="80" id="aSP-3f-AbM"/>

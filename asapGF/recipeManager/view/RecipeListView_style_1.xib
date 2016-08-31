@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RecipeListTableViewController">
             <connections>
+                <outlet property="activityIndicatorView" destination="ZzY-jK-b0a" id="qHs-6s-BAb"/>
                 <outlet property="container" destination="aII-ct-CRF" id="KR4-0w-AXO"/>
                 <outlet property="recipeTableView" destination="ADA-Gk-BoN" id="aPg-vZ-BXE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2oY-kY-CRe"/>
@@ -55,14 +56,20 @@
                         <constraint firstItem="Dae-6G-e8C" firstAttribute="centerX" secondItem="2uo-8V-dzq" secondAttribute="centerX" id="qEz-2d-RUL"/>
                     </constraints>
                 </view>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ZzY-jK-b0a">
+                    <rect key="frame" x="142" y="266" width="37" height="37"/>
+                    <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="aII-ct-CRF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="80" id="2Xk-3a-t3v"/>
+                <constraint firstItem="ZzY-jK-b0a" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="DY9-dd-RJf"/>
                 <constraint firstItem="ADA-Gk-BoN" firstAttribute="top" secondItem="2uo-8V-dzq" secondAttribute="bottom" id="N1D-pa-Xwa"/>
                 <constraint firstItem="ADA-Gk-BoN" firstAttribute="top" secondItem="aII-ct-CRF" secondAttribute="bottom" constant="70" id="N7j-E8-PNC"/>
                 <constraint firstAttribute="trailing" secondItem="ADA-Gk-BoN" secondAttribute="trailing" id="Pkf-Aq-Hlk"/>
                 <constraint firstItem="aII-ct-CRF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="27" id="Pn8-hC-rVD"/>
+                <constraint firstItem="ZzY-jK-b0a" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="TQU-Ev-hfC"/>
                 <constraint firstItem="2uo-8V-dzq" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="YCj-Ps-VWg"/>
                 <constraint firstAttribute="bottom" secondItem="ADA-Gk-BoN" secondAttribute="bottom" id="ige-Nc-D3g"/>
                 <constraint firstAttribute="trailing" secondItem="aII-ct-CRF" secondAttribute="trailing" constant="80" id="iyv-A4-a3d"/>

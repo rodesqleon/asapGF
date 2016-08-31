@@ -14,6 +14,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *recipeTableView;
 @property (weak, nonatomic) IBOutlet UIView *container;
 @property (nonatomic) NSDictionary *wsResponse;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 
 @end
 
@@ -48,7 +50,25 @@
     self.container.layer.cornerRadius = 40.0;
     self.container.layer.borderWidth = 1;
     self.container.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    [self loadRecipe];
+    if(self.wsResponse){
+    
+    }else{
+        [self.activityIndicatorView startAnimating];
+        
+        UILabel *messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+        
+        messageLabel.text = @"No recipes to show";
+        messageLabel.textColor = [UIColor grayColor];
+        messageLabel.numberOfLines = 0;
+        messageLabel.textAlignment = NSTextAlignmentCenter;
+        messageLabel.font = [UIFont fontWithName:@"Avenir-Thin" size:20];
+        [messageLabel sizeToFit];
+        
+        self.recipeTableView.backgroundView = messageLabel;
+        self.recipeTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [self performSelector:@selector(loadRecipe) withObject:nil afterDelay:1.0];
+    }
+    
 }
 
 
@@ -69,7 +89,7 @@
     
     self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
     
-    [self didReloadData];
+    [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
 }
 
 - (IBAction)reloadAction:(UIButton *)sender {
@@ -89,6 +109,7 @@
 }
 
 - (void)didReloadData{
+    [self.activityIndicatorView stopAnimating];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
         self.recipes = self.wsResponse[@"info"];
         

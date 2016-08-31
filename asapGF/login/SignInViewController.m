@@ -9,13 +9,14 @@
 #import "SignInViewController.h"
 
 @interface SignInViewController ()
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (weak, nonatomic) IBOutlet UITextField *userName_textField;
 @property (weak, nonatomic) IBOutlet UITextField *email_textField;
 @property (weak, nonatomic) IBOutlet UITextField *password_textField;
 @property (weak, nonatomic) IBOutlet UIView *condition_btn;
 @property (nonatomic, strong) IBOutlet UINavigationItem *navEng;
 @property (weak, nonatomic) IBOutlet UIButton *signInBtn;
-
+@property (nonatomic) NSDictionary *dict;
 @end
 
 @implementation SignInViewController
@@ -99,31 +100,44 @@
         
         NSData *response = [NSURLConnection sendSynchronousRequest:request
                                                  returningResponse:nil error:nil];
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+        self.dict = [NSDictionary new];
+        self.dict = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
         
-        if([dict[@"status"] isEqualToString:@"OK"]){
-            NSLog(@"Status: %@", dict[@"status"]);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                            message:dict[@"msg"]
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-            LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
-            [[self navigationController] pushViewController:loginView animated:YES];
-        }else{
-            NSLog(@"Status: %@", dict[@"status"]);
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                            message:@"Error. Please try again."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-            
-        }
-        
+        [self.activityIndicatorView startAnimating];
+        [self performSelector:@selector(didSignIn) withObject:nil afterDelay:5.0];
     }
     
+}
+
+- (void)didSignIn{
+    
+    if([self.dict[@"status"] isEqualToString:@"OK"]){
+        NSLog(@"Status: %@", self.dict[@"status"]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
+                                                        message:self.dict[@"msg"]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [self.activityIndicatorView stopAnimating];
+        [self performSelector:@selector(goToHome) withObject:nil afterDelay:5.0];
+        
+    }else{
+        NSLog(@"Status: %@", self.dict[@"status"]);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
+                                                        message:@"Error. Please try again."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [self.activityIndicatorView stopAnimating];
+    }
+
+}
+
+- (void)goToHome{
+    LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
+    [[self navigationController] pushViewController:loginView animated:YES];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
