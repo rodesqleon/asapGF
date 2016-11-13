@@ -7,17 +7,19 @@
 
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
 	// Get data
-	$name = isset($_POST['name']) ? mysql_real_escape_string($_POST['name']) : "";
 	$codebar = isset($_POST['codebar']) ? mysql_real_escape_string($_POST['codebar']) : "";
-	$description = isset($_POST['description']) ? mysql_real_escape_string($_POST['description']) : "";
+	$validation = isset($_POST['validation']) ? mysql_real_escape_string($_POST['validation']) : "";
+
+	$intValidation = (int)$validation + 1;
+	$validation = (string)$intValidation;
 
 	// Insert data into data base
-	$sql = "INSERT INTO `products` (`id`, `name`, `codebar`, `description`, `validation`) VALUES (NULL, '$name', '$codebar', '$description', 1);";
+	$sql = "UPDATE `products` SET `validation`='$validation' where `codebar`='$codebar';";
 	$qur = mysql_query($sql);
 		if($qur){
-			$json = array("status" => "OK", "msg" => "Product added successfull!");
+			$json = array("status" => "OK", "msg" => "Request successfull!");
 		}else{
-			$json = array("status" => "NOK", "msg" => "Error occur adding user!");
+			$json = array("status" => "NOK", "msg" => "Error ocurr sending the request!");
 		}
 	}else{
 		$json = array("status" => "NOK", "msg" => "Request method not accepted");

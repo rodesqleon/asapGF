@@ -8,11 +8,11 @@
 	$codebar = isset($_GET['codebar']) ? mysql_real_escape_string($_GET['codebar']) :  "";
 	
 	if(!empty($codebar)){
-	 $qur = mysql_query("select id, name, description from `products` where codebar='$codebar' and validation='5'");
+	 $qur = mysql_query("select validation from `products` where codebar='$codebar'");
 	 $result =array();
 		while($r = mysql_fetch_array($qur)){
 		 extract($r);
-		 $result[] = array("id" => $id,"name" => $name, "description" => $description); 
+		 $result[] = array("validation" => $validation); 
 
 		}
 	$validateArray = array();
@@ -23,7 +23,7 @@
 		 	$json = array("status" => "OK", "info" => $result);
 		 }
 	}else{
-	 $json = array("status" => "NOK", "msg" => "Product doesn' exist");
+	 	$json = array("status" => "NOK", "msg" => "Product doesn' exist");
 	}
 	 @mysql_close($conn);
 	 
@@ -33,5 +33,4 @@
 
 	//Close connection
 	$connection->closeConnection();
-
 ?>
