@@ -8,7 +8,7 @@
 	$codebar = isset($_GET['codebar']) ? mysql_real_escape_string($_GET['codebar']) :  "";
 	
 	if(!empty($codebar)){
-	 $qur = mysql_query("select id, name, description from `products` where codebar='$codebar' and validation='5'");
+	 $qur = mysql_query("select id, name, description from `products` where codebar='$codebar'");
 	 $result =array();
 		while($r = mysql_fetch_array($qur)){
 		 extract($r);

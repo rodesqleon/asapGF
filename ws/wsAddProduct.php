@@ -12,7 +12,7 @@
 	$description = isset($_POST['description']) ? mysql_real_escape_string($_POST['description']) : "";
 
 	// Insert data into data base
-	$sql = "INSERT INTO `products` (`id`, `name`, `codebar`, `description`, `validation`) VALUES (NULL, '$name', '$codebar', '$description', 1);";
+	$sql = "INSERT INTO `products` (`id`, `name`, `codebar`, `description`) VALUES (NULL, '$name', '$codebar', '$description');";
 	$qur = mysql_query($sql);
 		if($qur){
 			$json = array("status" => "OK", "msg" => "Product added successfull!");
