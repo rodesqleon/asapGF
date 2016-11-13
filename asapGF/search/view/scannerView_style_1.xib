@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,7 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanController">
             <connections>
+                <outlet property="activityIndicatorView" destination="2Vw-Dt-c8k" id="O9H-gm-v0C"/>
                 <outlet property="camPreviewView" destination="Bzy-Ku-Pbc" id="7H2-eB-N9c"/>
+                <outlet property="indicator" destination="2Vw-Dt-c8k" id="PjH-zL-wKx"/>
                 <outlet property="view" destination="iN0-l3-epB" id="FcP-je-jJl"/>
             </connections>
         </placeholder>
@@ -27,7 +29,17 @@
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bzy-Ku-Pbc" userLabel="Camera Preview View">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2Vw-Dt-c8k">
+                            <rect key="frame" x="142" y="266" width="37" height="37"/>
+                            <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="2Vw-Dt-c8k" firstAttribute="centerY" secondItem="Bzy-Ku-Pbc" secondAttribute="centerY" id="HJv-Nh-u6E"/>
+                        <constraint firstItem="2Vw-Dt-c8k" firstAttribute="centerX" secondItem="Bzy-Ku-Pbc" secondAttribute="centerX" id="Xvt-sC-WD5"/>
+                    </constraints>
                 </view>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx2-Jj-l0o">
                     <rect key="frame" x="247" y="414" width="69" height="60"/>

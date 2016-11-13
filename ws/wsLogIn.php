@@ -22,6 +22,7 @@
 	 @mysql_close($conn);
 	 
 	 /* Output header */
+	 header('Access-Control-Allow-Origin: *');
 	 header('Content-type: application/json');
 	 echo json_encode($json);
 

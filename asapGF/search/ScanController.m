@@ -22,6 +22,8 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic) NSDictionary *wsResponse;
 @property (weak, nonatomic) IBOutlet UILabel *productBarCode;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 
 @end
 
@@ -110,9 +112,11 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     // Layer that will display what the camera is capturing.
     self.captureLayer = [[AVCaptureVideoPreviewLayer alloc] initWithSession:self.captureSession];
     [self.captureLayer setVideoGravity:AVLayerVideoGravityResizeAspectFill];
-    [self.captureLayer setFrame:self.camPreviewView.bounds];
+    [self.captureLayer setFrame:CGRectMake(0, 0, [UIScreen mainScreen].applicationFrame.size.width, [UIScreen mainScreen].applicationFrame.size.height)];
     // Adding the camera AVCaptureVideoPreviewLayer to our view's layer.
     [self.camPreviewView.layer addSublayer:self.captureLayer];
+    
+    
     
 }
 
@@ -172,24 +176,28 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 }
 
 -(void)doSearchCode:(NSString *)barcode{
-    
+    [self.activityIndicatorView startAnimating];
     //Load the json on another thread
-    NSString *ws = @"http://always420.cl/wsValidateCode.php?codebar=";
-    NSString *call = [ws stringByAppendingString:barcode];
-    NSURL *url = [NSURL URLWithString:call];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    
-    [self didScanCode];
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.view addSubview:self.activityIndicatorView];
+        NSString *ws = @"http://always420.cl/wsValidateCode.php?codebar=";
+        NSString *call = [ws stringByAppendingString:barcode];
+        NSURL *url = [NSURL URLWithString:call];
+        NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        
+        NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        
+        self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [self performSelector:@selector(didScanCode) withObject:nil afterDelay:1.0];
+
+    }];
+       
+    //[self performSelector:@selector(didScanCode) withObject:nil afterDelay:0];
 
 }
 
 -(void)didScanCode{
-    [ModalSpinnerViewController dismissModalSpinner];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
@@ -198,7 +206,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-
         NSLog(@"Gluten free");
     }];
     }else{
@@ -209,10 +216,11 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-
+        
         NSLog(@"Contains gluten");
     }];
     }
+    [self.activityIndicatorView stopAnimating];
 }
 
 - (void)doAddProduct:(NSString *)barcode{
@@ -244,7 +252,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 }
 
 - (void)didAddProduct{
-    [ModalSpinnerViewController dismissModalSpinner];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
@@ -298,7 +305,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 }
 
 - (void)didUpdateProduct{
-    [ModalSpinnerViewController dismissModalSpinner];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
@@ -307,7 +313,6 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        
         NSLog(@"Product updated");
     }];
     }else{
