@@ -21,14 +21,13 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 @property (nonatomic, strong) AVCaptureVideoPreviewLayer *captureLayer;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic) NSDictionary *wsResponse;
-@property (weak, nonatomic) IBOutlet UILabel *productBarCode;
 @property (nonatomic,strong) UIActivityIndicatorView *activityIndicatorView;
 
 
 //NSURL HTTP REQUEST VAR
 @property (nonatomic) NSData *responseData;
 @property (nonatomic) NSURLResponse *response;
-@property (nonatomic) UIAlertView *myAlertView;
+@property (nonatomic) NSString *productBarcode;
 
 
 @end
@@ -169,11 +168,10 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
                 
                 
                 //dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                    self.productBarCode.text = capturedBarcode;
                     if([self.selectedOption isEqualToString:@"SEARCH_PRODUCT"]){
                         [self doSearchCode:capturedBarcode];
                     }else if([self.selectedOption isEqualToString:@"ADD_PRODUCT"]){
-                        [self doAddProduct:capturedBarcode];
+                        [self checkValidationProductByBarcode:capturedBarcode];
                     }else if([self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
                         [self doUpdateProduct:capturedBarcode];
                     }else if([self.selectedOption isEqualToString:@"DELETE_PRODUCT"]){
@@ -274,9 +272,67 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 
 }
 
+- (void)checkValidationProductByBarcode:(NSString *)barcode{
+    self.selectedOption = @"CHECK_VALIDATION_PRODUCT";
+    [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        self.activityIndicatorView.hidden = NO;
+        [self.activityIndicatorView startAnimating];
+        self.productBarcode = barcode;
+        NSString *ws = @"http://always420.cl/wsProductValid.php?codebar=";
+        NSString *call = [ws stringByAppendingString:barcode];
+        NSURL *url = [NSURL URLWithString:call];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                           timeoutInterval:60];
+        //NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        
+        //NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        
+        //self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        //[self performSelector:@selector(didScanCode) withObject:nil afterDelay:1.0];
+        [NSURLConnection connectionWithRequest:request delegate:self];
+    }];
+}
+
+- (void)gotValidationProduct{
+    if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+        NSDictionary *validation = [[self.wsResponse valueForKey:@"info"] objectAtIndex:0];
+        [self addProductWithBarcode:self.productBarcode Validation:validation[@"validation"]];
+    }else{
+        [self doAddProduct:self.productBarcode];
+    }
+
+}
+
+- (void)addProductWithBarcode:(NSString *)barcode Validation:(NSString *)validation{
+    NSString *var0 = @"codebar=";
+    NSString *var1 = [var0 stringByAppendingString:barcode];
+    NSString *var2 = [var1 stringByAppendingString:@"&validation="];
+    NSString *post = [var2 stringByAppendingString:validation];
+    
+    NSData *postData = [post dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    
+    NSString *postLength = [NSString stringWithFormat:@"%d", [postData length]];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:@"http://always420.cl/wsAddProductValid.php"]];
+    [request setHTTPMethod:@"POST"];
+    [request setValue:postLength forHTTPHeaderField:@"Content-Length"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+    [request setHTTPBody:postData];
+    
+    NSData *response = [NSURLConnection sendSynchronousRequest:request
+                                             returningResponse:nil error:nil];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:response options:0 error:nil];
+    [self didAddProduct];
+}
+
 - (void)didAddProduct{
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.activityIndicatorView stopAnimating];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
                                                         message:@"Producto añadido satisfactoriamente"
                                                        delegate:nil
@@ -288,6 +344,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     }];
     }else{
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.activityIndicatorView stopAnimating];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Product Manager"
                                                         message:@"Ups! El producto no se ha añadido"
                                                        delegate:nil
@@ -440,7 +497,17 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     self.wsResponse = [NSJSONSerialization JSONObjectWithData:objectData
                                                      options:NSJSONReadingMutableContainers
                                                        error:nil];
-    [self didScanCode];
+    if([self.selectedOption isEqualToString:@"SEARCH_PRODUCT"]){
+        [self didScanCode];
+    }else if([self.selectedOption isEqualToString:@"ADD_PRODUCT"]){
+        [self didAddProduct];
+    }else if([self.selectedOption isEqualToString:@"UPDATE_PRODUCT"]){
+        [self didUpdateProduct];
+    }else if([self.selectedOption isEqualToString:@"DELETE_PRODUCT"]){
+        [self didDeleteProduct];
+    }else if([self.selectedOption isEqualToString:@"CHECK_VALIDATION_PRODUCT"]){
+        [self gotValidationProduct];
+    }
     NSLog(@"RODRIGO => DATA : %@", s);
     
 }
