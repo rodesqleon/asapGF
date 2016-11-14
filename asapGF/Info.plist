@@ -27,6 +27,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>ASAP GF use camera for codebar scanner</string>
 	<key>UILaunchStoryboardName</key>
 	<string>loginView_style_1</string>
 	<key>UIRequiredDeviceCapabilities</key>

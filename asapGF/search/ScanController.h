@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScanController : UIViewController <UITextFieldDelegate>
+@interface ScanController : UIViewController <UITextFieldDelegate,NSURLConnectionDelegate>
 @property (nonatomic) NSString *selectedOption;
 @property (nonatomic) NSString *productName;
 @property (nonatomic) NSString *productDescription;

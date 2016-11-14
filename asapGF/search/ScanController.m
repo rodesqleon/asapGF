@@ -22,7 +22,13 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 @property (nonatomic) NSDictionary *wsResponse;
 @property (weak, nonatomic) IBOutlet UILabel *productBarCode;
-@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+@property (nonatomic,strong) UIActivityIndicatorView *activityIndicatorView;
+
+
+//NSURL HTTP REQUEST VAR
+@property (nonatomic) NSData *responseData;
+@property (nonatomic) NSURLResponse *response;
+@property (nonatomic) UIAlertView *myAlertView;
 
 
 @end
@@ -44,6 +50,10 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupScanningSession];
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    UIBarButtonItem * barButton = [[UIBarButtonItem alloc] initWithCustomView:self.activityIndicatorView];
+    [self navigationItem].rightBarButtonItem = barButton;
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -58,6 +68,12 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    self.activityIndicatorView = [[UIActivityIndicatorView alloc]
+                              initWithActivityIndicatorStyle: UIActivityIndicatorViewStyleGray];
+    // I've tried Gray, White, and WhiteLarge
+    self.activityIndicatorView.hidden = YES;
+    UIBarButtonItem* spinner = [[UIBarButtonItem alloc] initWithCustomView: self.activityIndicatorView];
+    self.navigationItem.rightBarButtonItem = spinner;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -164,6 +180,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
                         [self doDeleteProduct:capturedBarcode];
                     }
                     [self.captureSession stopRunning];
+                
                 //});
                 
                 
@@ -173,24 +190,28 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
             }
         }
     }
+    
 }
 
 -(void)doSearchCode:(NSString *)barcode{
-    [self.activityIndicatorView startAnimating];
     //Load the json on another thread
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-        [self.view addSubview:self.activityIndicatorView];
+        self.activityIndicatorView.hidden = NO;
+        [self.activityIndicatorView startAnimating];
         NSString *ws = @"http://always420.cl/wsValidateCode.php?codebar=";
         NSString *call = [ws stringByAppendingString:barcode];
         NSURL *url = [NSURL URLWithString:call];
-        NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                           timeoutInterval:60];
+        //NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
         
         
-        NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        //NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
         
-        self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-        [self performSelector:@selector(didScanCode) withObject:nil afterDelay:1.0];
-
+        //self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        //[self performSelector:@selector(didScanCode) withObject:nil afterDelay:1.0];
+        [NSURLConnection connectionWithRequest:request delegate:self];
     }];
        
     //[self performSelector:@selector(didScanCode) withObject:nil afterDelay:0];
@@ -200,6 +221,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
 -(void)didScanCode{
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.activityIndicatorView stopAnimating];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
                                                         message:@"Gluten free"
                                                        delegate:nil
@@ -210,6 +232,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     }];
     }else{
     [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        [self.activityIndicatorView stopAnimating];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Validation"
                                                         message:@"Product not registered gluten free"
                                                        delegate:nil
@@ -220,7 +243,7 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
         NSLog(@"Contains gluten");
     }];
     }
-    [self.activityIndicatorView stopAnimating];
+    
 }
 
 - (void)doAddProduct:(NSString *)barcode{
@@ -378,6 +401,51 @@ NSString *const kDeleteOption = @"DELETE_PRODUCT";
     }];
     }
 }
+
+//Delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"RODRIGOE => DATA : %@", response);
+    self.response = response;
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"RODRIGOE => DATA : %@", data);
+    self.responseData = data;
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    NSLog(@"Connection failed with error: %@", [error localizedDescription]);
+    
+    
+    UIAlertView *ConnectionFailed = [[UIAlertView alloc]
+                                     initWithTitle:@"Connection Failed"
+                                     message: [NSString stringWithFormat:@"%@", [error localizedDescription]]
+                                     delegate:self
+                                     cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil];
+    [ConnectionFailed show];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *s = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
+    self.wsResponse  = [NSMutableDictionary new];
+    NSData *objectData = [s dataUsingEncoding:NSUTF8StringEncoding];
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:objectData
+                                                     options:NSJSONReadingMutableContainers
+                                                       error:nil];
+    [self didScanCode];
+    NSLog(@"RODRIGO => DATA : %@", s);
+    
+}
+
+
 
 
 

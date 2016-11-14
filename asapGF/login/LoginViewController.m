@@ -15,7 +15,9 @@
 @interface LoginViewController ()
 @property (nonatomic) NSDictionary *loginDict;
 @property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-
+//NSURL HTTP REQUEST VAR
+@property (nonatomic) NSData *responseData;
+@property (nonatomic) NSURLResponse *response;
 @end
 
 @implementation LoginViewController
@@ -54,6 +56,14 @@
     self.userName_textField.layer.cornerRadius = 10.0;
     self.password_textField.layer.cornerRadius = 10.0;
     [self.activityIndicatorView stopAnimating];
+    NSString *strWithURL = [NSString stringWithFormat:@""];
+    
+    strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"strConfirmChallenge=%@",strWithURL);
+    
+    NSURL *myURL = [NSURL URLWithString:strWithURL];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +74,6 @@
 #pragma login_btn_action
 
 -(IBAction)login:(id)sender{
-    [self.activityIndicatorView startAnimating];
     /*VALIDATION PASSWORD TEXT FIELD*/
     if([self.password_textField.text isEqualToString:@""] || [self.userName_textField.text isEqualToString:@""]){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
@@ -85,7 +94,7 @@
                                                  otherButtonTitles:nil];
             [alert show];
         }else{
-        [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        /*[[NSOperationQueue mainQueue] addOperationWithBlock:^{
             NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
             NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
             NSString *callB = [callA stringByAppendingString:@"&pwd="];
@@ -98,7 +107,18 @@
             self.loginDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
             
             [self performSelector:@selector(didLogin) withObject:nil afterDelay:1.0];
-        }];
+        }];*/
+            NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
+            NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
+            NSString *callB = [callA stringByAppendingString:@"&pwd="];
+            NSString *callC = [callB stringByAppendingString:self.password_textField.text];
+            NSURL *url = [NSURL URLWithString:callC];
+            
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                                   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                               timeoutInterval:60];
+            [self.activityIndicatorView startAnimating];
+            [NSURLConnection connectionWithRequest:request delegate:self];
         }
     }
     
@@ -182,14 +202,46 @@
     [super touchesBegan:touches withEvent:event];
 }
 
-/*
-#pragma mark - Navigation
+//Delegate methods
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"RODRIGOE => DATA : %@", response);
+    self.response = response;
+    
 }
-*/
 
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"RODRIGOE => DATA : %@", data);
+    self.responseData = data;
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    NSLog(@"Connection failed with error: %@", [error localizedDescription]);
+    
+    
+    UIAlertView *ConnectionFailed = [[UIAlertView alloc]
+                                     initWithTitle:@"Connection Failed"
+                                     message: [NSString stringWithFormat:@"%@", [error localizedDescription]]
+                                     delegate:self
+                                     cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil];
+    [ConnectionFailed show];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *s = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
+    self.loginDict  = [NSMutableDictionary new];
+    NSData *objectData = [s dataUsingEncoding:NSUTF8StringEncoding];
+    self.loginDict = [NSJSONSerialization JSONObjectWithData:objectData
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:nil];
+    [self didLogin];
+    NSLog(@"RODRIGO => DATA : %@", s);
+    
+}
 @end
