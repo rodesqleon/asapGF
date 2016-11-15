@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface LocationsTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic) NSArray *locations;
+@property (nonatomic) NSMutableArray *locations;
 
 +(NSString*) changeVCRequestedEvent;
 

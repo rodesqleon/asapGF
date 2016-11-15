@@ -73,6 +73,7 @@ static NSString*  const kLocationsGetLocationsList = @"wsLocations";
         [self refreshNewsList:NO];
     }*/
     
+    
     [self refreshNewsList:NO];
 
 }

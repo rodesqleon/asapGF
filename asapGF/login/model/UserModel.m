@@ -1,33 +1,35 @@
 //
-//  RecipeModel.m
+//  UserModel.m
 //  asapGF
 //
-//  Created by rodrigoe on 27-09-16.
+//  Created by Rodrigo Esquivel on 13-11-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
+#import "UserModel.h"
 
-#import "RecipeModel.h"
-
-@interface RecipeModel()
-
+@interface UserModel()
 @property (nonatomic) NSURL *modelFile;
-@property (nonatomic) NSMutableDictionary *recipeDictionary;
-
-
+@property (nonatomic) NSMutableDictionary *userInfo;
 @end
 
-@implementation RecipeModel
+@implementation UserModel
 
-static RecipeModel *_getInstance =nil;
+// 1 Declare a static variable to hold the instance of your class, ensuring it’s available globally inside your class.
+static UserModel *_getInstance =nil;
 
-+ (RecipeModel*)getInstance
+/*!
+ * @discussion Static method for getting a singleton instance.
+ * @param not required
+ * @return An unique instance of for this class.
+ */
++ (UserModel*)getInstance
 {
     // 2 Declare the static variable dispatch_once_t which ensures that the initialization code executes only once.
     static dispatch_once_t oncePredicate;
     
     // 3 Use Grand Central Dispatch (GCD) to execute a block which initializes an instance of this class.
     dispatch_once(&oncePredicate, ^{
-        _getInstance = [[RecipeModel alloc] initWithCachedData];
+        _getInstance = [[UserModel alloc] initWithCachedData];
         
     });
     
@@ -40,14 +42,14 @@ static RecipeModel *_getInstance =nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentDirectory = [fileManager URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     
-    modelFile = [documentDirectory URLByAppendingPathComponent:RecipeModel.modelFileName];
+    modelFile = [documentDirectory URLByAppendingPathComponent:UserModel.modelFileName];
     
     NSData *eventListData = [NSData dataWithContentsOfURL:modelFile options:NSDataReadingMappedIfSafe error:nil];
     
     if (!eventListData) {
         self = [super init];
         self.modelFile = modelFile;
-        self.recipeDictionary = [[NSMutableDictionary alloc] init];
+        self.userInfo = [[NSMutableDictionary alloc] init];
         //initializating the class empty
         [self persistData];
     }
@@ -59,43 +61,46 @@ static RecipeModel *_getInstance =nil;
     return self;
 }
 
-+(NSString*)modelFileName {
-    return @"RecipeModel.bin";
-}
 
++(NSString*)modelFileName {
+    return @"UserModel.bin";
+}
 -(void) persistData
 {
-    if (self.recipeDictionary != nil) {
-        NSData *recipeInfoData = [NSKeyedArchiver archivedDataWithRootObject:self];
-        BOOL success = [recipeInfoData writeToURL:self.modelFile options:NSDataWritingAtomic error:nil];
+    if (self.userInfo != nil) {
+        NSData *userInfoData = [NSKeyedArchiver archivedDataWithRootObject:self];
+        BOOL success = [userInfoData writeToURL:self.modelFile options:NSDataWritingAtomic error:nil];
         if (!success){
-            NSLog(@"RecipeModel failed to writo to disk: %@", recipeInfoData);
+            NSLog(@"UserModel failed to writo to disk: %@", userInfoData);
         }
     }
 }
--(void) removeModel{
++(void) removeModel{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentDirectory = [fileManager URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-    NSURL *modelFile = [documentDirectory URLByAppendingPathComponent:[RecipeModel modelFileName]];
+    NSURL *modelFile = [documentDirectory URLByAppendingPathComponent:[UserModel modelFileName]];
     [fileManager removeItemAtURL:modelFile error:nil];
     if (_getInstance){
-        [_getInstance.recipeDictionary removeAllObjects];
+        [_getInstance.userInfo removeAllObjects];
     }
     
 }
+- (NSMutableDictionary*) getUserLoginInfo{
 
-- (void) setRecipeInfo:(NSMutableArray *)recipeInfo{
-    [self.recipeDictionary setObject:recipeInfo forKey:@"recipeInfo"];
-    [self.recipeDictionary setValue:[NSDate date] forKey:@"lastUpdate"];
-    [self persistData];
+    return [self.userInfo valueForKey:@"userInfo"];
 }
 
-- (NSMutableArray*) getRecipesInfo{
-    return [self.recipeDictionary valueForKey:@"recipeInfo"];
+- (void) setUserLoginInfo:(NSMutableDictionary *)userLoginInfo{
+    
+    /*[self.userInfo setObject:userLoginInfo forKey:@"userInfo"];
+    [self.userInfo setValue:[NSDate date] forKey:@"lastUpdate"];
+    
+    [self persistData];*/
 }
 
-- (NSDate*) lastUpdate{
-    NSDate *lastUpdate = [self.recipeDictionary valueForKey:@"lastUpdate"];
+- (NSDate*) getlastUpdate{
+
+    NSDate *lastUpdate = [self.userInfo valueForKey:@"lastUpdate"];
     if (!lastUpdate){
         lastUpdate = [NSDate dateWithTimeIntervalSince1970:0];
     }
@@ -105,14 +110,14 @@ static RecipeModel *_getInstance =nil;
 #pragma mark NSCoding
 -(void) encodeWithCoder:(NSCoder *)coder
 {
-    [coder encodeObject:self.recipeDictionary forKey:@"recipeInfo"];
+    [coder encodeObject:self.userInfo forKey:@"userInfo"];
 }
 
 -(instancetype) initWithCoder:(NSCoder *)coder
 {
     self = [super init];
-    self.recipeDictionary = [coder decodeObjectForKey:@"recipeInfo"];
+    self.userInfo = [coder decodeObjectForKey:@"userInfo"];
     return self;
 }
-
 @end
+

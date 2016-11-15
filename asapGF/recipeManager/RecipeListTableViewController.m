@@ -9,6 +9,7 @@
 #import "RecipeDetailViewController.h"
 #import "RecipeListTableViewController.h"
 #import "RecipeListTableViewCell.h"
+#import "RecipeModel.h"
 
 @interface RecipeListTableViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *recipeTableView;
@@ -50,8 +51,9 @@
     self.container.layer.cornerRadius = 40.0;
     self.container.layer.borderWidth = 1;
     self.container.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    if(self.wsResponse){
-    
+    RecipeModel *recipeModel = [RecipeModel getInstance];
+    if([recipeModel getRecipesInfo]){
+        [self.activityIndicatorView stopAnimating];
     }else{
         [self.activityIndicatorView startAnimating];
         
@@ -110,9 +112,16 @@
 
 - (void)didReloadData{
     [self.activityIndicatorView stopAnimating];
+    
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+        RecipeModel *recipeModel = [RecipeModel getInstance];
+        
         self.recipes = self.wsResponse[@"info"];
         
+        [recipeModel setRecipeInfo:self.recipes];
+        
+        [recipeModel persistData];
+
         [self.recipeTableView reloadData];
 
     }else{
@@ -132,7 +141,8 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.recipes count];
+    RecipeModel *recipeModel = [RecipeModel getInstance];
+    return [[recipeModel getRecipesInfo] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -140,7 +150,8 @@
     if(!cell){
         cell = [self.recipeTableView dequeueReusableCellWithIdentifier:@"RecipeCellIdentifier" forIndexPath:indexPath];
     }
-    NSDictionary *info = [self.recipes objectAtIndex:indexPath.row];
+    RecipeModel *recipeModel = [RecipeModel getInstance];
+    NSDictionary *info = [[recipeModel getRecipesInfo] objectAtIndex:indexPath.row];
     
     cell.recipeName.text = info[@"name"];
     
@@ -157,7 +168,8 @@ placeholderImage:[UIImage imageNamed:@"noImgHolder"]];
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     RecipeDetailViewController *recipeDetail = [RecipeDetailViewController new];
-    NSDictionary *info = [self.recipes objectAtIndex:indexPath.row];
+    RecipeModel *recipeModel = [RecipeModel getInstance];
+    NSDictionary *info = [[recipeModel getRecipesInfo] objectAtIndex:indexPath.row];
     recipeDetail.recipes = info;
     [[self navigationController] pushViewController:recipeDetail animated:YES];
     [self.recipeTableView deselectRowAtIndexPath:indexPath animated:YES];

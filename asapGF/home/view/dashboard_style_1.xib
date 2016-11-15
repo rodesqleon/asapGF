@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController">
@@ -17,14 +21,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="oaD-SG-PRK">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NpN-C9-3zW">
                     <rect key="frame" x="267" y="534" width="45" height="26"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <state key="normal" title="Settings">
-                        <color key="titleColor" red="0.3411764706" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.3411764706" green="0.3294117647" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="logout:" destination="-1" eventType="touchUpInside" id="bhw-CQ-MLZ"/>
@@ -34,7 +38,7 @@
                     <rect key="frame" x="8" y="534" width="48" height="26"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <state key="normal" title="Manager">
-                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.60398706899999999" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.60398706899999999" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="productManager:" destination="-1" eventType="touchUpInside" id="dQJ-OI-Lyv"/>
@@ -47,14 +51,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                             <inset key="titleEdgeInsets" minX="-70" minY="72" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="dash_maps">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="locationBtn:" destination="-1" eventType="touchUpInside" id="7Yq-Za-GGy"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="HHI-ki-BBK" firstAttribute="leading" secondItem="K4a-8g-Sh4" secondAttribute="leading" id="EhZ-pX-7AL"/>
                         <constraint firstAttribute="trailing" secondItem="HHI-ki-BBK" secondAttribute="trailing" id="FGB-g6-Ec7"/>
@@ -70,14 +74,14 @@
                             <inset key="titleEdgeInsets" minX="-90" minY="72" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                             <state key="normal" image="dash_food">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="foodBtn:" destination="-1" eventType="touchUpInside" id="rdh-Sy-wr7"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Mkk-EO-rGt" firstAttribute="top" secondItem="q0o-W5-7KY" secondAttribute="top" id="6Tm-e2-bKo"/>
                         <constraint firstItem="Mkk-EO-rGt" firstAttribute="leading" secondItem="q0o-W5-7KY" secondAttribute="leading" id="EGz-LO-5PF"/>
@@ -94,14 +98,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                             <inset key="titleEdgeInsets" minX="-60" minY="60" maxX="0.0" maxY="0.0"/>
                             <state key="normal" image="dash_barcode">
-                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.22798775339999999" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="searchBtn:" destination="-1" eventType="touchUpInside" id="4DW-27-GEy"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.98039215690000003" blue="0.84705882349999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="rIO-uU-mGh" secondAttribute="bottom" id="1aA-SJ-YbK"/>
                         <constraint firstItem="rIO-uU-mGh" firstAttribute="centerY" secondItem="Ude-PG-Uqb" secondAttribute="centerY" id="2k2-mc-Zqa"/>
@@ -115,7 +119,7 @@
                     <rect key="frame" x="46" y="93" width="229" height="302"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="K4a-8g-Sh4" firstAttribute="leading" secondItem="q0o-W5-7KY" secondAttribute="trailing" constant="10" id="0IX-kZ-boQ"/>
                 <constraint firstItem="xna-ch-sAh" firstAttribute="leading" secondItem="oaD-SG-PRK" secondAttribute="leading" constant="8" id="3gu-Iq-aLh"/>
@@ -142,4 +146,9 @@
         <image name="dash_food" width="45" height="39"/>
         <image name="dash_maps" width="29" height="40"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
+    </simulatedMetricsContainer>
 </document>

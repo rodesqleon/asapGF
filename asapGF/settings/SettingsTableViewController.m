@@ -12,6 +12,9 @@
 #import "PrivacyViewController.h"
 #import "FAQTableViewController.h"
 #import "VideoViewController.h"
+#import "AppUser.h"
+#import "LocationsModel.h"
+#import "RecipeModel.h"
 
 @interface SettingsTableViewController ()
 @property NSMutableArray* adjustmentsSettingOptions;
@@ -76,6 +79,12 @@
 }
 
 - (IBAction)logoutAction:(UIButton *)sender {
+    AppUser *appUser = [AppUser getInstance];
+    LocationsModel *locations = [LocationsModel getInstance];
+    RecipeModel *recipes = [RecipeModel getInstance];
+    [appUser removeModel];
+    [locations removeModel];
+    [recipes removeModel];
     LoginViewController *loginView = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
     [[self navigationController] pushViewController:loginView animated:YES];
     

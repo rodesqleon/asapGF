@@ -10,6 +10,6 @@
 
 @interface RecipeListTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic) NSArray *recipes;
+@property (nonatomic) NSMutableArray *recipes;
 
 @end

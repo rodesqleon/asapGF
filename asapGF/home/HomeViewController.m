@@ -48,9 +48,9 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     AppUser *appUser = [AppUser getInstance];
-    self.usernameLabel.text = appUser.userNAME;
+    self.usernameLabel.text = [[appUser getUserInfo] valueForKey:@"name"];
     self.product_btn.hidden = YES;
-    if([appUser.userROLE isEqualToString:@"admin"]){
+    if([[[appUser getUserInfo] valueForKey:@"role"] isEqualToString:@"admin"]){
         self.product_btn.hidden = NO;
     }
     self.firstView.layer.cornerRadius = 40.0;

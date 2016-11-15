@@ -67,16 +67,17 @@ static LocationsModel *_getInstance =nil;
 
 -(void) persistData
 {
-    if (self.LocationsList != nil) {
-        NSData *LocationsListData = [NSKeyedArchiver archivedDataWithRootObject:self];
-        BOOL success = [LocationsListData writeToURL:self.modelFile options:NSDataWritingAtomic error:nil];
+    if (self.LocationsListOfDictionary != nil) {
+        NSData *userInfoData = [NSKeyedArchiver archivedDataWithRootObject:self];
+        BOOL success = [userInfoData writeToURL:self.modelFile options:NSDataWritingAtomic error:nil];
         if (!success){
-            NSLog(@"NewsListModel failed to writo to disk: %@", LocationsListData);
+            NSLog(@"UserModel failed to writo to disk: %@", userInfoData);
         }
     }
 }
 
-+(void) removeModel{
+
+-(void) removeModel{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentDirectory = [fileManager URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSURL *modelFile = [documentDirectory URLByAppendingPathComponent:LocationsModel.modelFileName];
@@ -87,42 +88,25 @@ static LocationsModel *_getInstance =nil;
     
 }
 
--(NSArray*) getLocationsListForKey:(NSString*)key {
-    if (!key){
-        key = @"dashboard";
-    }
-    AppUser *appUser = [AppUser getInstance];
-    return [self.LocationsListOfDictionary valueForKeyPath:[NSString stringWithFormat:@"%@.%@.LocationsList",appUser.userID,key ]];
+-(NSArray*) getLocationsList{
+    return [self.LocationsListOfDictionary valueForKeyPath:@"LocationsList"];
 }
--(void)setLocationsList:(NSMutableArray *)locationsList forKey:(NSString*)key
+-(void)setLocationsList:(NSMutableArray *)locationsList
 {
-    if (!key){
-        key = @"dashboard";
-    }
-    AppUser *appUser = [AppUser getInstance];
-    NSDictionary *keyedItem =@{ appUser.userID :
-                                    @{ key :
-                                           @{
-                                               @"LocationsList":locationsList,
-                                               @"lastUpdate":[NSDate date]
-                                               }
-                                       }
-                                };
-    [self.LocationsListOfDictionary setValuesForKeysWithDictionary:keyedItem];
-    self.LocationsList = locationsList;
+    [self.LocationsListOfDictionary setObject:locationsList forKey:@"LocationsList"];
+    [self.LocationsListOfDictionary setValue:[NSDate date] forKey:@"lastUpdate"];
+    
     [self persistData];
 }
--(NSDate*) lastUpdateForKey:(NSString*)key {
-    if (!key){
-        key = @"dashboard";
-    }
-    
-    AppUser *appUser = [AppUser getInstance];
+-(NSDate*) lastUpdate{
+
    
-    NSDate *lastUpdate = [self.LocationsListOfDictionary valueForKeyPath:[NSString stringWithFormat:@"%@.%@.lastUpdate",appUser.userID,key ]];
+    NSDate *lastUpdate = [self.LocationsListOfDictionary valueForKey:@"lastUpdate"];
+    
     if (!lastUpdate){
         lastUpdate = [NSDate dateWithTimeIntervalSince1970:0];
     }
+    
     return lastUpdate;
 }
 

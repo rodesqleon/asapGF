@@ -87,7 +87,7 @@ static AppUser *_getInstance =nil;
         }
     }
 }
-+(void) removeModel{
+-(void) removeModel{
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *documentDirectory = [fileManager URLForDirectory:NSCachesDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
     NSURL *modelFile = [documentDirectory URLByAppendingPathComponent:[AppUser modelFileName]];
@@ -98,41 +98,20 @@ static AppUser *_getInstance =nil;
     
 }
 
-- (void) setUserInfo:(NSMutableDictionary *)userInfo forContext:(NSString*)context{
-    if (!context){
-        context= @"default_context";
-    }
+- (void) setUserInfo:(NSMutableDictionary *)userInfo{
     
-    NSString *name = userInfo[@"name"];
-    NSDictionary *item = @{
-                           @"UserInfo":userInfo,
-                           @"lastUpdate":[NSDate date]
-                           };
-    if ([self.userDictionary objectForKey:name]){
-        [[self.userDictionary objectForKey:name] setObject:item forKey:context];
-    }
-    else {
-        NSMutableDictionary *mdict = [[NSMutableDictionary alloc] init];
-        [mdict setObject:item forKey:context];
-        [self.userDictionary setObject:mdict forKey:name];
-    }
+    [self.userDictionary setObject:userInfo forKey:@"userInfo"];
+    [self.userDictionary setValue:[NSDate date] forKey:@"lastUpdate"];
     [self persistData];
 }
 
-- (NSMutableDictionary*) getUserInfoForContext:(NSString*)context{
-    if (!context){
-        context = @"default_context";
-    }
-    AppUser *appModel = [AppUser getInstance];
-    return [self.userDictionary valueForKeyPath:[NSString stringWithFormat:@"%@.%@.userInfo",appModel.userNAME,context ]];
+- (NSMutableDictionary*) getUserInfo{
+    return [self.userDictionary valueForKeyPath:@"userInfo"];
 }
 
-- (NSDate*) lastUpdateForContext:(NSString*)context{
-    if (!context){
-        context = @"default_context";
-    }
-    AppUser *appModel = [AppUser getInstance];
-    NSDate *lastUpdate = [self.userDictionary valueForKeyPath:[NSString stringWithFormat:@"%@.%@.lastUpdate",appModel.userNAME,context ]];
+- (NSDate*) lastUpdate{
+
+    NSDate *lastUpdate = [self.userDictionary valueForKeyPath:@"lastUpdate"];
     if (!lastUpdate){
         lastUpdate = [NSDate dateWithTimeIntervalSince1970:0];
     }

@@ -13,4 +13,8 @@
 @property (nonatomic) NSString *recipeDescription;
 @property (nonatomic) NSString *image;
 + (RecipeModel*)getInstance;
+- (void) setRecipeInfo:(NSMutableArray *)recipeInfo;
+- (NSMutableArray*) getRecipesInfo;
+-(void) removeModel;
+-(void) persistData;
 @end

@@ -94,20 +94,6 @@
                                                  otherButtonTitles:nil];
             [alert show];
         }else{
-        /*[[NSOperationQueue mainQueue] addOperationWithBlock:^{
-            NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
-            NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
-            NSString *callB = [callA stringByAppendingString:@"&pwd="];
-            NSString *callC = [callB stringByAppendingString:self.password_textField.text];
-            NSURL *url = [NSURL URLWithString:callC];
-            NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-            NSLog(@"%@",jsonResponse);
-        
-            NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-            self.loginDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-            
-            [self performSelector:@selector(didLogin) withObject:nil afterDelay:1.0];
-        }];*/
             NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
             NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
             NSString *callB = [callA stringByAppendingString:@"&pwd="];
@@ -132,9 +118,11 @@
         if([[self.loginDict valueForKey:@"info"] count] > 0){
             NSMutableDictionary *response = [[[self.loginDict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
             AppUser *appUser = [AppUser new];
-            appUser = [[AppUser getInstance] initWithDict:response];
+            appUser = [AppUser getInstance];
+            [appUser setUserInfo:response];
+            [appUser persistData];        
             
-            if([appUser.userNAME isEqualToString:self.userName_textField.text]){
+            if([[[appUser getUserInfo] valueForKey:@"name"] isEqualToString:self.userName_textField.text]){
                 HomeViewController *homeView = [[HomeViewController alloc] initWithNibName:@"dashboard_style_1" bundle:nil];
                 [[self navigationController] pushViewController:homeView animated:YES];
             }else{

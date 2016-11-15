@@ -5,6 +5,7 @@
 //  Created by rodrigoe on 06-06-16.
 //  Copyright © 2016 Rodrigo Esquivel. All rights reserved.
 //
+#import "LocationsModel.h"
 #import "LocationDetailViewController.h"
 #import "LocationsTableViewCell.h"
 #import "LocationsTableViewController.h"
@@ -59,7 +60,11 @@
     self.container.layer.cornerRadius = 40.0;
     self.container.layer.borderWidth = 1;
     self.container.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    if(self.wsResponse){
+    
+    LocationsModel *locationModel = [LocationsModel getInstance];
+    
+    if([locationModel getLocationsList]){
+    [self.activityIndicatorView stopAnimating];
     
     }else{
     [self.activityIndicatorView startAnimating];
@@ -80,24 +85,37 @@
 }
 
 - (void)loadLocations{
+    LocationsModel *locationModel = [LocationsModel getInstance];
     
-    //Load the json on another thread
-    NSString *ws = @"http://always420.cl/wsLocations.php";
-    NSURL *url = [NSURL URLWithString:ws];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    
-    
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
+    if([locationModel getLocationsList]){
+        
+    }else{
+        //Load the json on another thread
+        NSString *ws = @"http://always420.cl/wsLocations.php";
+        NSURL *url = [NSURL URLWithString:ws];
+        NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+        
+        
+        NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+        
+        self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+        [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
+
+    }
 }
 
 - (void)didReloadData{
     [self.activityIndicatorView stopAnimating];
     if([self.wsResponse[@"status"] isEqualToString:@"OK"]){
+        LocationsModel *locationModel = [LocationsModel getInstance];
+        
+        
         self.locations = self.wsResponse[@"info"];
-        NSLog(@"%@", self.locations);
+        
+        [locationModel setLocationsList:self.locations];
+        
+        [locationModel persistData];
+        
         
         [self.locationsTableView reloadData];
         
@@ -121,7 +139,8 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.locations count];
+    LocationsModel *locationModel = [LocationsModel getInstance];
+    return [[locationModel getLocationsList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -129,7 +148,8 @@
     if(!cell){
         cell = [self.locationsTableView dequeueReusableCellWithIdentifier:@"LocationsCellIdentifier" forIndexPath:indexPath];
     }
-    NSDictionary *info = [self.locations objectAtIndex:indexPath.row];
+    LocationsModel *locationModel = [LocationsModel getInstance];
+    NSDictionary *info = [[locationModel getLocationsList] objectAtIndex:indexPath.row];
     
     cell.locationTitle.text = [info[@"NAME"] stringByReplacingOccurrencesOfString:@"&Nacute;" withString:@"Ñ"];
     cell.locationDescription.text = info[@"DESCRIPTION"];
@@ -144,7 +164,8 @@
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     LocationDetailViewController *locationDetail = [LocationDetailViewController new];
-    NSDictionary *info = [self.locations objectAtIndex:indexPath.row];
+    LocationsModel *locationModel = [LocationsModel getInstance];
+    NSDictionary *info = [[locationModel getLocationsList] objectAtIndex:indexPath.row];
     locationDetail.locations = info;
     [[self navigationController] pushViewController:locationDetail animated:YES];
     [self.locationsTableView deselectRowAtIndexPath:indexPath animated:YES];

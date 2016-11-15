@@ -15,9 +15,9 @@
 
 + (LocationsModel*)getInstance;
 -(void)persistData;
-+(void)removeModel;
--(NSArray*) getLocationsListForKey:(NSString*)key;
--(void) setLocationsList:(NSMutableArray *)newsList forKey:(NSString*)key;
--(NSDate*) lastUpdateForKey:(NSString*)key;
+-(void)removeModel;
+-(NSArray*) getLocationsList;
+-(void) setLocationsList:(NSMutableArray *)newsList;
+-(NSDate*) lastUpdate;
 
 @end
