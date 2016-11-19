@@ -55,6 +55,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    //ADDED NAVEGATION REFRESH BUTTON
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain
+                                                                     target:self action:@selector(refreshLocationList)];
     [self.locationsTableView registerNib:[UINib nibWithNibName:@"locationsTableViewCell_style_1" bundle:nil] forCellReuseIdentifier:@"LocationsCellIdentifier"];
     self.locationsTableView.dataSource = self;
     self.container.layer.cornerRadius = 40.0;
@@ -82,6 +85,24 @@
         self.locationsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         [self performSelector:@selector(loadLocations) withObject:nil afterDelay:1.0];
     }
+}
+
+- (void) refreshLocationList{
+    [self.activityIndicatorView startAnimating];
+    [self performSelector:@selector(reloadLocationList) withObject:nil afterDelay:1.0];
+}
+
+- (void) reloadLocationList{
+    //Load the json on another thread
+    NSString *ws = @"http://always420.cl/wsLocations.php";
+    NSURL *url = [NSURL URLWithString:ws];
+    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    
+    
+    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
+    
+    self.wsResponse = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
 }
 
 - (void)loadLocations{

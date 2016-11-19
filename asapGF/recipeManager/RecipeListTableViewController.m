@@ -46,6 +46,10 @@
     self.navigationController.navigationBar.tintColor = [UIColor lightGrayColor];
     [self.navigationController.navigationBar setTitleTextAttributes:
      @{NSForegroundColorAttributeName:[UIColor lightGrayColor]}];
+    //ADDED NAVEGATION REFRESH BUTTON
+    UIBarButtonItem *anotherButton = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStylePlain
+                                                                     target:self action:@selector(refreshRecipeList)];
+    self.navigationItem.rightBarButtonItem = anotherButton;
     [self.recipeTableView registerNib:[UINib nibWithNibName:@"RecipeCellView_style_1" bundle:nil] forCellReuseIdentifier:@"RecipeCellIdentifier"];
     self.recipeTableView.dataSource = self;
     self.container.layer.cornerRadius = 40.0;
@@ -94,8 +98,12 @@
     [self performSelector:@selector(didReloadData) withObject:nil afterDelay:1.0];
 }
 
+- (void)refreshRecipeList{
+    [self.activityIndicatorView startAnimating];
+    [self performSelector:@selector(reloadAction:) withObject:nil afterDelay:2.0];
+}
+
 - (IBAction)reloadAction:(UIButton *)sender {
-    
     //Load the json on another thread
     NSString *ws = @"http://always420.cl/wsRecipes.php";
     NSURL *url = [NSURL URLWithString:ws];
