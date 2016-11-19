@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "AppUser.h"
 #import "LoginViewController.h"
-
+#import "WelcomeWizardViewController.h"
+#import "HomeViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -19,10 +21,32 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.loginViewController = [[LoginViewController alloc] initWithNibName:@"loginView_style_1" bundle:nil];
+    AppUser *userModel = [AppUser getInstance];
     
-    self.window.rootViewController = self.loginViewController;
-    [self.window makeKeyAndVisible];
+    if([userModel getUserInfo]){
+        HomeViewController *homeView = [[HomeViewController alloc] initWithNibName:@"dashboard_style_1" bundle:nil];
+        
+        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:homeView];
+        [navigation prefersStatusBarHidden];
+        self.window.rootViewController = navigation;
+        [self.window makeKeyAndVisible];
+    }else{
+        self.welcomeViewController = [WelcomeWizardViewController new];
+        
+        UINavigationController *navigation = [[UINavigationController alloc]initWithRootViewController:self.welcomeViewController];
+        [navigation prefersStatusBarHidden];
+        self.window.rootViewController = navigation;
+        [self.window makeKeyAndVisible];
+        
+        // Set color to page view controller dots
+        UIPageControl *pageControl = [UIPageControl appearance];
+        pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+        pageControl.currentPageIndicatorTintColor = [UIColor grayColor];
+    }
+    
+    
+    NSLog(@"%@", [userModel getUserInfo]);
+    
     return YES;
 }
 
@@ -32,15 +56,23 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
+    NSLog(@"Use this method to release shared resources");
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+    AppUser *userModel = [AppUser getInstance];
+    
+    NSLog(@"%@", [userModel getUserInfo]);
+    
+    NSLog(@"Called as part of the transition from the background");
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    NSLog(@"Restart any task that were pause");
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 }
 

@@ -11,7 +11,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIViewController *loginViewController;
+@property (strong, nonatomic) UIViewController *welcomeViewController;
 @property (nonatomic, strong) UINavigationController* navController;
 
 @end

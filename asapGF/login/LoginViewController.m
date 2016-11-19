@@ -9,9 +9,15 @@
 #import "LoginViewController.h"
 #import "HomeViewController.h"
 #import "SignInViewController.h"
-#import "AppUser.h";
+#import "WelcomeWizardViewController.h"
+#import "AppUser.h"
+#import "PresentationWizardViewController.h"
 @interface LoginViewController ()
-
+@property (nonatomic) NSDictionary *loginDict;
+@property (nonatomic,strong) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+//NSURL HTTP REQUEST VAR
+@property (nonatomic) NSData *responseData;
+@property (nonatomic) NSURLResponse *response;
 @end
 
 @implementation LoginViewController
@@ -33,21 +39,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    NSURL *url = [NSURL URLWithString:@"http://localhost/wsLogIn.php?pwd=testUser1"];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",jsonResponse);
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.userName_textField.delegate = self;
+    self.password_textField.delegate = self;
     
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    NSMutableDictionary *response = [[[dict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
-    //NSLog(@"%@", response);
 }
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.logIn_btn.layer.cornerRadius = 40.0;
+    self.userName_textField.layer.borderWidth = 1;
+    self.userName_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.password_textField.layer.borderWidth = 1;
+    self.password_textField.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+    self.userName_textField.layer.cornerRadius = 10.0;
+    self.password_textField.layer.cornerRadius = 10.0;
+    [self.activityIndicatorView stopAnimating];
+    NSString *strWithURL = [NSString stringWithFormat:@""];
+    
+    strWithURL = [strWithURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"strConfirmChallenge=%@",strWithURL);
+    
+    NSURL *myURL = [NSURL URLWithString:strWithURL];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,27 +74,57 @@
 #pragma login_btn_action
 
 -(IBAction)login:(id)sender{
-    
-    NSString *ws = @"http://localhost/wsLogIn.php?pwd=";
-    NSString *call = [ws stringByAppendingString:self.password_textField.text];
-    
-    NSURL *url = [NSURL URLWithString:call];
-    NSString *jsonResponse = [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
-    //NSLog(@"%@",jsonResponse);
-    
-    NSData *jsonData = [jsonResponse dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
-    if([dict[@"status"] isEqualToString:@"OK"]){
-            NSLog(@"Status: %@", dict[@"status"]);
-        if([[dict valueForKey:@"info"] count] > 0){
-            NSMutableDictionary *response = [[[dict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
+    /*VALIDATION PASSWORD TEXT FIELD*/
+    if([self.password_textField.text isEqualToString:@""] || [self.userName_textField.text isEqualToString:@""]){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
+                                                        message:@"Incorrect username, please try again."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }else{
+        
+        NSCharacterSet * set = [[NSCharacterSet characterSetWithCharactersInString:@"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLKMNOPQRSTUVWXYZ0123456789"] invertedSet];
+        
+        if ([self.userName_textField.text rangeOfCharacterFromSet:set].location != NSNotFound) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
+                                                           message:@"Enter valid character, please try again."
+                                                          delegate:nil
+                                                 cancelButtonTitle:@"OK"
+                                                 otherButtonTitles:nil];
+            [alert show];
+        }else{
+            NSString *ws = @"http://always420.cl/wsLogIn.php?usr=";
+            NSString *callA = [ws stringByAppendingString:self.userName_textField.text];
+            NSString *callB = [callA stringByAppendingString:@"&pwd="];
+            NSString *callC = [callB stringByAppendingString:self.password_textField.text];
+            NSURL *url = [NSURL URLWithString:callC];
             
-            AppUser *appUser = [[AppUser getInstance] initWithDict:response];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                                   cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                               timeoutInterval:60];
+            [self.activityIndicatorView startAnimating];
+            [NSURLConnection connectionWithRequest:request delegate:self];
+        }
+    }
+    
+    
+}
+
+-(void)didLogin{
+    
+    NSLog(@"Status: %@", self.loginDict[@"status"]);
+    if([self.loginDict[@"status"] isEqualToString:@"OK"]){
+        if([[self.loginDict valueForKey:@"info"] count] > 0){
+            NSMutableDictionary *response = [[[self.loginDict valueForKey:@"info"] objectAtIndex:0]mutableCopy];
+            AppUser *appUser = [AppUser new];
+            appUser = [AppUser getInstance];
+            [appUser setUserInfo:response];
+            [appUser persistData];        
             
-            if([appUser.userNAME isEqualToString:self.userName_textField.text]){
+            if([[[appUser getUserInfo] valueForKey:@"name"] isEqualToString:self.userName_textField.text]){
                 HomeViewController *homeView = [[HomeViewController alloc] initWithNibName:@"dashboard_style_1" bundle:nil];
-                [self presentViewController:homeView animated:YES completion:nil];
+                [[self navigationController] pushViewController:homeView animated:YES];
             }else{
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login"
                                                                 message:@"Incorrect username, please try again."
@@ -86,6 +132,7 @@
                                                       cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];
                 [alert show];
+                [self.activityIndicatorView stopAnimating];
                 NSLog(@"Incorrect username, please try again.");
             }
         }else{
@@ -95,37 +142,94 @@
                                                   cancelButtonTitle:@"OK"
                                                   otherButtonTitles:nil];
             [alert show];
-
+            [self.activityIndicatorView stopAnimating];
             NSLog(@"Username doesn't exist, please sign in.");
         }
         
     }else{
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Registration"
-                                                        message:@"User doesn't exist, please sign in."
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-
-        NSLog(@"Status: %@", dict[@"status"]);
+        
+        [self performSelector:@selector(goToHome) withObject:nil afterDelay:1.0];
+        
     }
-    
-
 }
 
+- (void) goToHome{
+    [self.activityIndicatorView stopAnimating];
+    HomeViewController *homeView = [[HomeViewController alloc]
+                                    initWithNibName:@"dashboard_style_1" bundle:nil];
+    [[self navigationController] pushViewController:homeView animated:YES];
+}
 -(IBAction)signin:(id)sender{
     SignInViewController *signView = [[SignInViewController alloc] initWithNibName:@"signInView_style_1" bundle:nil];
-    [self presentViewController:signView animated:YES completion:nil];
+    [[self navigationController] pushViewController:signView animated:YES];
 }
 
-/*
-#pragma mark - Navigation
+-(IBAction)backToWelcomeScreen:(id)sender{
+    WelcomeWizardViewController *welcome = [WelcomeWizardViewController new];
+    [[self navigationController] pushViewController:welcome animated:NO];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
+-(IBAction)presentationGF:(id)sender{
+    PresentationWizardViewController *presentation = [PresentationWizardViewController new];
+    [[self navigationController] pushViewController:presentation animated:NO];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
+    if (theTextField == self.userName_textField) {
+        [theTextField resignFirstResponder];
+    }
+    id asd;
+    [self login:asd];
+    return YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    //hides keyboard when another part of layout was touched
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
+}
+
+//Delegate methods
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    NSLog(@"RODRIGOE => DATA : %@", response);
+    self.response = response;
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    NSLog(@"RODRIGOE => DATA : %@", data);
+    self.responseData = data;
+}
+
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    
+    NSLog(@"Connection failed with error: %@", [error localizedDescription]);
+    
+    
+    UIAlertView *ConnectionFailed = [[UIAlertView alloc]
+                                     initWithTitle:@"Connection Failed"
+                                     message: [NSString stringWithFormat:@"%@", [error localizedDescription]]
+                                     delegate:self
+                                     cancelButtonTitle:@"Ok"
+                                     otherButtonTitles:nil];
+    [ConnectionFailed show];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *s = [[NSString alloc] initWithData:self.responseData encoding:NSASCIIStringEncoding];
+    self.loginDict  = [NSMutableDictionary new];
+    NSData *objectData = [s dataUsingEncoding:NSUTF8StringEncoding];
+    self.loginDict = [NSJSONSerialization JSONObjectWithData:objectData
+                                                         options:NSJSONReadingMutableContainers
+                                                           error:nil];
+    [self didLogin];
+    NSLog(@"RODRIGO => DATA : %@", s);
+    
+}
 @end

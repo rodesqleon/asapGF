@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ModalSpinnerViewController">
+            <connections>
+                <outlet property="modalView" destination="Tk3-cj-R6q" id="gvS-LI-FrU"/>
+                <outlet property="slowAnimationImageView" destination="o1J-BE-s8m" id="ZZM-of-sDv"/>
+                <outlet property="view" destination="iN0-l3-epB" id="2Pw-HC-Bzb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view opaque="NO" contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Background">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tk3-cj-R6q">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGV-q2-TrD">
+                            <rect key="frame" x="120" y="383" width="80" height="24"/>
+                            <fontDescription key="fontDescription" name="Avenir-Black" family="Avenir" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="asap_logo" translatesAutoresizingMaskIntoConstraints="NO" id="o1J-BE-s8m">
+                            <rect key="frame" x="69" y="193" width="182" height="182"/>
+                        </imageView>
+                    </subviews>
+                    <accessibility key="accessibilityConfiguration">
+                        <accessibilityTraits key="traits" notEnabled="YES"/>
+                    </accessibility>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="o1J-BE-s8m" secondAttribute="trailing" constant="69" id="B6A-ku-wf2"/>
+                        <constraint firstAttribute="centerY" secondItem="o1J-BE-s8m" secondAttribute="centerY" id="Erc-QA-MdT"/>
+                        <constraint firstItem="o1J-BE-s8m" firstAttribute="top" secondItem="Tk3-cj-R6q" secondAttribute="top" constant="193" id="IFV-yM-fuf"/>
+                        <constraint firstItem="o1J-BE-s8m" firstAttribute="leading" secondItem="Tk3-cj-R6q" secondAttribute="leading" constant="69" id="Qf1-Qz-bUR"/>
+                        <constraint firstItem="kGV-q2-TrD" firstAttribute="top" secondItem="o1J-BE-s8m" secondAttribute="bottom" constant="8" id="YRW-xR-cxy"/>
+                        <constraint firstAttribute="centerX" secondItem="o1J-BE-s8m" secondAttribute="centerX" id="bU1-mY-IZa"/>
+                        <constraint firstItem="kGV-q2-TrD" firstAttribute="top" secondItem="o1J-BE-s8m" secondAttribute="bottom" constant="8" id="fpc-od-qR8"/>
+                        <constraint firstAttribute="centerX" secondItem="kGV-q2-TrD" secondAttribute="centerX" id="kE7-eM-xty"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.46713362068965519" colorSpace="calibratedRGB"/>
+            <accessibility key="accessibilityConfiguration">
+                <accessibilityTraits key="traits" notEnabled="YES"/>
+            </accessibility>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Tk3-cj-R6q" secondAttribute="trailing" id="5Vc-B8-byw"/>
+                <constraint firstItem="Tk3-cj-R6q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7K2-Gw-Cwb"/>
+                <constraint firstItem="Tk3-cj-R6q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8ok-Js-yLp"/>
+                <constraint firstAttribute="bottom" secondItem="Tk3-cj-R6q" secondAttribute="bottom" id="WNW-TA-OYX"/>
+            </constraints>
+            <point key="canvasLocation" x="432" y="351"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="asap_logo" width="221" height="256"/>
+    </resources>
+</document>
